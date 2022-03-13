@@ -12,7 +12,7 @@
     <title>Green Land</title>
 
     <!-- Favicon  -->
-    <link rel="icon" href="img/core-img/favicon.ico">
+    <link rel="icon" href="img/bg-img/WhatsApp Image 2022-03-12 at 9.39.48 PM (1).jpeg">
 
     <!-- Core Style CSS -->
     <link rel="stylesheet" href="css/core-style.css">
