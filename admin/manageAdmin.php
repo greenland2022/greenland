@@ -28,6 +28,10 @@ if(isset($_POST['submit'])){
             $result=mysqli_query($conn,$query);
             $admin=mysqli_fetch_assoc($result);
         }
+        if(isset($_GET['id1'])){
+            $query="DELETE FROM admin WHERE admin_id={$_GET['id1']}";
+            mysqli_query($conn,$query);
+        }
 ?>
 
 
@@ -97,7 +101,7 @@ if(isset($_POST['submit'])){
                                                 echo "<td>{$admin['admin_name']} </td>";
                                                 echo "<td>{$admin['email']} </td>";
                                                 echo "<td><a href='manageAdmin.php?id={$admin['admin_id']}'>Edit</a> </td>";
-                                                echo "<td><a href=''>Delete</a> </td>";
+                                                echo "<td><a href='manageAdmin.php?id1={$admin['admin_id']}'>Delete</a> </td>";
                                             echo "</tr>";
                                             }
                                             ?>

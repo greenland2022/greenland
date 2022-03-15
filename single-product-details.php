@@ -1,5 +1,14 @@
 <?php
-include('header/header.php')
+include('header/header.php');
+ob_start();
+require('admin/include/conection.php');
+?>
+<?php
+if(isset($_GET['id'])){
+    $query="SELECT * FROM plants WHERE plants_id={$_GET['id']}";
+    $result=mysqli_query($conn,$query);
+    $plant=mysqli_fetch_assoc($result);
+}
 ?>
 
     <!-- ##### Right Side Cart Area ##### -->
@@ -19,7 +28,11 @@ include('header/header.php')
                 <!-- Single Cart Item -->
                 <div class="single-cart-item">
                     <a href="#" class="product-image">
-                        <img src="img/product-img/product-1.jpg" class="cart-thumb" alt="">
+                    <?php
+echo "<img src='admin/images/{$plant['plant_img']}' class='cart-thumb'>";
+
+?>
+                        
                         <!-- Cart Item Desc -->
                         <div class="cart-item-desc">
                           <span class="product-remove"><i class="fa fa-close" aria-hidden="true"></i></span>
@@ -35,8 +48,10 @@ include('header/header.php')
                 <!-- Single Cart Item -->
                 <div class="single-cart-item">
                     <a href="#" class="product-image">
-                        <img src="img/product-img/product-2.jpg" class="cart-thumb" alt="">
-                        <!-- Cart Item Desc -->
+                    <?php
+echo "<img src='admin/images/{$plant['plant_img']}' class='cart-thumb'>";
+
+?>                        <!-- Cart Item Desc -->
                         <div class="cart-item-desc">
                           <span class="product-remove"><i class="fa fa-close" aria-hidden="true"></i></span>
                             <span class="badge">Mango</span>
@@ -47,12 +62,14 @@ include('header/header.php')
                         </div>
                     </a>
                 </div>
-
+   
                 <!-- Single Cart Item -->
                 <div class="single-cart-item">
                     <a href="#" class="product-image">
-                        <img src="img/product-img/product-3.jpg" class="cart-thumb" alt="">
-                        <!-- Cart Item Desc -->
+                    <?php
+echo "<img src='admin/images/{$plant['plant_img']}' class='cart-thumb'>";
+
+?>                        <!-- Cart Item Desc -->
                         <div class="cart-item-desc">
                           <span class="product-remove"><i class="fa fa-close" aria-hidden="true"></i></span>
                             <span class="badge">Mango</span>
@@ -89,38 +106,26 @@ include('header/header.php')
         <!-- Single Product Thumb -->
         <div class="single_product_thumb clearfix">
             <div class="product_thumbnail_slides owl-carousel">
-                <img src="img/product-img/product-big-1.jpg" alt="">
-                <img src="img/product-img/product-big-2.jpg" alt="">
-                <img src="img/product-img/product-big-3.jpg" alt="">
+            <?php
+echo "<img src='admin/images/{$plant['plant_img']}' class='cart-thumb'>";
+echo "<img src='admin/images/{$plant['plant_img']}' class='cart-thumb'>";
+echo "<img src='admin/images/{$plant['plant_img']}' class='cart-thumb'>";
+
+?>                
+
             </div>
         </div>
 
         <!-- Single Product Description -->
         <div class="single_product_desc clearfix">
-            <span>mango</span>
+            <!-- <span>mango</span> -->
             <a href="cart.php">
-                <h2>One Shoulder Glitter Midi Dress</h2>
+            <?php echo "<h2>{$plant['plant_name']}</h2>";?>  
             </a>
-            <p class="product-price"><span class="old-price">$65.00</span> $49.00</p>
-            <p class="product-desc">Mauris viverra cursus ante laoreet eleifend. Donec vel fringilla ante. Aenean finibus velit id urna vehicula, nec maximus est sollicitudin.</p>
+            <p class="product-price"><span class="old-price"></span><?php echo "{$plant['price']}";?> </p>
+            <?php echo "<p class='product-desc'>{$plant['description']}</p>";?>  
+            
 
-            <!-- Form -->
-            <form class="cart-form clearfix" method="post">
-                <!-- Select Box -->
-                <div class="select-box d-flex mt-50 mb-30">
-                    <select name="select" id="productSize" class="mr-5">
-                        <option value="value">Size: XL</option>
-                        <option value="value">Size: X</option>
-                        <option value="value">Size: M</option>
-                        <option value="value">Size: S</option>
-                    </select>
-                    <select name="select" id="productColor">
-                        <option value="value">Color: Black</option>
-                        <option value="value">Color: White</option>
-                        <option value="value">Color: Red</option>
-                        <option value="value">Color: Purple</option>
-                    </select>
-                </div>
                 <!-- Cart & Favourite Box -->
                 <div class="cart-fav-box d-flex align-items-center">
                     <!-- Cart -->
