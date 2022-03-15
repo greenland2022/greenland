@@ -33,6 +33,10 @@ if(isset($_POST['submit'])){
             $result=mysqli_query($conn,$query);
             $user=mysqli_fetch_assoc($result);
         }
+        if(isset($_GET['id1'])){
+            $query="DELETE FROM users WHERE id={$_GET['id1']}";
+            mysqli_query($conn,$query);
+        }
 ?>
 
 
@@ -116,7 +120,7 @@ if(isset($_POST['submit'])){
                                                 echo "<td>{$user['phonenumber']} </td>";
                                                 echo "<td>{$user['email']} </td>";
                                                 echo "<td><a href='manageUser.php?id={$user['id']}'>Edit</a> </td>";
-                                                echo "<td><a href=''>Delete</a> </td>";
+                                                echo "<td><a href='manageUser.php?id1={$user['id']}'>Delete</a> </td>";
                                             echo "</tr>";
                                             }
                                             ?>

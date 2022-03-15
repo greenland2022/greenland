@@ -44,24 +44,24 @@
                             <li><a href="#">Shop</a>
                                 <div class="megamenu">
                                     <ul class="single-mega cn-col-4">
-                                        <li class="title">Women's Collection</li>
-                                        <li><a href="shop.php">Dresses</a></li>
+                                        <li class="title">Plants Collection</li>
+                                        <li><a href="shop.php">Plants</a></li>
                                         <li><a href="shop.php">Blouses &amp; Shirts</a></li>
                                         <li><a href="shop.php">T-shirts</a></li>
                                         <li><a href="shop.php">Rompers</a></li>
                                         <li><a href="shop.php">Bras &amp; Panties</a></li>
                                     </ul>
                                     <ul class="single-mega cn-col-4">
-                                        <li class="title">Men's Collection</li>
-                                        <li><a href="shop.php">T-Shirts</a></li>
+                                        <li class="title">Equipment Collection</li>
+                                        <li><a href="shopEquipment.php">T-Shirts</a></li>
                                         <li><a href="shop.php">Polo</a></li>
                                         <li><a href="shop.php">Shirts</a></li>
                                         <li><a href="shop.php">Jackets</a></li>
                                         <li><a href="shop.php">Trench</a></li>
                                     </ul>
                                     <ul class="single-mega cn-col-4">
-                                        <li class="title">Kid's Collection</li>
-                                        <li><a href="shop.php">Dresses</a></li>
+                                        <li class="title">Soil Collection</li>
+                                        <li><a href="shopSoil.php">Soil</a></li>
                                         <li><a href="shop.php">Shirts</a></li>
                                         <li><a href="shop.php">T-shirts</a></li>
                                         <li><a href="shop.php">Jackets</a></li>
