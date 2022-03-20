@@ -8,6 +8,17 @@ if(isset($_GET['id'])){
     $query="SELECT * FROM plants WHERE plants_id={$_GET['id']}";
     $result=mysqli_query($conn,$query);
     $plant=mysqli_fetch_assoc($result);
+}else if(isset($_GET['idAdd'])){
+    $queryCart="SELECT * FROM plants WHERE plants_id={$_GET['idAdd']}";
+  $resultCart=  mysqli_query($conn,$queryCart);
+  $plant=mysqli_fetch_assoc($resultCart);
+    $cartName=$plant['plant_name'];
+    $description=$plant['description'];
+    $price=$plant['price'];
+    $cartImg=$plant['plant_img'];
+    $cartQuery="INSERT INTO cart (cart_name,description,price,cart_img)
+     VALUES ('$cartName','$description','$price','$cartImg')";
+     mysqli_query($conn,$cartQuery);
 }
 ?>
 
@@ -125,11 +136,15 @@ echo "<img src='admin/images/{$plant['plant_img']}' class='cart-thumb'>";
             <p class="product-price"><span class="old-price"></span><?php echo "{$plant['price']}";?> </p>
             <?php echo "<p class='product-desc'>{$plant['description']}</p>";?>  
             
+            <form>
 
                 <!-- Cart & Favourite Box -->
                 <div class="cart-fav-box d-flex align-items-center">
                     <!-- Cart -->
-                    <button type="submit" name="addtocart" value="5" class="btn essence-btn">Add to cart</button>
+                    <?php 
+                               echo "<a href='single-product-details.php?idAdd={$plant['plants_id']}' class='btn essence-btn'>Add To Cart</a>";
+?>
+                    <!-- <button type="submit"  class="btn essence-btn">Add to cart</button> -->
                     <!-- Favourite -->
                     <div class="product-favourite ml-4">
                         <a href="#" class="favme fa fa-heart"></a>

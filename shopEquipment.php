@@ -282,13 +282,27 @@ while($plant=mysqli_fetch_assoc($result)){
                   echo ' </p>';
                   echo "<div class='hover-content'>";
                   echo '<div class="add-to-cart-btn">';
-                  echo '<a href="#" class="btn essence-btn">Add to Cart</a> ';
+                  echo "<a href='shopEquipment.php?id={$plant['equipment_id']}' class='btn essence-btn'>Add to Cart</a> ";
                   echo "</div>";
                   echo "</div>";
                   echo "</div>";
                   echo "</div>";
                }?>
+<?php
+if(isset($_GET['id'])){
+    $query="SELECT * FROM equipment WHERE equipment_id={$_GET['id']}";
+  $result=  mysqli_query($conn,$query);
+  $cart=mysqli_fetch_assoc($result);
+    $cartName=$cart['equipment_name'];
+    $description=$cart['description'];
+    $price=$cart['price'];
+    $cartImg=$cart['equipment_img'];
+    $cartQuery="INSERT INTO cart (cart_name,description,price,cart_img)
+     VALUES ('$cartName','$description','$price','$cartImg')";
+     mysqli_query($conn,$cartQuery);
+}
 
+?>
  
 </div>
 </div>

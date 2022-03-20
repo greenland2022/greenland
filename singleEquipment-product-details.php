@@ -8,6 +8,17 @@ if(isset($_GET['id'])){
     $query="SELECT * FROM equipment WHERE equipment_id={$_GET['id']}";
     $result=mysqli_query($conn,$query);
     $category=mysqli_fetch_assoc($result);
+}else if(isset($_GET['idAdd'])){
+    $queryCart="SELECT * FROM equipment WHERE equipment_id={$_GET['idAdd']}";
+  $resultCart=  mysqli_query($conn,$queryCart);
+  $category=mysqli_fetch_assoc($resultCart);
+    $cartName=$category['equipment_name'];
+    $description=$category['description'];
+    $price=$category['price'];
+    $cartImg=$category['equipment_img'];
+    $cartQuery="INSERT INTO cart (cart_name,description,price,cart_img)
+     VALUES ('$cartName','$description','$price','$cartImg')";
+     mysqli_query($conn,$cartQuery);
 }
 ?>
 
@@ -128,9 +139,9 @@ echo "<img src='admin/images/{$category['equipment_img']}' class='cart-thumb'>";
 
                 <!-- Cart & Favourite Box -->
                 <div class="cart-fav-box d-flex align-items-center">
-                    <!-- Cart -->
-                    <button type="submit" name="addtocart" value="5" class="btn essence-btn">Add to cart</button>
-                    <!-- Favourite -->
+                <?php 
+                               echo "<a href='singleEquipment-product-details.php?idAdd={$category['equipment_id']}' class='btn essence-btn'>Add To Cart</a>";
+?>
                     <div class="product-favourite ml-4">
                         <a href="#" class="favme fa fa-heart"></a>
                     </div>
