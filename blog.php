@@ -1,5 +1,5 @@
 <?php
-include('header/header.php')
+include('header/header.php');
 ?>
 
     <!-- ##### Right Side Cart Area ##### -->
