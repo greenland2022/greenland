@@ -1,41 +1,9 @@
 <?php
-include('header/header.php');
 ob_start();
+include('header/header.php');
 require('admin/include/conection.php');
 ?>
 
-
-<!-- <link rel="styleSheet" href="css/login.css"> -->
-<!-- <body> -->
-<!-- 
-    <form action="signUp.php" method="post" enctype="multipart/form-data">
-		<h2>Register</h2>
-		<p >Create your account</p>
-        <div>
-        <label for="firstName"> First Name</label>    
-        <input type="text"  name="firstName" placeholder="First Name" required="required"></div>
-				<div><input type="text"  name="lastName" placeholder="Last Name" required="required"></div>
-			
-        <div>
-        	<input type="email"  name="email" placeholder="Email" required="required">
-        </div>
-		<div>
-            <input type="password"  name="password" placeholder="Password" required="required">
-        </div>
-		<div>
-            <input type="password"  name="cpass" placeholder="Confirm Password" required="required">
-        </div>
-        <div>
-            <input type="number"  name="phoneNumber" placeholder="phoneNumber" required="required">
-        </div>
-        <div>
-			<label class="form-check-label"><input type="checkbox" required="required"> I accept the <a href="#">Terms of Use</a> & <a href="#">Privacy Policy</a></label>
-		</div>
-		<div>
-            <button type="submit" name="save" class="btn btn-success btn-lg btn-block">Register Now</button>
-        </div>
-        <div >Already have an account? <a href="login.php">Sign in</a></div>
-    </form> -->
     <div>
     <div class="container">
         <!-- chỉ lấy html từ slz-signin-signp   -->
@@ -86,18 +54,20 @@ require('admin/include/conection.php');
                <div class="col-md-6 sign-in-wrap">
                    <div class="inner">
                      <h3 class="title">Login</h3>
+<form method="POST">
                      <div class="sign-in-form">
                        <div class="form-group">
-                         <input type="text" class="form-control" placeholder="Your user name" />
-                         <span class="err-lbl">please enter your user name</span>
+                         <input type="text" name="email" class="form-control" placeholder="Your user name" />
+                         <span class="err-lbl">please enter your email</span>
                        </div>
                        <div class="form-group">
-                         <input type="password" class="form-control" placeholder="Your password" />
+                         <input type="password" class="form-control" name="password" placeholder="Your password" />
                          <span class="err-lbl">please enter your password</span>
                        </div>
                        <div class="form-group btn-wrapp">
-                           <button class="slz-btn" type="button">Sign in</button>
+                           <button class="slz-btn"  name="login" type="submit">Sign in</button>
                        </div>
+</form>
                        <a href="#" class="link forgot-password">Forgot your password?</a>
                        <div class="other-sign-in">
                            <span class="text">Or sign in with</span>
@@ -130,6 +100,24 @@ require('admin/include/conection.php');
             $result=mysqli_query($conn,$sql);
         }
         ?>
+        <?php
+if(isset($_POST['login'])){
+$email=$_POST['email'];
+$password=$_POST['password'];
+$query = "SELECT * FROM users WHERE email ='$email' AND password = '$password'";
+$result=mysqli_query($conn,$query);
+$user=mysqli_fetch_assoc($result);
+if(!empty($user['id'])){
+$_SESSION['id']=$user['id'];
+header("Location: index.php");
+}else{
+ echo '
+ <div class="alert alert-danger">
+Your Password or Username not correct
+</div>
+ ';   
+}}
+?>
     </div>
 </div>
 <style>

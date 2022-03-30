@@ -15,7 +15,7 @@
     <link rel="icon" href="img/bg-img/WhatsApp Image 2022-03-12 at 9.39.48 PM (1).jpeg">
 
     <!-- Core Style CSS -->
-    <link rel="stylesheet" href="css/core-style.css">
+    <link rel="stylesheet" href="css/header.css">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="css/login.css">
 
@@ -28,7 +28,7 @@
             <!-- Classy Menu -->
             <nav class="classy-navbar" id="essenceNav">
                 <!-- Logo -->
-                <a class="nav-brand" href="index.php"><img src="img/bg-img/WhatsApp Image 2022-03-12 at 7.20.45 PM.jpeg" width="100px" height="100px" alt=""></a>
+                <a class="nav-brand" href="index.php"><img src="img/bg-img/logo.jpeg" width="100px" height="100px" alt=""></a>
                 <!-- Navbar Toggler -->
                 <div class="classy-navbar-toggler">
                     <span class="navbarToggler"><span></span><span></span><span></span></span>
@@ -42,34 +42,23 @@
                     <!-- Nav Start -->
                     <div class="classynav">
                         <ul>
-                            <li><a href="#">Shop</a>
+                            <li><a href="shop.php">Shop</a>
                                 <div class="megamenu">
                                     <ul class="single-mega cn-col-4">
-                                        <li class="title">Plants Collection</li>
-                                        <li><a href="shop.php">Plants</a></li>
-                                        <li><a href="shop.php">Blouses &amp; Shirts</a></li>
-                                        <li><a href="shop.php">T-shirts</a></li>
-                                        <li><a href="shop.php">Rompers</a></li>
-                                        <li><a href="shop.php">Bras &amp; Panties</a></li>
+                                        <li class="title">Plants</li>
+                                        <li><a href="shop.php">Aloe Vera</a></li>
+                                        <li><a href="shop.php">Flowers</a></li>
                                     </ul>
                                     <ul class="single-mega cn-col-4">
-                                        <li class="title">Equipment Collection</li>
-                                        <li><a href="shopEquipment.php">T-Shirts</a></li>
-                                        <li><a href="shop.php">Polo</a></li>
-                                        <li><a href="shop.php">Shirts</a></li>
-                                        <li><a href="shop.php">Jackets</a></li>
-                                        <li><a href="shop.php">Trench</a></li>
+                                        <li class="title">Soils</li>
+                                        <li><a href="shopSoil.php">Types</a></li>
                                     </ul>
                                     <ul class="single-mega cn-col-4">
-                                        <li class="title">Soil Collection</li>
-                                        <li><a href="shopSoil.php">Soil</a></li>
-                                        <li><a href="shop.php">Shirts</a></li>
-                                        <li><a href="shop.php">T-shirts</a></li>
-                                        <li><a href="shop.php">Jackets</a></li>
-                                        <li><a href="shop.php">Trench</a></li>
+                                        <li class="title">Accessories</li>
+                                        <li><a href="shopEquipment.php">Bottels</a></li>
                                     </ul>
                                     <div class="single-mega cn-col-4">
-                                        <img src="img/bg-img/bg-6.jpg" alt="">
+                                        <img src="img/bg-img/pexels-photo-1083822.webp" alt="">
                                     </div>
                                 </div>
                             </li>
@@ -79,13 +68,10 @@
                                     <li><a href="shop.php">Shop</a></li>
                                     <li><a href="single-product-details.php">Product Details</a></li>
                                     <li><a href="checkout.php">Checkout</a></li>
-                                    <li><a href="blog.php">Blog</a></li>
-                                    <li><a href="single-blog.php">Single Blog</a></li>
-                                    <li><a href="regular-page.php">Regular Page</a></li>
+                                    <li><a href="cart.php">Cart Page</a></li>
                                     <li><a href="contact.php">Contact</a></li>
                                 </ul>
                             </li>
-                            <li><a href="blog.php">Blog</a></li>
                             <li><a href="contact.php">Contact</a></li>
                         </ul>
                     </div>

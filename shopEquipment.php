@@ -1,6 +1,6 @@
 <?php
-include('header/header.php');
 ob_start();
+include('header/header.php');
 require('admin/include/conection.php');
 ?>
 
@@ -25,8 +25,7 @@ require('admin/include/conection.php');
                         <!-- Cart Item Desc -->
                         <div class="cart-item-desc">
                           <span class="product-remove"><i class="fa fa-close" aria-hidden="true"></i></span>
-                            <span class="badge">Mango</span>
-                            <h6>Button Through Strap Mini Dress</h6>
+                            <h6>PLANT 1</h6>
                             <p class="size">Size: S</p>
                             <p class="color">Color: Red</p>
                             <p class="price">$45.00</p>
@@ -41,8 +40,7 @@ require('admin/include/conection.php');
                         <!-- Cart Item Desc -->
                         <div class="cart-item-desc">
                           <span class="product-remove"><i class="fa fa-close" aria-hidden="true"></i></span>
-                            <span class="badge">Mango</span>
-                            <h6>Button Through Strap Mini Dress</h6>
+                            <h6>PLANT 2</h6>
                             <p class="size">Size: S</p>
                             <p class="color">Color: Red</p>
                             <p class="price">$45.00</p>
@@ -57,8 +55,7 @@ require('admin/include/conection.php');
                         <!-- Cart Item Desc -->
                         <div class="cart-item-desc">
                           <span class="product-remove"><i class="fa fa-close" aria-hidden="true"></i></span>
-                            <span class="badge">Mango</span>
-                            <h6>Button Through Strap Mini Dress</h6>
+                            <h6>PLANT 3</h6>
                             <p class="size">Size: S</p>
                             <p class="color">Color: Red</p>
                             <p class="price">$45.00</p>
@@ -91,7 +88,7 @@ require('admin/include/conection.php');
             <div class="row h-100 align-items-center">
                 <div class="col-12">
                     <div class="page-title text-center">
-                        <h2>dresses</h2>
+                        <h2>ACCESSORIES</h2>
                     </div>
                 </div>
             </div>
@@ -116,58 +113,29 @@ require('admin/include/conection.php');
                                 <ul id="menu-content2" class="menu-content collapse show">
                                     <!-- Single Item -->
                                     <li data-toggle="collapse" data-target="#clothing">
-                                        <a href="#">clothing</a>
+                                        <a href="#">Plants</a>
                                         <ul class="sub-menu collapse show" id="clothing">
-                                            <li><a href="#">All</a></li>
-                                            <li><a href="#">Bodysuits</a></li>
-                                            <li><a href="#">Dresses</a></li>
-                                            <li><a href="#">Hoodies &amp; Sweats</a></li>
-                                            <li><a href="#">Jackets &amp; Coats</a></li>
-                                            <li><a href="#">Jeans</a></li>
-                                            <li><a href="#">Pants &amp; Leggings</a></li>
-                                            <li><a href="#">Rompers &amp; Jumpsuits</a></li>
-                                            <li><a href="#">Shirts &amp; Blouses</a></li>
-                                            <li><a href="#">Shirts</a></li>
-                                            <li><a href="#">Sweaters &amp; Knits</a></li>
+                                            <li><a href="">All</a></li>
                                         </ul>
                                     </li>
                                     <!-- Single Item -->
                                     <li data-toggle="collapse" data-target="#shoes" class="collapsed">
-                                        <a href="#">shoes</a>
+                                        <a href="#">Soils</a>
                                         <ul class="sub-menu collapse" id="shoes">
-                                            <li><a href="#">All</a></li>
-                                            <li><a href="#">Bodysuits</a></li>
-                                            <li><a href="#">Dresses</a></li>
-                                            <li><a href="#">Hoodies &amp; Sweats</a></li>
-                                            <li><a href="#">Jackets &amp; Coats</a></li>
-                                            <li><a href="#">Jeans</a></li>
-                                            <li><a href="#">Pants &amp; Leggings</a></li>
-                                            <li><a href="#">Rompers &amp; Jumpsuits</a></li>
-                                            <li><a href="#">Shirts &amp; Blouses</a></li>
-                                            <li><a href="#">Shirts</a></li>
-                                            <li><a href="#">Sweaters &amp; Knits</a></li>
+                                            <li><a href="shopSoil.php">All</a></li>
                                         </ul>
                                     </li>
                                     <!-- Single Item -->
                                     <li data-toggle="collapse" data-target="#accessories" class="collapsed">
                                         <a href="#">accessories</a>
                                         <ul class="sub-menu collapse" id="accessories">
-                                            <li><a href="#">All</a></li>
-                                            <li><a href="#">Bodysuits</a></li>
-                                            <li><a href="#">Dresses</a></li>
-                                            <li><a href="#">Hoodies &amp; Sweats</a></li>
-                                            <li><a href="#">Jackets &amp; Coats</a></li>
-                                            <li><a href="#">Jeans</a></li>
-                                            <li><a href="#">Pants &amp; Leggings</a></li>
-                                            <li><a href="#">Rompers &amp; Jumpsuits</a></li>
-                                            <li><a href="#">Shirts &amp; Blouses</a></li>
-                                            <li><a href="#">Shirts</a></li>
-                                            <li><a href="#">Sweaters &amp; Knits</a></li>
+                                            <li><a href="shopEquipment.php">All</a></li>
                                         </ul>
                                     </li>
                                 </ul>
                             </div>
                         </div>
+
 
                         <!-- ##### Single Widget ##### -->
                         <div class="widget price mb-50">
@@ -232,7 +200,7 @@ require('admin/include/conection.php');
                                 <div class="product-topbar d-flex align-items-center justify-content-between">
                                     <!-- Total Products -->
                                     <div class="total-products">
-                                        <p><span>186</span> products found</p>
+                                        <p><span>25</span> products found</p>
                                     </div>
                                     <!-- Sorting -->
                                     <div class="product-sorting d-flex">
@@ -254,40 +222,37 @@ require('admin/include/conection.php');
                         <div class="row">
 
 
+                        <?php
+                            $query2="SELECT * FROM equipment";
+                            $result2=mysqli_query($conn,$query2);
+                            while($equipment=mysqli_fetch_assoc($result2)){
+                                echo "<div class='col-12 col-sm-6 col-lg-4'>";
+                                echo "<div class='single-product-wrapper'>";
+                                echo "<div class='product-img'>";
+                                echo "<img src='admin/images/{$equipment['equipment_img']}'>";
+                                echo "<img class='hover-img' src='admin/images/{$equipment['equipment_img']}' alt=''>";
+                                echo "<div class='product-favourite'>";
+                                echo "<a href='' class='favme fa fa-heart'></a>";
+                                echo "</div>";
+                                echo "</div>";
+                                echo "<div class='product-description'>";
+                                echo "<span><span>{$equipment['description']}</span>";
+                                echo "<a href='single-product-details.php?id={$equipment['equipment_id']}'>";
+                                echo "<h6>{$equipment['equipment_name']}</h6>";
+                                echo "</a>";
+                                echo "<p class='product-price'>$ {$equipment['price']}</p>";
+                                echo "<div class='hover-content'>";
+                                echo "<div class='add-to-cart-btn'>";
+                                echo "<a href='shop.php?id={$equipment['equipment_id']}' type='submit' name='add' class='btn essence-btn'>Add to Cart</a>";
+                                echo "</div>";
+                                echo "</div>";
+                                echo "</div>";
+                                echo "</div>";
+                                echo "</div>";
 
+                            }
+                            ?>
 
-<?php
-$query="SELECT * FROM equipment";
-$result=mysqli_query($conn,$query);
-while($plant=mysqli_fetch_assoc($result)){
-  echo "<div class='col-12 col-sm-6 col-lg-4'>";
-  echo "<div class='single-product-wrapper'>";
-  echo "<div class='product-img'>";
-           echo   "<img src='admin/images/{$plant['equipment_img']}'>";
-           echo "    <img class='hover-img' src='img/product-img/product-2.jpg' " ;
-           echo '<div class="product-badge offer-badge">';
-           echo "<span>-30%</span>";
-           echo " </div>";
-           echo "  <div class='product-favourite'>";
-           echo "    <a href='#' class='favme fa fa-heart'></a>";
-           echo "   </div>";
-           echo "  </div>";
-         echo "<div class='product-description'>";
-                  echo   "<h6>{$plant['equipment_name']}</h6>";
-           echo "<a href='singleEquipment-product-details.php?id={$plant['equipment_id']}'>";
-           echo   "<span>{$plant['description']}</span>";
-           echo '</a>';
-           echo "<p class='product-price'><span class='old-price'>{$plant['price']}</span>";
-                 
-                  echo ' </p>';
-                  echo "<div class='hover-content'>";
-                  echo '<div class="add-to-cart-btn">';
-                  echo "<a href='shopEquipment.php?id={$plant['equipment_id']}' class='btn essence-btn'>Add to Cart</a> ";
-                  echo "</div>";
-                  echo "</div>";
-                  echo "</div>";
-                  echo "</div>";
-               }?>
 <?php
 if(isset($_GET['id'])){
     $query="SELECT * FROM equipment WHERE equipment_id={$_GET['id']}";
@@ -303,9 +268,10 @@ if(isset($_GET['id'])){
 }
 
 ?>
- 
-</div>
-</div>
+
+                           
+                        </div>
+                    </div>
                     <!-- Pagination -->
                     <nav aria-label="navigation">
                         <ul class="pagination mt-50 mb-70">

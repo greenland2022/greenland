@@ -1,5 +1,6 @@
 <?php
-include('header/header.php')
+include('header/header.php');
+require('admin/include/conection.php');
 ?>
     <!-- ##### Right Side Cart Area ##### -->
     <div class="cart-bg-overlay"></div>
@@ -83,12 +84,11 @@ include('header/header.php')
     <!-- ##### Right Side Cart End ##### -->
 
     <!-- ##### Welcome Area Start ##### -->
-    <section class="welcome_area bg-img background-overlay" style="background-image: url(img/bg-img/bg-1.jpg);">
+    <section class="welcome_area bg-img background-overlay" style="background-image: url(img/bg-img/pexels-photo-2847147.jpeg);">
         <div class="container h-100">
             <div class="row h-100 align-items-center">
                 <div class="col-12">
                     <div class="hero-content">
-                        <h6>asoss</h6>
                         <h2>New Collection</h2>
                         <a href="#" class="btn essence-btn">view collection</a>
                     </div>
@@ -104,23 +104,23 @@ include('header/header.php')
             <div class="row justify-content-center">
                 <!-- Single Catagory -->
                 <div class="col-12 col-sm-6 col-md-4">
-                    <div class="single_catagory_area d-flex align-items-center justify-content-center bg-img" style="background-image: url(img/bg-img/bg-2.jpg);">
+                    <div class="single_catagory_area d-flex align-items-center justify-content-center bg-img" style="background-image: url(img/bg-img/pl8.jpg);">
                         <div class="catagory-content">
-                            <a href="#">Clothing</a>
+                            <a href="#">PLANTS</a>
                         </div>
                     </div>
                 </div>
                 <!-- Single Catagory -->
                 <div class="col-12 col-sm-6 col-md-4">
-                    <div class="single_catagory_area d-flex align-items-center justify-content-center bg-img" style="background-image: url(img/bg-img/bg-3.jpg);">
+                    <div class="single_catagory_area d-flex align-items-center justify-content-center bg-img" style="background-image: url(img/bg-img/soil-1.jpg);">
                         <div class="catagory-content">
-                            <a href="#">Shoes</a>
+                            <a href="#">Soils</a>
                         </div>
                     </div>
                 </div>
                 <!-- Single Catagory -->
                 <div class="col-12 col-sm-6 col-md-4">
-                    <div class="single_catagory_area d-flex align-items-center justify-content-center bg-img" style="background-image: url(img/bg-img/bg-4.jpg);">
+                    <div class="single_catagory_area d-flex align-items-center justify-content-center bg-img" style="background-image: url(img/bg-img/acc-6.jpg);">
                         <div class="catagory-content">
                             <a href="#">Accessories</a>
                         </div>
@@ -136,11 +136,11 @@ include('header/header.php')
         <div class="container">
             <div class="row">
                 <div class="col-12">
-                    <div class="cta-content bg-img background-overlay" style="background-image: url(img/bg-img/bg-5.jpg);">
+                    <div class="cta-content bg-img background-overlay" style="background-image: url(https://images.pexels.com/photos/1408221/pexels-photo-1408221.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1);">
                         <div class="h-100 d-flex align-items-center justify-content-end">
                             <div class="cta--text">
                                 <h6>-60%</h6>
-                                <h2>Global Sale</h2>
+                                <h2 style="color:white;">Global Sale</h2>
                                 <a href="#" class="btn essence-btn">Buy Now</a>
                             </div>
                         </div>
@@ -163,142 +163,50 @@ include('header/header.php')
             </div>
         </div>
 
+
         <div class="container">
             <div class="row">
                 <div class="col-12">
                     <div class="popular-products-slides owl-carousel">
+                    <?php
+$query="SELECT * FROM plants";
+$result=mysqli_query($conn,$query);
 
-                        <!-- Single Product -->
-                        <div class="single-product-wrapper">
-                            <!-- Product Image -->
-                            <div class="product-img">
-                                <img src="img/product-img/product-1.jpg" alt="">
-                                <!-- Hover Thumb -->
-                                <img class="hover-img" src="img/product-img/product-2.jpg" alt="">
-                                <!-- Favourite -->
-                                <div class="product-favourite">
-                                    <a href="#" class="favme fa fa-heart"></a>
-                                </div>
-                            </div>
-                            <!-- Product Description -->
-                            <div class="product-description">
-                                <span>topshop</span>
-                                <a href="single-product-details.php">
-                                    <h6>Knot Front Mini Dress</h6>
-                                </a>
-                                <p class="product-price">$80.00</p>
+while($plants=mysqli_fetch_assoc($result)){
+echo $plants['plants_id'];
+echo " <div class='single-product-wrapper'>";
+echo "<div class='product-img'>";
+echo "<img src='admin/images/{$plants['plant_img']}'>";
+echo "<img class='hover-img' src='admin/images/{$plants['plant_img']}'>";
+echo "<div class='product-favourite'>";
+echo "<a href='' class='favme fa fa-heart'></a>";
+echo " </div></div>";
+echo "<div class='product-description'>";
+echo "<span>outdoor</span>";
+echo "<a href='single-product-details.php'>";
+echo "<h6>{$plants['plant_name']}</h6>";
+echo "</a>";
+echo "<p class='product-price'>$ {$plants['price']}</p>";
+echo "<div class='hover-content'>";
+echo "<div class='add-to-cart-btn'>";
+echo "<a href='' class='btn essence-btn'>Add to Cart</a>";
+echo " </div>
+</div>
+</div>
+</div>";
+echo "";
+echo "";
+}
+?>
+                                    
+                                        
+                                   
+                               
+                           
+                       
 
-                                <!-- Hover Content -->
-                                <div class="hover-content">
-                                    <!-- Add to Cart -->
-                                    <div class="add-to-cart-btn">
-                                        <a href="#" class="btn essence-btn">Add to Cart</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
 
-                        <!-- Single Product -->
-                        <div class="single-product-wrapper">
-                            <!-- Product Image -->
-                            <div class="product-img">
-                                <img src="img/product-img/product-2.jpg" alt="">
-                                <!-- Hover Thumb -->
-                                <img class="hover-img" src="img/product-img/product-3.jpg" alt="">
-                                <!-- Favourite -->
-                                <div class="product-favourite">
-                                    <a href="#" class="favme fa fa-heart"></a>
-                                </div>
-                            </div>
-                            <!-- Product Description -->
-                            <div class="product-description">
-                                <span>topshop</span>
-                                <a href="single-product-details.php">
-                                    <h6>Poplin Displaced Wrap Dress</h6>
-                                </a>
-                                <p class="product-price">$80.00</p>
-
-                                <!-- Hover Content -->
-                                <div class="hover-content">
-                                    <!-- Add to Cart -->
-                                    <div class="add-to-cart-btn">
-                                        <a href="#" class="btn essence-btn">Add to Cart</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Single Product -->
-                        <div class="single-product-wrapper">
-                            <!-- Product Image -->
-                            <div class="product-img">
-                                <img src="img/product-img/product-3.jpg" alt="">
-                                <!-- Hover Thumb -->
-                                <img class="hover-img" src="img/product-img/product-4.jpg" alt="">
-
-                                <!-- Product Badge -->
-                                <div class="product-badge offer-badge">
-                                    <span>-30%</span>
-                                </div>
-
-                                <!-- Favourite -->
-                                <div class="product-favourite">
-                                    <a href="#" class="favme fa fa-heart"></a>
-                                </div>
-                            </div>
-                            <!-- Product Description -->
-                            <div class="product-description">
-                                <span>mango</span>
-                                <a href="single-product-details.php">
-                                    <h6>PETITE Crepe Wrap Mini Dress</h6>
-                                </a>
-                                <p class="product-price"><span class="old-price">$75.00</span> $55.00</p>
-
-                                <!-- Hover Content -->
-                                <div class="hover-content">
-                                    <!-- Add to Cart -->
-                                    <div class="add-to-cart-btn">
-                                        <a href="#" class="btn essence-btn">Add to Cart</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Single Product -->
-                        <div class="single-product-wrapper">
-                            <!-- Product Image -->
-                            <div class="product-img">
-                                <img src="img/product-img/product-4.jpg" alt="">
-                                <!-- Hover Thumb -->
-                                <img class="hover-img" src="img/product-img/product-5.jpg" alt="">
-
-                                <!-- Product Badge -->
-                                <div class="product-badge new-badge">
-                                    <span>New</span>
-                                </div>
-
-                                <!-- Favourite -->
-                                <div class="product-favourite">
-                                    <a href="#" class="favme fa fa-heart"></a>
-                                </div>
-                            </div>
-                            <!-- Product Description -->
-                            <div class="product-description">
-                                <span>mango</span>
-                                <a href="single-product-details.php">
-                                    <h6>PETITE Belted Jumper Dress</h6>
-                                </a>
-                                <p class="product-price">$80.00</p>
-
-                                <!-- Hover Content -->
-                                <div class="hover-content">
-                                    <!-- Add to Cart -->
-                                    <div class="add-to-cart-btn">
-                                        <a href="#" class="btn essence-btn">Add to Cart</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                      
                     </div>
                 </div>
             </div>
@@ -306,34 +214,7 @@ include('header/header.php')
     </section>
     <!-- ##### New Arrivals Area End ##### -->
 
-    <!-- ##### Brands Area Start ##### -->
-    <div class="brands-area d-flex align-items-center justify-content-between">
-        <!-- Brand Logo -->
-        <div class="single-brands-logo">
-            <img src="img/core-img/brand1.png" alt="">
-        </div>
-        <!-- Brand Logo -->
-        <div class="single-brands-logo">
-            <img src="img/core-img/brand2.png" alt="">
-        </div>
-        <!-- Brand Logo -->
-        <div class="single-brands-logo">
-            <img src="img/core-img/brand3.png" alt="">
-        </div>
-        <!-- Brand Logo -->
-        <div class="single-brands-logo">
-            <img src="img/core-img/brand4.png" alt="">
-        </div>
-        <!-- Brand Logo -->
-        <div class="single-brands-logo">
-            <img src="img/core-img/brand5.png" alt="">
-        </div>
-        <!-- Brand Logo -->
-        <div class="single-brands-logo">
-            <img src="img/core-img/brand6.png" alt="">
-        </div>
-    </div>
-    <!-- ##### Brands Area End ##### -->
+    
     <?php 
     include('header/footer.php');
     ?>
