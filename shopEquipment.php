@@ -200,7 +200,12 @@ require('admin/include/conection.php');
                                 <div class="product-topbar d-flex align-items-center justify-content-between">
                                     <!-- Total Products -->
                                     <div class="total-products">
-                                        <p><span>25</span> products found</p>
+                                        <p><span> <?php
+                            $query2="SELECT * FROM equipment";
+                            $result2=mysqli_query($conn,$query2);
+                            $countpro=0;
+                            while($plants=mysqli_fetch_assoc($result2)){$countpro++ ;}
+                            echo $countpro;?></span> products found</p>
                                     </div>
                                     <!-- Sorting -->
                                     <div class="product-sorting d-flex">
@@ -243,7 +248,7 @@ require('admin/include/conection.php');
                                 echo "<p class='product-price'>$ {$equipment['price']}</p>";
                                 echo "<div class='hover-content'>";
                                 echo "<div class='add-to-cart-btn'>";
-                                echo "<a href='shop.php?id={$equipment['equipment_id']}' type='submit' name='add' class='btn essence-btn'>Add to Cart</a>";
+                                echo "<a href='shopEquipment.php?id={$equipment['equipment_id']}' type='submit' name='add' class='btn essence-btn'>Add to Cart</a>";
                                 echo "</div>";
                                 echo "</div>";
                                 echo "</div>";
