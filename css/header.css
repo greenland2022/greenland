@@ -402,7 +402,6 @@ img {
     left: 0;
     width: 100%;
     box-shadow: 0 5px 30px rgba(0, 0, 0, 0.15); }
-
 .cart-bg-overlay.cart-bg-overlay-on {
   -webkit-transition-duration: 1000ms;
   transition-duration: 1000ms;

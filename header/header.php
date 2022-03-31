@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
-
+<?php
+require('admin/include/conection.php');
+?>
 <head>
     <meta charset="UTF-8">
     <meta name="description" content="">
@@ -12,7 +14,7 @@
     <title>Green Land</title>
 
     <!-- Favicon  -->
-    <link rel="icon" href="img/bg-img/WhatsApp Image 2022-03-12 at 9.39.48 PM (1).jpeg">
+    <link rel="icon" href="img/bg-img/logos.jpeg">
 
     <!-- Core Style CSS -->
     <link rel="stylesheet" href="css/header.css">
@@ -98,10 +100,91 @@
                 </div>
                 <!-- Cart Area -->
                 <div class="cart-area">
-                    <a href="#" id="essenceCartBtn"><img src="img/core-img/bag.svg" alt=""> <span>3</span></a>
+                    <a href="#" id="essenceCartBtn"><img src="img/core-img/bag.svg" alt=""> <span><?php
+                            $query2="SELECT * FROM cart";
+                            $result2=mysqli_query($conn,$query2);
+                            $countpro=0;
+                            while($plants=mysqli_fetch_assoc($result2)){$countpro++ ;}
+                            echo $countpro;?></span></a>
                 </div>
             </div>
 
         </div>
     </header>
     <!-- ##### Header Area End ##### -->
+  <!-- ##### Right Side Cart Area ##### -->
+  <div class="cart-bg-overlay"></div>
+
+<div class="right-side-cart-area">
+
+    <!-- Cart Button -->
+    <div class="cart-button">
+        <a href="#" id="rightSideCart"><img src="img/core-img/bag.svg" alt=""> <span><?php
+                            $query2="SELECT * FROM cart";
+                            $result2=mysqli_query($conn,$query2);
+                            $countpro=0;
+                            while($plants=mysqli_fetch_assoc($result2)){$countpro++ ;}
+                            echo $countpro;?></span></a>
+    </div>
+
+    <div class="cart-content d-flex">
+
+        <!-- Cart List Area -->
+        <div class="cart-list">
+     
+
+           
+            <?php
+            $query="SELECT * FROM cart";
+            $result=mysqli_query($conn,$query);
+            while ($cart=mysqli_fetch_assoc($result)) {
+            echo "<div class='single-cart-item'>";
+            echo "<a href='#' class='product-image'>";
+            echo "<img src='admin/images/{$cart['cart_img']}' class='cart-thumb' height='300px' alt=''>";
+            echo " <div class='cart-item-desc'  height='300px'>";
+            echo "<span class='product-remove'><i class='fa fa-close' aria-hidden='true'></i></span>";
+            echo "<span class='badge'>{$cart['description']}</span>";
+            echo "<h6>{$cart['cart_name']}</h6>";
+            echo "<p class='price'>$ {$cart['price']}</p>";
+            echo "</div>";
+            echo "</a>";
+            echo "</div>";
+
+            }
+            ?>
+
+        </div>
+
+      
+        <!-- Cart Summary -->
+        <div class="cart-amount-summary">
+
+            <h2>Summary</h2>
+            <ul class="summary-table">
+            <?php
+            $query="SELECT * FROM cart";
+            $result=mysqli_query($conn,$query);
+            $count=0;
+            while ($cart=mysqli_fetch_assoc($result)) {
+                $num=(int)$cart['price'];
+                $count+=(int)$num;
+            }
+            $discount=$count*0.85;
+            echo "<li><span>subtotal:</span> <span>$ $count</span></li>";
+            echo "<li><span>delivery:</span> <span>Free</span></li>";
+            echo "<li><span>discount:</span> <span>-15%</span></li>";
+            echo "<li><span>total:</span> <span>";
+            echo $discount;
+            echo "</span></li>";
+            ?>
+                
+                
+                
+            </ul>
+            <div class="checkout-btn mt-100">
+                <a href="checkout.php" class="btn essence-btn">check out</a>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- ##### Right Side Cart End ##### -->
