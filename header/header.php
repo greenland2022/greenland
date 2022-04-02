@@ -14,7 +14,7 @@ require('admin/include/conection.php');
     <title>Green Land</title>
 
     <!-- Favicon  -->
-    <link rel="icon" href="img/bg-img/logos.jpeg">
+    <link rel="icon" href="img/bg-img/628283.png">
 
     <!-- Core Style CSS -->
     <link rel="stylesheet" href="css/header.css">

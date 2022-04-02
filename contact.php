@@ -43,10 +43,10 @@ body {
     height: 430px;
     width: 700px;
     display: flex;
-    color: white;
-    background-color: black;
+    color: black;
+    background-color: white;
     box-shadow: 0px 10px 20px black;
-    background-image: radial-gradient(black, white);
+    /* background-image: radial-gradient(black, white); */
 }
 
 .side {
@@ -60,7 +60,7 @@ body {
 .side p {
     padding: 0px 25px 0px 25px;
     font-size: small;
-    color: rgb(190, 187, 187);
+    color: rgb(14, 177, 14);
 }
 
 .side h4 {
