@@ -1,28 +1,180 @@
 <?php
-include('header/header.php')
+require('header/header.php');
 ?>
 
-  
+<!DOCTYPE html>
+<html lang="en">
 
-    <div class="contact-area d-flex align-items-center">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Arima+Madurai:wght@300&family=Stalemate&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Document</title>
+</head>
+<style>* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
 
-        <div class="google-map">
-            <div id="googleMap"></div>
-        </div>
+body {
+    background-image: url("img/bg-img/pexels-photo-1213049.jpeg");
+    background-repeat:no-repeat;
+    background-position:cover;
+    background-size: 1356px;
 
-        <div class="contact-info">
-            <h2>How to Find Us</h2>
-            <p>Mauris viverra cursus ante laoreet eleifend. Donec vel fringilla ante. Aenean finibus velit id urna vehicula, nec maximus est sollicitudin.</p>
+    height: 100vh;
+    color: rgb(156, 155, 155);
+    font-family: 'Arima Madurai', cursive;
+}
 
-            <div class="contact-address mt-50">
-                <p><span>address:</span> 10 Suffolk st Soho, London, UK</p>
-                <p><span>telephone:</span> +12 34 567 890</p>
-                <p><a href="mailto:contact@essence.com">contact@essence.com</a></p>
+.main {
+    top: 60%;
+    left: 50%;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    box-shadow: 0px 10px 20px black;
+    overflow: hidden;
+}
+
+.contactUs {
+    height: 430px;
+    width: 700px;
+    display: flex;
+    color: white;
+    background-color: black;
+    box-shadow: 0px 10px 20px black;
+    background-image: radial-gradient(black, white);
+}
+
+.side {
+    flex: 50%;
+    text-align: center;
+    justify-content: center;
+    margin-top: 20px;
+    margin-left: -20px;
+}
+
+.side p {
+    padding: 0px 25px 0px 25px;
+    font-size: small;
+    color: rgb(190, 187, 187);
+}
+
+.side h4 {
+    margin-top: 10px;
+}
+
+.form {
+    flex: 50%;
+}
+
+.form>.main {
+    height: 300px;
+    width: 380px;
+    box-shadow: 0px 10px 20px black;
+    margin-left: 150px;
+    text-align: center;
+}
+
+.form>.main>h2 {
+    padding: 15px;
+}
+
+#txt {
+    background-color: transparent;
+    border: none;
+    border-bottom: 1px solid rgb(192, 189, 189);
+    margin-top: 20px;
+    color: rgb(192, 189, 189);
+}
+
+#txt::placeholder {
+    color: rgb(192, 189, 189);
+}
+
+#txt:focus {
+    outline: none;
+}
+
+.button {
+    padding: 10px 30px;
+    margin-top: 30px;
+    border: none;
+    box-shadow: 0px 2px 10px black;
+    background-color: rgb(75, 73, 73);
+    cursor: pointer;
+}
+
+button>a {
+    text-decoration: none;
+    color: rgb(161, 155, 155);
+}
+
+.logo {
+    font-family: 'Stalemate', cursive;
+    font-size: xx-large;
+    color: rgb(14, 177, 14);
+    margin-right: 180px;
+    margin-bottom: 15px;
+}
+
+.logo>a {
+    color: rgb(14, 177, 14);
+}
+
+.icons {
+    margin-top: 10px;
+}
+
+.icons i {
+    margin-right: 10px;
+}
+.allContent{
+   
+}
+</style>
+<body>
+    <div class="allContent">
+    <div class="main">
+        <div class="contactUs" id="contactUs">
+            <div class="side">
+                <h2 class="logo">Greenland</h2>
+                <h2>CONTACT</h2>
+                <p>The best place where you can buy beautiful plants in Jordan </p>
+                <h4>Address</h4>
+                <p>Amman-Maka Street</p>
+                <h4>Contact number</h4>
+                <p>+962782602840</p>
+                <h4>Email</h4>
+                <p>Greenland@gmai.com</p>
+                <div class="icons" id="hlight">
+                    <i class="fa fa-facebook" aria-hidden="true"></i>
+                    <i class="fa fa-instagram" aria-hidden="true"></i>
+                    <i class="fa fa-twitter" aria-hidden="true"></i>
+                </div>
+            </div>
+            <div class="form">
+                <div class="main">
+                    <h2>CONTACT US</h2>
+                    <input type="text" name="" id="txt" placeholder="Your Name">
+                    <br>
+                    <input type="text" name="" id="txt" placeholder="Your Mail">
+                    <br>
+                    <input type="text" name="" id="txt" placeholder="Your Message">
+                    <br>
+                    <button class="button" type="button"><a href="#">Submit</a></button>
+                </div>
             </div>
         </div>
+        </div>
+</body>
 
-    </div>
-
-    <?php
-include('header/footer.php');
+</html>
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+<br><br><br><br><br><br><br><br>
+<?php
+require('header/footer.php');
 ?>
