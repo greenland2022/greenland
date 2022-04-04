@@ -1,6 +1,6 @@
 <?php
-include('header/header.php');
 ob_start();
+include('header/header.php');
 require('admin/include/conection.php');
 ?>
 <?php
