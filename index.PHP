@@ -27,7 +27,7 @@ require('admin/include/conection.php');
                 <div class="col-12 col-sm-6 col-md-4">
                     <div class="single_catagory_area d-flex align-items-center justify-content-center bg-img" style="background-image: url(img/bg-img/pl8.jpg);">
                         <div class="catagory-content">
-                            <a href="#">PLANTS</a>
+                            <a href="shop.php">PLANTS</a>
                         </div>
                     </div>
                 </div>
@@ -35,7 +35,7 @@ require('admin/include/conection.php');
                 <div class="col-12 col-sm-6 col-md-4">
                     <div class="single_catagory_area d-flex align-items-center justify-content-center bg-img" style="background-image: url(img/bg-img/soil-1.jpg);">
                         <div class="catagory-content">
-                            <a href="#">Soils</a>
+                            <a href="shopSoil.php">Soils</a>
                         </div>
                     </div>
                 </div>
@@ -43,7 +43,7 @@ require('admin/include/conection.php');
                 <div class="col-12 col-sm-6 col-md-4">
                     <div class="single_catagory_area d-flex align-items-center justify-content-center bg-img" style="background-image: url(img/bg-img/acc-6.jpg);">
                         <div class="catagory-content">
-                            <a href="#">Accessories</a>
+                            <a href="shopEquipment.php">Accessories</a>
                         </div>
                     </div>
                 </div>

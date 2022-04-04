@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <?php
+ob_start();
 require('admin/include/conection.php');
 ?>
 <head>
@@ -12,7 +13,6 @@ require('admin/include/conection.php');
 
     <!-- Title  -->
     <title>Green Land</title>
-
     <!-- Favicon  -->
     <link rel="icon" href="img/bg-img/628283.png">
 
@@ -49,7 +49,7 @@ require('admin/include/conection.php');
                                     <ul class="single-mega cn-col-4">
                                         <li class="title">Plants</li>
                                         <li><a href="shop.php">Aloe Vera</a></li>
-                                        <li><a href="shop.php">Flowers</a></li>
+                                        <li><a href="medicalShop.php">Medical Plants</a></li>
                                     </ul>
                                     <ul class="single-mega cn-col-4">
                                         <li class="title">Soils</li>
@@ -85,8 +85,8 @@ require('admin/include/conection.php');
             <div class="header-meta d-flex clearfix justify-content-end">
                 <!-- Search Area -->
                 <div class="search-area">
-                    <form action="#" method="post">
-                        <input type="search" name="search" id="headerSearch" placeholder="Type for search">
+                <form action="" metho="post">
+                        <input type="search" name="keyword" id="headerSearch" placeholder="Type for search">
                         <button type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
                     </form>
                 </div>
@@ -188,3 +188,39 @@ require('admin/include/conection.php');
     </div>
 </div>
 <!-- ##### Right Side Cart End ##### -->
+
+<?php
+if (isset($_GET['keyword'])) {
+    $keyword=$conn->escape_string($_GET['keyword']);
+    $query=$conn->query("SELECT plants_id FROM plants WHERE plant_name LIKE '%{$keyword}%'");
+    $querySoil=$conn->query("SELECT soil_id FROM soil WHERE soil_name LIKE '%{$keyword}%'");
+    $queryEquipment=$conn->query(" SELECT equipment_id FROM equipment WHERE equipment_name LIKE '%{$keyword}%'");
+    $queryMedical=$conn->query(" SELECT plants_id FROM medical_plant WHERE plant_name LIKE '%{$keyword}%'");
+    if ($query->num_rows){
+        while($row = $query->fetch_object() ){
+            header("location:single-product-details.php?id='$row->plants_id'") ;
+    
+        }
+        } 
+        
+        else if ($querySoil->num_rows) {
+            while($result=$querySoil->fetch_object()){
+                header("location:singleSoil-product-details.php?id='$result->soil_id'");
+            }
+    }
+    else if ($queryEquipment->num_rows) {
+        while($equResult=$queryEquipment->fetch_object()){
+            header("location:singleEquipment-product-details.php?id='$equResult->equipment_id'");
+        }
+}
+else if ($queryMedical->num_rows) {
+    while($medResult=$queryMedical->fetch_object()){
+        header("location:singleMedical-product-details.php?id='$medResult->plants_id'");
+    }
+}
+        else {
+            header("location:emptyPage.php");
+        }
+}
+
+?>
