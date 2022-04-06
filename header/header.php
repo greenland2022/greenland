@@ -44,20 +44,20 @@ require('admin/include/conection.php');
                     <!-- Nav Start -->
                     <div class="classynav">
                         <ul>
-                            <li><a href="shop.php">Shop</a>
+                            <li><a href="">Shop</a>
                                 <div class="megamenu">
                                     <ul class="single-mega cn-col-4">
                                         <li class="title">Plants</li>
-                                        <li><a href="shop.php">Aloe Vera</a></li>
-                                        <li><a href="medicalShop.php">Medical Plants</a></li>
+                                        <li><a href="shop.php?plants">Aloe Vera</a></li>
+                                        <li><a href="shop.php?medical">Medical Plants</a></li>
                                     </ul>
                                     <ul class="single-mega cn-col-4">
                                         <li class="title">Soils</li>
-                                        <li><a href="shopSoil.php">Types</a></li>
+                                        <li><a href="shop.php?soil">Types</a></li>
                                     </ul>
                                     <ul class="single-mega cn-col-4">
                                         <li class="title">Accessories</li>
-                                        <li><a href="shopEquipment.php">Bottels</a></li>
+                                        <li><a href="shop.php?equipment">Bottels</a></li>
                                     </ul>
                                     <div class="single-mega cn-col-4">
                                         <img src="img/bg-img/pexels-photo-1083822.webp" alt="">
@@ -67,7 +67,7 @@ require('admin/include/conection.php');
                             <li><a href="#">Pages</a>
                                 <ul class="dropdown">
                                     <li><a href="index.php">Home</a></li>
-                                    <li><a href="shop.php">Shop</a></li>
+                                    <li><a href="">Shop</a></li>
                                     <li><a href="single-product-details.php">Product Details</a></li>
                                     <li><a href="checkout.php">Checkout</a></li>
                                     <li><a href="cart.php">Cart Page</a></li>
