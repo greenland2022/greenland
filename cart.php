@@ -2,8 +2,6 @@
 ob_start();
 include('header/header.php');
 require('admin/include/conection.php');
-echo "<br><br><br>";
-
 ?>
     <link rel="stylesheet" href="css/cart.scss">
 
