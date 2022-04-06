@@ -9,7 +9,21 @@ require('admin/include/conection.php');
             <div class="row h-100 align-items-center">
                 <div class="col-12">
                     <div class="page-title text-center">
-                        <h2>Plants</h2>
+                        <?php
+                        if (isset($_GET['soil'])) {
+                        echo "<h2>SOIL</h2>";
+                        }else  if (isset($_GET['plants'])) {
+                            echo "<h2>PLANTS</h2>";
+                            }else  if (isset($_GET['equipment'])) {
+                                echo "<h2>ACCESSORIES</h2>";
+                                }else  if (isset($_GET['medical'])) {
+                                    echo "<h2>MEDICAL</h2>";
+                                    }else  if (isset($_GET['all'])) {
+                                        echo "<h2>ALL PRODUCT</h2>";
+                                        }else  if (isset($_GET['discount'])) {
+                                            echo "<h2>GLOBAL SALE </h2>";
+                                            }
+                        ?>
                     </div>
                 </div>
             </div>
@@ -123,10 +137,21 @@ require('admin/include/conection.php');
 
                                         <p><span> 
                             <?php
-                            $query2="SELECT * FROM plants";
+                                        $countpro=0;
+                                   if (isset($_GET['soil'])) {
+                                    $query2="SELECT * FROM soil";
+                                }else  if (isset($_GET['plants'])) {
+                                    $query2="SELECT * FROM plants";
+                                        }else  if (isset($_GET['equipment'])) {
+                                            $query2="SELECT * FROM equipment";
+                                        }else  if (isset($_GET['medical'])) {
+                                            $query2="SELECT * FROM medical_plant";
+                                                }else  if (isset($_GET['discount'])) {
+                                                    $query2="SELECT * FROM discount";
+                                                        }else  if (isset($_GET['all'])) {
+                                                }
                             $result2=mysqli_query($conn,$query2);
-                            $countpro=0;
-                            while($plants=mysqli_fetch_assoc($result2)){$countpro++ ;}
+                                while($plants=mysqli_fetch_assoc($result2)){$countpro++ ;}
                             echo $countpro;?>
                             </span> products found</p>
                                     </div>
@@ -149,9 +174,12 @@ require('admin/include/conection.php');
 
                         <div class="row">
 
-     <?php
-if(isset($_GET['id'])){
-    $query="SELECT * FROM plants WHERE plants_id={$_GET['id']}";
+ 
+                        <!-- ----------------------------------plants Part -------------------------------------    -->
+
+                        <?php
+if(isset($_GET['plants?id'])){
+    $query="SELECT * FROM plants WHERE plants_id={$_GET['plants?id']}";
   $result=  mysqli_query($conn,$query);
   $cart=mysqli_fetch_assoc($result);
     $cartName=$cart['plant_name'];
@@ -161,13 +189,13 @@ if(isset($_GET['id'])){
     $cartQuery="INSERT INTO cart (cart_name,description,price,cart_img)
      VALUES ('$cartName','$description','$price','$cartImg')";
      mysqli_query($conn,$cartQuery);
+     header("location:shop.php?plants");
 }
 
 ?>
-                           
-
-                            
                             <?php
+                            if (isset($_GET['plants'])||isset($_GET['all'])) {
+
                             $query2="SELECT * FROM plants";
                             $result2=mysqli_query($conn,$query2);
                             while($plants=mysqli_fetch_assoc($result2)){
@@ -182,22 +210,239 @@ if(isset($_GET['id'])){
                                 echo "</div>";
                                 echo "<div class='product-description'>";
                                 echo "<span><span>{$plants['description']}</span>";
-                                echo "<a href='single-product-details.php?id={$plants['plants_id']}'>";
+                                echo "<a href='single-product-details.php?plantsId={$plants['plants_id']}'>";
                                 echo "<h6>{$plants['plant_name']}</h6>";
                                 echo "</a>";
                                 echo "<p class='product-price'>$ {$plants['price']}</p>";
                                 echo "<div class='hover-content'>";
                                 echo "<div class='add-to-cart-btn'>";
-                                echo "<a href='shop.php?id={$plants['plants_id']}' type='submit' name='add' class='btn essence-btn'>Add to Cart</a>";
+                                echo "<a href='shop.php?plants?id={$plants['plants_id']}' type='submit' name='add' class='btn essence-btn'>Add to Cart</a>";
+                                echo "</div>";
+                                echo "</div>";
+                                echo "</div>";
+                                echo "</div>";
+                                echo "</div>";
+                            }}
+                            ?>
+                        <!-- ----------------------------------plants Part -------------------------------------    -->
+                     
+                        <!-- ----------------------------------Soil Part -------------------------------------    -->
+
+
+                        <?php
+if(isset($_GET['soil?id'])){
+    $query="SELECT * FROM soil WHERE soil_id={$_GET['id']}";
+  $result=  mysqli_query($conn,$query);
+  $cart=mysqli_fetch_assoc($result);
+    $cartName=$cart['soil_name'];
+    $description=$cart['description'];
+    $price=$cart['price'];
+    $cartImg=$cart['soil_img'];
+    $cartQuery="INSERT INTO cart (cart_name,description,price,cart_img)
+     VALUES ('$cartName','$description','$price','$cartImg')";
+     mysqli_query($conn,$cartQuery);
+     header("location:shop.php?soil");
+
+}
+
+?>
+
+                        <?php
+                            if (isset($_GET['soil'])||isset($_GET['all'])) {
+                            $query2="SELECT * FROM soil";
+                            $result2=mysqli_query($conn,$query2);
+                            while($soil=mysqli_fetch_assoc($result2)){
+                                echo "<div class='col-12 col-sm-6 col-lg-4'>";
+                                echo "<div class='single-product-wrapper'>";
+                                echo "<div class='product-img'>";
+                                echo "<img src='admin/images/{$soil['soil_img']}'>";
+                                echo "<img class='hover-img' src='admin/images/{$soil['soil_img']}' alt=''>";
+                                echo "<div class='product-favourite'>";
+                                echo "<a href='' class='favme fa fa-heart'></a>";
+                                echo "</div>";
+                                echo "</div>";
+                                echo "<div class='product-description'>";
+                                echo "<span><span>{$soil['description']}</span>";
+                                echo "<a href='single-product-details.php?soilId={$soil['soil_id']}'>";
+                                echo "<h6>{$soil['soil_name']}</h6>";
+                                echo "</a>";
+                                echo "<p class='product-price'>$ {$soil['price']}</p>";
+                                echo "<div class='hover-content'>";
+                                echo "<div class='add-to-cart-btn'>";
+                                echo "<a href='shop.php?soil?id={$soil['soil_id']}' type='submit' name='add' class='btn essence-btn'>Add to Cart</a>";
+                                echo "</div>";
+                                echo "</div>";
+                                echo "</div>";
+                                echo "</div>";
+                                echo "</div>";
+
+                            }
+                        }
+
+                            ?>
+                        <!-- ----------------------------------Soil Part -------------------------------------    -->
+                        <!-- ----------------------------------equipment Part -------------------------------------    -->
+                        <?php
+                            if (isset($_GET['equipment'])||isset($_GET['all'])) {
+                            $query2="SELECT * FROM equipment";
+                            $result2=mysqli_query($conn,$query2);
+                            while($equipment=mysqli_fetch_assoc($result2)){
+                                echo "<div class='col-12 col-sm-6 col-lg-4'>";
+                                echo "<div class='single-product-wrapper'>";
+                                echo "<div class='product-img'>";
+                                echo "<img src='admin/images/{$equipment['equipment_img']}'>";
+                                echo "<img class='hover-img' src='admin/images/{$equipment['equipment_img']}' alt=''>";
+                                echo "<div class='product-favourite'>";
+                                echo "<a href='' class='favme fa fa-heart'></a>";
+                                echo "</div>";
+                                echo "</div>";
+                                echo "<div class='product-description'>";
+                                echo "<span><span>{$equipment['description']}</span>";
+                                echo "<a href='single-product-details.php?equipmentId={$equipment['equipment_id']}'>";
+                                echo "<h6>{$equipment['equipment_name']}</h6>";
+                                echo "</a>";
+                                echo "<p class='product-price'>$ {$equipment['price']}</p>";
+                                echo "<div class='hover-content'>";
+                                echo "<div class='add-to-cart-btn'>";
+                                echo "<a href='shop.php?equipment?id={$equipment['equipment_id']}' type='submit' name='add' class='btn essence-btn'>Add to Cart</a>";
+                                echo "</div>";
+                                echo "</div>";
+                                echo "</div>";
+                                echo "</div>";
+                                echo "</div>";
+
+                            }}
+                            ?>
+
+<?php
+if(isset($_GET['equipment?id'])){
+    $query="SELECT * FROM equipment WHERE equipment_id={$_GET['id']}";
+  $result=  mysqli_query($conn,$query);
+  $cart=mysqli_fetch_assoc($result);
+    $cartName=$cart['equipment_name'];
+    $description=$cart['description'];
+    $price=$cart['price'];
+    $cartImg=$cart['equipment_img'];
+    $cartQuery="INSERT INTO cart (cart_name,description,price,cart_img)
+     VALUES ('$cartName','$description','$price','$cartImg')";
+     mysqli_query($conn,$cartQuery);
+}
+
+?>
+                        <!-- ----------------------------------equipment Part -------------------------------------    -->
+                        <!-- ----------------------------------medical Part -------------------------------------    -->
+
+                            
+                            <?php
+                            if (isset($_GET['medical'])||isset($_GET['all'])) {
+                            $query3="SELECT * FROM medical_plant";
+                            $result3=mysqli_query($conn,$query3);
+                            while($plantsMed=mysqli_fetch_assoc($result3)){
+                                echo "<div class='col-12 col-sm-6 col-lg-4'>";
+                                echo "<div class='single-product-wrapper'>";
+                                echo "<div class='product-img'>";
+                                echo "<img src='admin/images/{$plantsMed['plant_img']}'>";
+                                echo "<img class='hover-img' src='admin/images/{$plantsMed['plant_img_two']}' alt=''>";
+                                echo "<div class='product-favourite'>";
+                                echo "<a href='' class='favme fa fa-heart'></a>";
+                                echo "</div>";
+                                echo "</div>";
+                                echo "<div class='product-description'>";
+                                echo "<span><span>{$plantsMed['description']}</span>";
+                                echo "<a href='single-product-details.php?medicalId={$plantsMed['plants_id']}'>";
+                                echo "<h6>{$plantsMed['plant_name']}</h6>";
+                                echo "</a>";
+                                echo "<p class='product-price'>$ {$plantsMed['price']}</p>";
+                                echo "<div class='hover-content'>";
+                                echo "<div class='add-to-cart-btn'>";
+                                echo "<a href='shop.php?id={$plantsMed['plants_id']}' type='submit' name='add' class='btn essence-btn'>Add to Cart</a>";
                                 echo "</div>";
                                 echo "</div>";
                                 echo "</div>";
                                 echo "</div>";
                                 echo "</div>";
                             }
+                        }
+                        if(isset($_GET['id'])){
+                            $query="SELECT * FROM medical_plant WHERE plants_id={$_GET['id']}";
+                            $result=  mysqli_query($conn,$query);
+                            $cart=mysqli_fetch_assoc($result);
+                              $cartName=$cart['plant_name'];
+                              $description=$cart['description'];
+                              $price=$cart['price'];
+                              $cartImg=$cart['plant_img'];
+                              $cartImg=$cart['plant_img_two'];
+                              $cartQuery="INSERT INTO cart (cart_name,description,price,cart_img)
+                               VALUES ('$cartName','$description','$price','$cartImg')";
+                               mysqli_query($conn,$cartQuery);
+                               header("location:shop.php?medical");
+                        }
+                            ?>
+                           
+
+                        <!-- ----------------------------------medical Part -------------------------------------    -->
+                        <!-- ----------------------------------discount Part -------------------------------------    -->
+                        <?php
+if(isset($_GET['discount?id'])){
+    $query="SELECT * FROM discount WHERE id={$_GET['id']}";
+  $result=  mysqli_query($conn,$query);
+  $cart=mysqli_fetch_assoc($result);
+    $cartName=$cart['name'];
+    $description=$cart['description'];
+    $price=$cart['price'];
+    $cartImg=$cart['img'];
+    $cartQuery="INSERT INTO cart (cart_name,description,price,cart_img)
+     VALUES ('$cartName','$description','$price','$cartImg')";
+     mysqli_query($conn,$cartQuery);
+     header("location:shop.php?discount");
+
+}
+
+?>
+                           
+
+                            
+                            <?php
+                            if (isset($_GET['discount'])) {
+                            $query2="SELECT * FROM discount";
+                            $result2=mysqli_query($conn,$query2);
+                            $count=0;
+                            while($product=mysqli_fetch_assoc($result2)){
+                                $count++;
+                                echo "<div class='col-12 col-sm-6 col-lg-4'>";
+                                echo "<div class='single-product-wrapper'>";
+                                echo "<div class='product-img'>";
+                                echo "<img src='admin/images/{$product['img']}'>";
+                                echo "<img class='hover-img' src='admin/images/{$product['imgTwo']}' alt=''>";
+                                echo "<div class='product-favourite'>";
+                                echo "<a href='' class='favme fa fa-heart'></a>";
+                                echo "</div>";
+                                echo "</div>";
+                                echo "<div class='product-description'>";
+                                echo "<span><span>{$product['description']}</span>";
+                                echo "<a href='single-product-details.php?discountId={$product['id']}'>";
+                                echo "<h6>{$product['name']}</h6>";
+                                echo "</a>";
+                                 $num=(int)$product['price'];
+                                  $dicount=$num*.4;
+                                echo "<p class='product-price'><span class='old-price'>$ {$product['price']}</span>$ $dicount</p>";
+                                echo "<div class='hover-content'>";
+                                echo "<div class='add-to-cart-btn'>";
+                                echo "<a href='shop.php?discount?id={$product['id']}' type='submit' name='add' class='btn essence-btn'>Add to Cart</a>";
+                                echo "</div>";
+                                echo "</div>";
+                                echo "</div>";
+                                echo "</div>";
+                                echo "</div>";
+                                if ($count>0) {
+                                    break;
+                                }
+                            }
+                        }
                             ?>
 
-                           
+                        <!-- ----------------------------------discount Part -------------------------------------    -->
+                            
                         </div>
                     </div>
                     <!-- Pagination -->

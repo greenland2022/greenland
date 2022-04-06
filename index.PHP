@@ -27,7 +27,7 @@ require('admin/include/conection.php');
                 <div class="col-12 col-sm-6 col-md-4">
                     <div class="single_catagory_area d-flex align-items-center justify-content-center bg-img" style="background-image: url(img/bg-img/pl8.jpg);">
                         <div class="catagory-content">
-                            <a href="shop.php">PLANTS</a>
+                            <a href="shop.php?plants">PLANTS</a>
                         </div>
                     </div>
                 </div>
@@ -35,7 +35,7 @@ require('admin/include/conection.php');
                 <div class="col-12 col-sm-6 col-md-4">
                     <div class="single_catagory_area d-flex align-items-center justify-content-center bg-img" style="background-image: url(img/bg-img/soil-1.jpg);">
                         <div class="catagory-content">
-                            <a href="shopSoil.php">Soils</a>
+                            <a href="shop.php?soil">Soils</a>
                         </div>
                     </div>
                 </div>
@@ -43,7 +43,7 @@ require('admin/include/conection.php');
                 <div class="col-12 col-sm-6 col-md-4">
                     <div class="single_catagory_area d-flex align-items-center justify-content-center bg-img" style="background-image: url(img/bg-img/acc-6.jpg);">
                         <div class="catagory-content">
-                            <a href="shopEquipment.php">Accessories</a>
+                            <a href="shop.php?equipment">Accessories</a>
                         </div>
                     </div>
                 </div>
@@ -62,7 +62,7 @@ require('admin/include/conection.php');
                             <div class="cta--text">
                                 <h6>-60%</h6>
                                 <h2 style="color:white;">Global Sale</h2>
-                                <a href="#" class="btn essence-btn">Buy Now</a>
+                                <a href="shop.php?discount" class="btn essence-btn">Buy Now</a>
                             </div>
                         </div>
                     </div>
