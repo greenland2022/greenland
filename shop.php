@@ -50,32 +50,28 @@ require('admin/include/conection.php');
                                     <li data-toggle="collapse" data-target="#clothing">
                                         <a href="#">Plants</a>
                                         <ul class="sub-menu collapse show" id="clothing">
-                                            <li><a href="">All</a></li>
+                                            <li><a href="shop.php?plants">Plants</a></li>
+                                            <li><a href="shop.php?medical">Medical Plants</a></li>
                                         </ul>
                                     </li>
                                     <!-- Single Item -->
                                     <li data-toggle="collapse" data-target="#shoes" class="collapsed">
-                                        <a href="#">Soils</a>
-                                        <ul class="sub-menu collapse" id="shoes">
-                                            <li><a href="shopSoil.php">All</a></li>
-                                        </ul>
+                                        <a href="shop.php?soil">Soils</a>
                                     </li>
                                     <!-- Single Item -->
                                     <li data-toggle="collapse" data-target="#accessories" class="collapsed">
-                                        <a href="#">accessories</a>
-                                        <ul class="sub-menu collapse" id="accessories">
-                                            <li><a href="shopEquipment.php">All</a></li>
-                                        </ul>
+                                        <a href="shop.php?equipment">accessories</a>
+                                    </li>
+                                    <li data-toggle="collapse" data-target="#accessories" class="collapsed">
+                                        <a href="shop.php?discount">Discount</a>
                                     </li>
                                 </ul>
                             </div>
                         </div>
 
                         <!-- ##### Single Widget ##### -->
-                        <div class="widget price mb-50">
-                            <!-- Widget Title -->
+                        <!-- <div class="widget price mb-50">
                             <h6 class="widget-title mb-30">Filter by</h6>
-                            <!-- Widget Title 2 -->
                             <p class="widget-title2 mb-30">Price</p>
 
                             <div class="widget-desc">
@@ -88,42 +84,11 @@ require('admin/include/conection.php');
                                     <div class="range-price">Range: $49.00 - $360.00</div>
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
 
-                        <!-- ##### Single Widget ##### -->
-                        <div class="widget color mb-50">
-                            <!-- Widget Title 2 -->
-                            <p class="widget-title2 mb-30">Color</p>
-                            <div class="widget-desc">
-                                <ul class="d-flex">
-                                    <li><a href="#" class="color1"></a></li>
-                                    <li><a href="#" class="color2"></a></li>
-                                    <li><a href="#" class="color3"></a></li>
-                                    <li><a href="#" class="color4"></a></li>
-                                    <li><a href="#" class="color5"></a></li>
-                                    <li><a href="#" class="color6"></a></li>
-                                    <li><a href="#" class="color7"></a></li>
-                                    <li><a href="#" class="color8"></a></li>
-                                    <li><a href="#" class="color9"></a></li>
-                                    <li><a href="#" class="color10"></a></li>
-                                </ul>
-                            </div>
-                        </div>
+                   
 
-                        <!-- ##### Single Widget ##### -->
-                        <div class="widget brands mb-50">
-                            <!-- Widget Title 2 -->
-                            <p class="widget-title2 mb-30">Brands</p>
-                            <div class="widget-desc">
-                                <ul>
-                                    <li><a href="#">Asos</a></li>
-                                    <li><a href="#">Mango</a></li>
-                                    <li><a href="#">River Island</a></li>
-                                    <li><a href="#">Topshop</a></li>
-                                    <li><a href="#">Zara</a></li>
-                                </ul>
-                            </div>
-                        </div>
+                      
                     </div>
                 </div>
 
@@ -231,7 +196,7 @@ if(isset($_GET['plants?id'])){
 
                         <?php
 if(isset($_GET['soil?id'])){
-    $query="SELECT * FROM soil WHERE soil_id={$_GET['id']}";
+    $query="SELECT * FROM soil WHERE soil_id={$_GET['soil?id']}";
   $result=  mysqli_query($conn,$query);
   $cart=mysqli_fetch_assoc($result);
     $cartName=$cart['soil_name'];
@@ -316,7 +281,7 @@ if(isset($_GET['soil?id'])){
 
 <?php
 if(isset($_GET['equipment?id'])){
-    $query="SELECT * FROM equipment WHERE equipment_id={$_GET['id']}";
+    $query="SELECT * FROM equipment WHERE equipment_id={$_GET['equipment?id']}";
   $result=  mysqli_query($conn,$query);
   $cart=mysqli_fetch_assoc($result);
     $cartName=$cart['equipment_name'];
@@ -326,6 +291,8 @@ if(isset($_GET['equipment?id'])){
     $cartQuery="INSERT INTO cart (cart_name,description,price,cart_img)
      VALUES ('$cartName','$description','$price','$cartImg')";
      mysqli_query($conn,$cartQuery);
+     header("location:shop.php?equipment");
+
 }
 
 ?>
@@ -384,7 +351,7 @@ if(isset($_GET['equipment?id'])){
                         <!-- ----------------------------------discount Part -------------------------------------    -->
                         <?php
 if(isset($_GET['discount?id'])){
-    $query="SELECT * FROM discount WHERE id={$_GET['id']}";
+    $query="SELECT * FROM discount WHERE id={$_GET['discount?id']}";
   $result=  mysqli_query($conn,$query);
   $cart=mysqli_fetch_assoc($result);
     $cartName=$cart['name'];
@@ -428,7 +395,7 @@ if(isset($_GET['discount?id'])){
                                 echo "<p class='product-price'><span class='old-price'>$ {$product['price']}</span>$ $dicount</p>";
                                 echo "<div class='hover-content'>";
                                 echo "<div class='add-to-cart-btn'>";
-                                echo "<a href='shop.php?discount?id={$product['id']}' type='submit' name='add' class='btn essence-btn'>Add to Cart</a>";
+                                echo "<a href='shop.php?discount?id={$product['id']}' type='submit'r class='btn essence-btn'>Add to Cart</a>";
                                 echo "</div>";
                                 echo "</div>";
                                 echo "</div>";

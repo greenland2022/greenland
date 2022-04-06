@@ -11,7 +11,7 @@ require('admin/include/conection.php');
                 <div class="col-12">
                     <div class="hero-content">
                         <h2>New Collection</h2>
-                        <a href="#" class="btn essence-btn">view collection</a>
+                        <a href="shop.php?all" class="btn essence-btn">view collection</a>
                     </div>
                 </div>
             </div>

@@ -67,8 +67,7 @@ require('admin/include/conection.php');
                             <li><a href="#">Pages</a>
                                 <ul class="dropdown">
                                     <li><a href="index.php">Home</a></li>
-                                    <li><a href="">Shop</a></li>
-                                    <li><a href="single-product-details.php">Product Details</a></li>
+                                    <li><a href="shop.php?all">Shop</a></li>
                                     <li><a href="checkout.php">Checkout</a></li>
                                     <li><a href="cart.php">Cart Page</a></li>
                                     <li><a href="contact.php">Contact</a></li>
@@ -138,18 +137,33 @@ require('admin/include/conection.php');
             $query="SELECT * FROM cart";
             $result=mysqli_query($conn,$query);
             while ($cart=mysqli_fetch_assoc($result)) {
+            echo "<form action='' method='get'>";
             echo "<div class='single-cart-item'>";
-            echo "<a href='#' class='product-image'>";
+            echo "<div  class='product-image'>";
             echo "<img src='admin/images/{$cart['cart_img']}' class='cart-thumb' height='300px' alt=''>";
             echo " <div class='cart-item-desc'  height='300px'>";
-            echo "<span class='product-remove'><i class='fa fa-close' aria-hidden='true'></i></span>";
+            echo " <input type='hidden' name='delete' value='{$cart['cart_id']}'>";
+            echo " <span class='product-remove'><button style='	background: none;
+            color: inherit;
+            border: none;
+            padding: 0;
+            font: inherit;
+            cursor: pointer;
+            outline: inherit;'
+            type='submit' name='submit'><i class='fa fa-close' aria-hidden='true'></i></button></span>";
             echo "<span class='badge'>{$cart['description']}</span>";
             echo "<h6>{$cart['cart_name']}</h6>";
             echo "<p class='price'>$ {$cart['price']}</p>";
             echo "</div>";
-            echo "</a>";
             echo "</div>";
+            echo "</div>";
+            echo "</form>";
 
+                if(isset($_GET['submit'])){
+                    $deletQuery="DELETE FROM cart WHERE cart_id={$_GET['delete']}";
+                    mysqli_query($conn,$deletQuery);
+
+                }
             }
             ?>
 
@@ -176,6 +190,7 @@ require('admin/include/conection.php');
             echo "<li><span>total:</span> <span>";
             echo $discount;
             echo "</span></li>";
+
             ?>
                 
                 
@@ -196,30 +211,36 @@ if (isset($_GET['keyword'])) {
     $querySoil=$conn->query("SELECT soil_id FROM soil WHERE soil_name LIKE '%{$keyword}%'");
     $queryEquipment=$conn->query(" SELECT equipment_id FROM equipment WHERE equipment_name LIKE '%{$keyword}%'");
     $queryMedical=$conn->query(" SELECT plants_id FROM medical_plant WHERE plant_name LIKE '%{$keyword}%'");
+    $queryDiscount=$conn->query(" SELECT id FROM discount WHERE name LIKE '%{$keyword}%'");
     if ($query->num_rows){
         while($row = $query->fetch_object() ){
-            header("location:single-product-details.php?id='$row->plants_id'") ;
+            header("location:single-product-details.php?plantsId='$row->plants_id'") ;
     
         }
         } 
         
         else if ($querySoil->num_rows) {
             while($result=$querySoil->fetch_object()){
-                header("location:singleSoil-product-details.php?id='$result->soil_id'");
+                header("location:single-product-details.php?soilId='$result->soil_id'");
             }
     }
     else if ($queryEquipment->num_rows) {
         while($equResult=$queryEquipment->fetch_object()){
-            header("location:singleEquipment-product-details.php?id='$equResult->equipment_id'");
+            header("location:single-product-details.php?equipmentId='$equResult->equipment_id'");
         }
 }
 else if ($queryMedical->num_rows) {
     while($medResult=$queryMedical->fetch_object()){
-        header("location:singleMedical-product-details.php?id='$medResult->plants_id'");
+        header("location:single-product-details.php?medicalId='$medResult->plants_id'");
+    }
+}
+else if ($queryDiscount->num_rows) {
+    while($discountResult=$queryDiscount->fetch_object()){
+        header("location:single-product-details.php?discountId='$discountResult->id'");
     }
 }
         else {
-            header("location:emptyPage.php");
+            header("location:error.php");
         }
 }
 
