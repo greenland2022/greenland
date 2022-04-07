@@ -18,7 +18,6 @@ require('admin/include/conection.php');
 
     <!-- Core Style CSS -->
     <link rel="stylesheet" href="css/header.css">
-    <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="css/login.css">
 
 </head>
