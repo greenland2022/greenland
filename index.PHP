@@ -103,7 +103,7 @@ echo "<a href='' class='favme fa fa-heart'></a>";
 echo " </div></div>";
 echo "<div class='product-description'>";
 echo "<span>outdoor</span>";
-echo "<a href='single-product-details.php'>";
+echo "<a href='single-product-details.php?plantsId={$plants['plants_id']}'>";
 echo "<h6>{$plants['plant_name']}</h6>";
 echo "</a>";
 echo "<p class='product-price'>$ {$plants['price']}</p>";

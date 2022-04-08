@@ -1,5 +1,6 @@
 <?php
 ob_start();
+session_start();
 include('header/header.php');
 require('admin/include/conection.php');
 ?>
@@ -105,12 +106,21 @@ if(isset($_POST['login'])){
 $email=$_POST['email'];
 $password=$_POST['password'];
 $query = "SELECT * FROM users WHERE email ='$email' AND password = '$password'";
+$queryAdmin = "SELECT * FROM admin WHERE email ='$email' AND password = '$password'";
 $result=mysqli_query($conn,$query);
+$resultAdmin=mysqli_query($conn,$queryAdmin);
 $user=mysqli_fetch_assoc($result);
-if(!empty($user['id'])){
-$_SESSION['id']=$user['id'];
-header("Location: index.php");
-}else{
+$admin=mysqli_fetch_assoc($resultAdmin);
+echo $admin['email'];
+echo $admin['admin_name'];
+
+if(!empty($admin['admin_id'])){
+  $_SESSION['id']=$admin['admin_id'];
+  header("Location: admin/index.php");
+  }else if(!empty($user['id'])){
+  $_SESSION['id']=$user['id'];
+  header("Location: index.php");
+  }else{
  echo '
  <div class="alert alert-danger">
 Your Password or Username not correct

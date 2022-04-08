@@ -1,6 +1,10 @@
 <?php
 include('header/header.php');
 require('admin/include/conection.php');
+session_start();
+if (!isset($_SESSION['id'])) {
+header("location:signUp.php");
+}
 ?>
   
     <!-- ##### Breadcumb Area Start ##### -->

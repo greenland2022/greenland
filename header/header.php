@@ -90,7 +90,7 @@ require('admin/include/conection.php');
                 </div>
                 <!-- Favourite Area -->
                 <div class="favourite-area">
-                    <a href="#"><img src="img/core-img/heart.svg" alt=""></a>
+                    <a href="logout.php"><img src="admin/images/icons8-logout-64.png" alt=""></a>
                 </div>
                 <!-- User Login Info -->
                 <div class="user-login-info">
