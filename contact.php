@@ -1,5 +1,9 @@
 <?php
 require('header/header.php');
+session_start();
+if (!isset($_SESSION['id'])) {
+header("location:signUp.php");
+}
 ?>
 
 <!DOCTYPE html>

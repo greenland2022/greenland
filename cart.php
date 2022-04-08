@@ -2,6 +2,10 @@
 ob_start();
 include('header/header.php');
 require('admin/include/conection.php');
+session_start();
+if (!isset($_SESSION['id'])) {
+header("location:signUp.php");
+}
 ?>
     <link rel="stylesheet" href="css/cart.scss">
 

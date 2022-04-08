@@ -1,3 +1,19 @@
+<?php
+session_start();
+require('conection.php');
+
+if (!isset($_SESSION['id'])) {
+header("location:../signUp.php");
+$user="";
+}else{
+    $user=$SESSION['id'];
+    $query="SELECT * FROM admin";
+    $result=mysqli_query($conn,$query);
+    while ($admin=mysqli_fetch_assoc($result)) {
+$user=$admin['admin_id'];
+    }
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -147,6 +163,57 @@
                                     <i class="zmdi zmdi-search"></i>
                                 </button>
                             </form>
+
+            <div class="account-wrap">
+                                    <div class="account-item clearfix js-item-menu">
+                                       
+                                        <div class="content">
+                                        <?php
+            if ($user !="") {
+                $query="SELECT * FROM admin WHERE admin_id={$_SESSION['id']}";
+                $result=mysqli_query($conn,$query);
+                while($admin=mysqli_fetch_assoc($result)){
+                    echo '<h5 class="name">';
+                    echo $admin['admin_name'];
+                    echo '</h5>';
+
+                }
+            }
+            ?>                                            </div>
+                                        <div class="account-dropdown js-dropdown">
+                                            <div class="info clearfix">
+                                            <div class="image">
+                                                    <a href="#">
+                                                    <img src="../img/bg-img/logo.jpeg" alt="GreenLand" />                                                    </a>
+                                                </div>
+                                                <div class="content">
+                                                    <h5 class="name">
+                                                        <a href="../index.php">Greenland</a>
+                                                    </h5>
+                                                </div>
+                                            </div>
+                                            <div class="account-dropdown__body">
+                                                <div class="account-dropdown__item">
+                                                    <a href="#">
+                                                        <i class="zmdi zmdi-account"></i>Account</a>
+                                                </div>
+                                                <div class="account-dropdown__item">
+                                                    <a href="#">
+                                                        <i class="zmdi zmdi-settings"></i>Setting</a>
+                                                </div>
+                                                <div class="account-dropdown__item">
+                                                    <a href="#">
+                                                        <i class="zmdi zmdi-money-box"></i>Billing</a>
+                                                </div>
+                                            </div>
+                                            <div class="account-dropdown__footer">
+                                                <a href="../logout.php">
+                                                    <i class="zmdi zmdi-power"></i>Logout</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                 </div>
             </header>
-            <!-- HEADER DESKTOP-->

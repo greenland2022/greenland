@@ -400,6 +400,7 @@ anime({
 
   </script>
   <br><br><br><br><br><br>
+  <br><br><br><br><br><br>
    <?php 
     include('header/footer.php');
     ?>
