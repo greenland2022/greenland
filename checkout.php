@@ -1,10 +1,10 @@
 <?php
 include('header/header.php');
 require('admin/include/conection.php');
-session_start();
 if (!isset($_SESSION['id'])) {
 header("location:signUp.php");
 }
+$userId=$_SESSION['id'];
 ?>
   
     <!-- ##### Breadcumb Area Start ##### -->
@@ -88,15 +88,17 @@ header("location:signUp.php");
                         <ul class="order-details-form mb-4">
                             <li><span>Product</span> <span>Total</span></li>
                             <?php
-                            $query="SELECT * FROM cart";
+                            $query="SELECT * FROM cart WHERE user_id=$userId";
                             $result=mysqli_query($conn,$query);
                             $total=0;
                             while($cart=mysqli_fetch_assoc($result)){
                                 echo "<li><span>{$cart['cart_name']}</span> <span>$ {$cart['price']}</span></li>";
                                 $total+=(int)$cart['price'];
                             }
+                            $total=$total*.85;
                             ?>
                             <li><span>Shipping</span> <span>Free</span></li>
+                            <li><span>Discount</span> <span>15%</span></li>
                             <?php
                             echo "<li><span>Total</span> <span>$ $total</span></li>";
                             ?>
@@ -125,14 +127,14 @@ header("location:signUp.php");
     </form>
     
     <?php
-      $queryTest="SELECT * FROM cart";
+      $queryTest="SELECT * FROM cart WHERE user_id=$userId";
       $resultTest=mysqli_query($conn,$queryTest);
       $cartTest=mysqli_fetch_assoc($resultTest)
     ?>
 <?php
 if (isset($_POST['submit'])) {
     if ($cartTest) {
-    $query2="SELECT * FROM cart";
+    $query2="SELECT * FROM cart WHERE user_id=$userId";
     $result2=mysqli_query($conn,$query2);
     $price=array();
     $cartName=array();
@@ -159,34 +161,6 @@ if (isset($_POST['submit'])) {
 
 }
 ?>
-    <!-- ##### Checkout Area End ##### -->
-  
-    <?php
-    // $query="SELECT * FROM checkout";
-    // $query2="SELECT cart_name FROM cart INNER JOIN checkout ON cart.cart_id=checkout.cart_id";
-    // $result=mysqli_query($conn,$query);
-    // $result2=mysqli_query($conn,$query2);
-    // while ($checkout=mysqli_fetch_assoc($result)) {
-    // $cart=mysqli_fetch_assoc($result2);
-    //     echo $checkout['first_name'];
-    //     echo "{$cart['cart_name']} .vvvvvvvvvvvvvvvvvvvv";
-    // }
-    ?>
-    <?php
-    // $queryCa="SELECT * FROM cart WHERE cart_id={$checkout['cart_id']}";
-    // $query2="SELECT * FROM cart";
-    // $resultCa=mysqli_query($conn,$queryCa);
-    // $result2=mysqli_query($conn,$query2);
-    // $price=array();
-    // $cartName=array();
-    // while ($cartPro=mysqli_fetch_assoc($result2)) {
-        // $price=$price+"."+$cartPro['cart_name'];
-        // if($checkout['cart_name']!=$cartId['cart_name']){
-            // echo $checkout['cart_name'];
-        // }
-    // }
-    ?>
-
     <?php
 include('header/footer.php');
 ?>

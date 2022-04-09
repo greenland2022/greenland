@@ -2,10 +2,11 @@
 ob_start();
 include('header/header.php');
 require('admin/include/conection.php');
-session_start();
 if (!isset($_SESSION['id'])) {
 header("location:signUp.php");
 }
+$userId=$_SESSION['id'];
+
 ?>
 <?php
 if(isset($_GET['plantsId'])){
@@ -64,8 +65,8 @@ if(isset($_GET['plantsId'])||isset($_GET['soilId'])||isset($_GET['equipmentId'])
 }else{
     $description=$plant['description'];
     $price=$plant['price'];
-    $cartQuery="INSERT INTO cart (cart_name,description,price,cart_img)
-     VALUES ('$cartName','$description','$price','$cartImg')";
+    $cartQuery="INSERT INTO cart (cart_name,description,price,cart_img,user_id)
+     VALUES ('$cartName','$description','$price','$cartImg','$userId')";
      mysqli_query($conn,$cartQuery);
 }
 ?>
@@ -199,13 +200,13 @@ if(isset($_GET['plantsId'])){
             <?php
 if(isset($_GET['plantsId'])||isset($_GET['idAdd'])){
     echo "<img src='admin/images/{$plant['plant_img']}' class='cart-thumb'>";
-    echo "<img src='admin/images/{$plant['plant_img']}' class='cart-thumb'>";
+    echo "<img src='admin/images/{$plant['img_two']}' class='cart-thumb'>";
 }else if (isset($_GET['soilId'])||isset($_GET['idAsoil'])) {
     echo "<img src='admin/images/{$plant['soil_img']}' class='cart-thumb'>";
-    echo "<img src='admin/images/{$plant['soil_img']}' class='cart-thumb'>";
+    echo "<img src='admin/images/{$plant['img_two']}' class='cart-thumb'>";
 }else if (isset($_GET['equipmentId'])||isset($_GET['idAequipment'])) {
     echo "<img src='admin/images/{$plant['equipment_img']}' class='cart-thumb'>";
-    echo "<img src='admin/images/{$plant['equipment_img']}' class='cart-thumb'>";
+    echo "<img src='admin/images/{$plant['img_two']}' class='cart-thumb'>";
 }else if (isset($_GET['medicalId'])||isset($_GET['idAMedical'])) {
     echo "<img src='admin/images/{$plant['plant_img']}' class='cart-thumb'>";
     echo "<img src='admin/images/{$plant['plant_img_two']}' class='cart-thumb'>";

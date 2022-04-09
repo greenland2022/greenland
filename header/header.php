@@ -2,7 +2,16 @@
 <html lang="en">
 <?php
 ob_start();
+session_start();
 require('admin/include/conection.php');
+?>
+<?php
+if ($isTouch = isset($_SESSION['id'])) {
+    $userIdCart=$_SESSION['id'];
+} else{
+    $userIdCart="";
+
+}
 ?>
 <head>
     <meta charset="UTF-8">
@@ -99,11 +108,12 @@ require('admin/include/conection.php');
                 <!-- Cart Area -->
                 <div class="cart-area">
                     <a href="#" id="essenceCartBtn"><img src="img/core-img/bag.svg" alt=""> <span><?php
-                            $query2="SELECT * FROM cart";
+                    if ($userIdCart!='') {
+                            $query2="SELECT * FROM cart WHERE user_id=$userIdCart";
                             $result2=mysqli_query($conn,$query2);
                             $countpro=0;
                             while($plants=mysqli_fetch_assoc($result2)){$countpro++ ;}
-                            echo $countpro;?></span></a>
+                            echo $countpro;}?></span></a>
                 </div>
             </div>
 
@@ -118,11 +128,12 @@ require('admin/include/conection.php');
     <!-- Cart Button -->
     <div class="cart-button">
         <a href="#" id="rightSideCart"><img src="img/core-img/bag.svg" alt=""> <span><?php
-                            $query2="SELECT * FROM cart";
+                    if ($userIdCart!='') {
+                            $query2="SELECT * FROM cart WHERE user_id=$userIdCart";
                             $result2=mysqli_query($conn,$query2);
                             $countpro=0;
                             while($plants=mysqli_fetch_assoc($result2)){$countpro++ ;}
-                            echo $countpro;?></span></a>
+                            echo $countpro;}?></span></a>
     </div>
 
     <div class="cart-content d-flex">
@@ -133,7 +144,8 @@ require('admin/include/conection.php');
 
            
             <?php
-            $query="SELECT * FROM cart";
+                    if ($userIdCart!='') {
+            $query="SELECT * FROM cart WHERE user_id=$userIdCart";
             $result=mysqli_query($conn,$query);
             while ($cart=mysqli_fetch_assoc($result)) {
             echo "<form action='' method='get'>";
@@ -163,7 +175,7 @@ require('admin/include/conection.php');
                     mysqli_query($conn,$deletQuery);
 
                 }
-            }
+            }}
             ?>
 
         </div>
@@ -175,7 +187,8 @@ require('admin/include/conection.php');
             <h2>Summary</h2>
             <ul class="summary-table">
             <?php
-            $query="SELECT * FROM cart";
+                    if ($userIdCart!='') {
+            $query="SELECT * FROM cart WHERE user_id=$userIdCart";
             $result=mysqli_query($conn,$query);
             $count=0;
             while ($cart=mysqli_fetch_assoc($result)) {
@@ -189,7 +202,7 @@ require('admin/include/conection.php');
             echo "<li><span>total:</span> <span>";
             echo $discount;
             echo "</span></li>";
-
+        }
             ?>
                 
                 

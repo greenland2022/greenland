@@ -2,10 +2,11 @@
 ob_start();
 include('header/header.php');
 require('admin/include/conection.php');
-session_start();
 if (!isset($_SESSION['id'])) {
 header("location:signUp.php");
 }
+$userId=$_SESSION['id'];
+
 ?>
     <!-- ##### Breadcumb Area Start ##### -->
     <div class="breadcumb_area bg-img" style="background-image: url(img/bg-img/breadcumb.jpg);">
@@ -68,6 +69,9 @@ header("location:signUp.php");
                                     </li>
                                     <li data-toggle="collapse" data-target="#accessories" class="collapsed">
                                         <a href="shop.php?discount">Discount</a>
+                                    </li> 
+                                    <li data-toggle="collapse" data-target="#accessories" class="collapsed">
+                                        <a href="shop.php?all">All Product</a>
                                     </li>
                                 </ul>
                             </div>
@@ -155,8 +159,8 @@ if(isset($_GET['plants?id'])){
     $description=$cart['description'];
     $price=$cart['price'];
     $cartImg=$cart['plant_img'];
-    $cartQuery="INSERT INTO cart (cart_name,description,price,cart_img)
-     VALUES ('$cartName','$description','$price','$cartImg')";
+    $cartQuery="INSERT INTO cart (cart_name,description,price,cart_img,user_id)
+     VALUES ('$cartName','$description','$price','$cartImg','$userId')";
      mysqli_query($conn,$cartQuery);
      header("location:shop.php?plants");
 }
@@ -164,7 +168,6 @@ if(isset($_GET['plants?id'])){
 ?>
                             <?php
                             if (isset($_GET['plants'])||isset($_GET['all'])) {
-
                             $query2="SELECT * FROM plants";
                             $result2=mysqli_query($conn,$query2);
                             while($plants=mysqli_fetch_assoc($result2)){
@@ -172,7 +175,7 @@ if(isset($_GET['plants?id'])){
                                 echo "<div class='single-product-wrapper'>";
                                 echo "<div class='product-img'>";
                                 echo "<img src='admin/images/{$plants['plant_img']}'>";
-                                echo "<img class='hover-img' src='admin/images/{$plants['plant_img']}' alt=''>";
+                                echo "<img class='hover-img' src='admin/images/{$plants['img_two']}' alt=''>";
                                 echo "<div class='product-favourite'>";
                                 echo "<a href='' class='favme fa fa-heart'></a>";
                                 echo "</div>";
@@ -207,8 +210,8 @@ if(isset($_GET['soil?id'])){
     $description=$cart['description'];
     $price=$cart['price'];
     $cartImg=$cart['soil_img'];
-    $cartQuery="INSERT INTO cart (cart_name,description,price,cart_img)
-     VALUES ('$cartName','$description','$price','$cartImg')";
+    $cartQuery="INSERT INTO cart (cart_name,description,price,cart_img,user_id)
+     VALUES ('$cartName','$description','$price','$cartImg','$userId')";
      mysqli_query($conn,$cartQuery);
      header("location:shop.php?soil");
 
@@ -225,7 +228,7 @@ if(isset($_GET['soil?id'])){
                                 echo "<div class='single-product-wrapper'>";
                                 echo "<div class='product-img'>";
                                 echo "<img src='admin/images/{$soil['soil_img']}'>";
-                                echo "<img class='hover-img' src='admin/images/{$soil['soil_img']}' alt=''>";
+                                echo "<img class='hover-img' src='admin/images/{$soil['img_two']}' alt=''>";
                                 echo "<div class='product-favourite'>";
                                 echo "<a href='' class='favme fa fa-heart'></a>";
                                 echo "</div>";
@@ -260,7 +263,7 @@ if(isset($_GET['soil?id'])){
                                 echo "<div class='single-product-wrapper'>";
                                 echo "<div class='product-img'>";
                                 echo "<img src='admin/images/{$equipment['equipment_img']}'>";
-                                echo "<img class='hover-img' src='admin/images/{$equipment['equipment_img']}' alt=''>";
+                                echo "<img class='hover-img' src='admin/images/{$equipment['img_two']}' alt=''>";
                                 echo "<div class='product-favourite'>";
                                 echo "<a href='' class='favme fa fa-heart'></a>";
                                 echo "</div>";
@@ -292,8 +295,8 @@ if(isset($_GET['equipment?id'])){
     $description=$cart['description'];
     $price=$cart['price'];
     $cartImg=$cart['equipment_img'];
-    $cartQuery="INSERT INTO cart (cart_name,description,price,cart_img)
-     VALUES ('$cartName','$description','$price','$cartImg')";
+    $cartQuery="INSERT INTO cart (cart_name,description,price,cart_img,user_id)
+     VALUES ('$cartName','$description','$price','$cartImg','$userId')";
      mysqli_query($conn,$cartQuery);
      header("location:shop.php?equipment");
 
@@ -343,8 +346,8 @@ if(isset($_GET['equipment?id'])){
                               $price=$cart['price'];
                               $cartImg=$cart['plant_img'];
                               $cartImg=$cart['plant_img_two'];
-                              $cartQuery="INSERT INTO cart (cart_name,description,price,cart_img)
-                               VALUES ('$cartName','$description','$price','$cartImg')";
+                              $cartQuery="INSERT INTO cart (cart_name,description,price,cart_img,user_id)
+                               VALUES ('$cartName','$description','$price','$cartImg','$userId')";
                                mysqli_query($conn,$cartQuery);
                                header("location:shop.php?medical");
                         }
@@ -362,8 +365,8 @@ if(isset($_GET['discount?id'])){
     $description=$cart['description'];
     $price=$cart['price'];
     $cartImg=$cart['img'];
-    $cartQuery="INSERT INTO cart (cart_name,description,price,cart_img)
-     VALUES ('$cartName','$description','$price','$cartImg')";
+    $cartQuery="INSERT INTO cart (cart_name,description,price,cart_img,user_id)
+     VALUES ('$cartName','$description','$price','$cartImg','$userId')";
      mysqli_query($conn,$cartQuery);
      header("location:shop.php?discount");
 

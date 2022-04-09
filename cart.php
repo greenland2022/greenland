@@ -2,10 +2,10 @@
 ob_start();
 include('header/header.php');
 require('admin/include/conection.php');
-session_start();
 if (!isset($_SESSION['id'])) {
 header("location:signUp.php");
 }
+$userId=$_SESSION['id'];
 ?>
     <link rel="stylesheet" href="css/cart.scss">
 
@@ -30,7 +30,7 @@ if(isset($_GET['id'])){
   </tr>
       
       <?php
-    $query="SELECT * FROM cart";
+    $query="SELECT * FROM cart  WHERE user_id=$userId";
     $result=mysqli_query($conn,$query);
     $count=0;
     while($cart=mysqli_fetch_assoc($result)){

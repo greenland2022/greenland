@@ -1,6 +1,5 @@
 <?php
 ob_start();
-session_start();
 include('header/header.php');
 require('admin/include/conection.php');
 ?>
