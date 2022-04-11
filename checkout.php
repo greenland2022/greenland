@@ -1,6 +1,11 @@
 <?php
-include('header/header.php');
-require('admin/include/conection.php');
+if(isset($_GET['black'])){
+    include('header/blackHeader.php');
+    echo '<br><br><br>';
+}
+    else{
+    include('header/header.php');}
+    require('admin/include/conection.php');
 if (!isset($_SESSION['id'])) {
 header("location:signUp.php");
 }
@@ -81,8 +86,8 @@ $userId=$_SESSION['id'];
                     <div class="order-details-confirmation">
 
                         <div class="cart-page-heading">
-                            <h5>Your Order</h5>
-                            <p>The Details</p>
+                            <h5 id="cards">Your Order</h5>
+                            <p id="cards"> The Details</p>
                         </div>
 
                         <ul class="order-details-form mb-4">
@@ -118,7 +123,7 @@ $userId=$_SESSION['id'];
 
                         </div>
 
-                        <button type="submit" name="submit" class="btn essence-btn">Place Order</button>
+                        <button id="bottom" type="submit" name="submit" class="btn essence-btn">Place Order</button>
                     </div>
                 </div>
             </div>
@@ -156,7 +161,15 @@ if (isset($_POST['submit'])) {
     mysqli_query($conn,$queryIns);
     $deleteQuery="DELETE FROM cart";
     mysqli_query($conn,$deleteQuery);
+if(isset($_GET['black'])){ 
+    header("location:success.php?black");
+
+}
+else{
     header("location:success.php");
+
+}
+
 }
 
 }

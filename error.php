@@ -1,8 +1,13 @@
 
 <?php
 ob_start();
-include('header/header.php');
-require('admin/include/conection.php');
+if(isset($_GET['black'])){
+  include('header/blackHeader.php');
+  echo '<br><br><br>';
+}
+  else{
+  include('header/header.php');}
+  require('admin/include/conection.php');
 ?>
 <style>
 body

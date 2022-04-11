@@ -28,7 +28,17 @@ if ($isTouch = isset($_SESSION['id'])) {
     <!-- Core Style CSS -->
     <link rel="stylesheet" href="css/header.css">
     <link rel="stylesheet" href="css/login.css">
-
+<style>
+     .breadcumb_area:after {
+    background-color: rgba(255, 255, 255, 0.9);
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    z-index: -5;
+    content: ''; }
+</style>
 </head>
 
 <body>
@@ -56,7 +66,8 @@ if ($isTouch = isset($_SESSION['id'])) {
                                 <div class="megamenu">
                                     <ul class="single-mega cn-col-4">
                                         <li class="title">Plants</li>
-                                        <li><a href="shop.php?plants">Aloe Vera</a></li>
+                                        <li><a href="shop.php?plants">Plants</a>
+                                    </li>
                                         <li><a href="shop.php?medical">Medical Plants</a></li>
                                     </ul>
                                     <ul class="single-mega cn-col-4">
@@ -79,6 +90,7 @@ if ($isTouch = isset($_SESSION['id'])) {
                                     <li><a href="checkout.php">Checkout</a></li>
                                     <li><a href="cart.php">Cart Page</a></li>
                                     <li><a href="contact.php">Contact</a></li>
+                                    <li><a href="aboutus.php">About Us</a></li>
                                 </ul>
                             </li>
                             <li><a href="contact.php">Contact</a></li>
@@ -100,6 +112,9 @@ if ($isTouch = isset($_SESSION['id'])) {
                 <!-- Favourite Area -->
                 <div class="favourite-area">
                     <a href="logout.php"><img src="admin/images/icons8-logout-64.png" alt=""></a>
+                </div>
+                <div class="favourite-area">
+                    <a href="index.php?id"><img src="admin/images/night-mode.png" alt=""></a>
                 </div>
                 <!-- User Login Info -->
                 <div class="user-login-info">

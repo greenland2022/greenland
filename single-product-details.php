@@ -1,6 +1,16 @@
 <?php
 ob_start();
-include('header/header.php');
+if(isset($_GET['plantsIdBlack'])||isset($_GET['soilIdBlack'])||
+isset($_GET['equipmentIdBlack'])||isset($_GET['medicalIdBlack'])||
+isset($_GET['discountIdBlack'])||
+isset($_GET['idAddBlack'])||isset($_GET['idAsoilBlack'])||isset($_GET['idAequipmentBlack'])||
+isset($_GET['idAMedicalBlack'])||isset($_GET['idAdiscountBlack'])){
+    include('header/blackHeader.php');
+echo '<br><br><br><br>';
+}
+    else{
+    include('header/header.php');
+}
 require('admin/include/conection.php');
 if (!isset($_SESSION['id'])) {
 header("location:signUp.php");
@@ -19,6 +29,16 @@ if(isset($_GET['plantsId'])){
     $query="SELECT * FROM medical_plant WHERE plants_id={$_GET['medicalId']}";
 }else if (isset($_GET['discountId'])) {
     $query="SELECT * FROM discount WHERE id={$_GET['discountId']}";
+}if(isset($_GET['plantsIdBlack'])){
+    $query="SELECT * FROM plants WHERE plants_id={$_GET['plantsIdBlack']}";
+}else if (isset($_GET['soilIdBlack'])) {
+    $query="SELECT * FROM soil WHERE soil_id={$_GET['soilIdBlack']}";
+}else if (isset($_GET['equipmentIdBlack'])) {
+    $query="SELECT * FROM equipment WHERE equipment_id={$_GET['equipmentIdBlack']}";
+}else if (isset($_GET['medicalIdBlack'])) {
+    $query="SELECT * FROM medical_plant WHERE plants_id={$_GET['medicalIdBlack']}";
+}else if (isset($_GET['discountIdBlack'])) {
+    $query="SELECT * FROM discount WHERE id={$_GET['discountIdBlack']}";
 }
     $result=mysqli_query($conn,$query);
     $plant=mysqli_fetch_assoc($result);
@@ -60,7 +80,64 @@ if(isset($_GET['idAdd'])){
     $cartImg=$plant['img'];
 
  }
-if(isset($_GET['plantsId'])||isset($_GET['soilId'])||isset($_GET['equipmentId'])||isset($_GET['medicalId'])||isset($_GET['discountId'])){
+if(isset($_GET['plantsId'])||isset($_GET['plantsIdBlack'])||isset($_GET['soilId'])||isset($_GET['soilIdBlack'])
+||isset($_GET['equipmentId'])||isset($_GET['equipmentIdBlack'])||isset($_GET['medicalId'])||
+isset($_GET['medicalIdBlack'])||isset($_GET['discountId'])||isset($_GET['discountIdBlack'])||
+isset($_GET['idAddBlack'])||isset($_GET['idAsoilBlack'])||isset($_GET['idAequipmentBlack'])||
+isset($_GET['idAMedicalBlack'])||isset($_GET['idAdiscountBlack'])){
+
+}else{
+    $description=$plant['description'];
+    $price=$plant['price'];
+    $cartQuery="INSERT INTO cart (cart_name,description,price,cart_img,user_id)
+     VALUES ('$cartName','$description','$price','$cartImg','$userId')";
+     mysqli_query($conn,$cartQuery);
+}
+?>
+
+
+<?php
+if(isset($_GET['idAddBlack'])){
+    $query="SELECT * FROM plants WHERE plants_id={$_GET['idAddBlack']}";
+    $result=mysqli_query($conn,$query);
+    $plant=mysqli_fetch_assoc($result);
+    $cartName=$plant['plant_name'];
+    $cartImg=$plant['plant_img'];
+}else if(isset($_GET['idAsoilBlack'])){
+    $query="SELECT * FROM soil WHERE soil_id={$_GET['idAsoilBlack']}";
+    $result=mysqli_query($conn,$query);
+    $plant=mysqli_fetch_assoc($result);
+    $cartName=$plant['soil_name'];
+    $cartImg=$plant['soil_img'];
+
+ }else if(isset($_GET['idAequipmentBlack'])){
+    $query="SELECT * FROM equipment WHERE equipment_id={$_GET['idAequipmentBlack']}";
+    $result=mysqli_query($conn,$query);
+    $plant=mysqli_fetch_assoc($result);
+    $cartName=$plant['equipment_name'];
+    $cartImg=$plant['equipment_img'];
+
+ }else if(isset($_GET['idAMedicalBlack'])){
+    $query="SELECT * FROM medical_plant WHERE plants_id={$_GET['idAMedicalBlack']}";
+    $result=mysqli_query($conn,$query);
+    $plant=mysqli_fetch_assoc($result);
+    $cartName=$plant['plant_name'];
+    $cartImg=$plant['plant_img'];
+
+ }else if(isset($_GET['idAdiscountBlack'])){
+    $query="SELECT * FROM discount WHERE id={$_GET['idAdiscountBlack']}";
+    $result=mysqli_query($conn,$query);
+    $plant=mysqli_fetch_assoc($result);
+    $cartName=$plant['name'];
+    $cartImg=$plant['img'];
+
+ }
+if(isset($_GET['plantsId'])||isset($_GET['plantsIdBlack'])||
+isset($_GET['soilId'])||isset($_GET['soilIdBlack'])||isset($_GET['equipmentId'])||
+isset($_GET['equipmentIdBlack'])||isset($_GET['medicalId'])||isset($_GET['medicalIdBlack'])||
+isset($_GET['discountId'])||isset($_GET['discountIdBlack'])||
+isset($_GET['idAdd'])||isset($_GET['idAsoil'])||isset($_GET['idAequipment'])||
+isset($_GET['idAMedical'])||isset($_GET['idAdiscount'])){
 
 }else{
     $description=$plant['description'];
@@ -89,15 +166,15 @@ if(isset($_GET['plantsId'])||isset($_GET['soilId'])||isset($_GET['equipmentId'])
                 <div class="single-cart-item">
                     <a href="#" class="product-image">
                     <?php
-                    if(isset($_GET['plantsId'])){
+                    if(isset($_GET['plantsId'])||isset($_GET['plantsIdBlack'])){
                         echo "<img src='admin/images/{$plant['plant_img']}' class='cart-thumb'>";
-                    }else if (isset($_GET['soilId'])) {
+                    }else if (isset($_GET['soilId'])||isset($_GET['soilIdBlack'])) {
                         echo "<img src='admin/images/{$plant['soil_img']}' class='cart-thumb'>";
-                    }else if (isset($_GET['equipmentId'])) {
+                    }else if (isset($_GET['equipmentId'])||isset($_GET['equipmentIdBlack'])) {
                         echo "<img src='admin/images/{$plant['equipment_img']}' class='cart-thumb'>";
-                    }else if (isset($_GET['medicalId'])) {
+                    }else if (isset($_GET['medicalId'])||isset($_GET['medicalIdBlack'])) {
                         echo "<img src='admin/images/{$plant['plant_img']}' class='cart-thumb'>";
-                    }else if (isset($_GET['discountId'])) {
+                    }else if (isset($_GET['discountId'])||isset($_GET['discountIdBlack'])) {
                         echo "<img src='admin/images/{$plant['img']}' class='cart-thumb'>";
 
                     }
@@ -120,15 +197,15 @@ if(isset($_GET['plantsId'])||isset($_GET['soilId'])||isset($_GET['equipmentId'])
                 <div class="single-cart-item">
                     <a href="#" class="product-image">
                     <?php
-     if(isset($_GET['plantsId'])){
+     if(isset($_GET['plantsId'])||isset($_GET['plantsIdBlack'])){
         echo "<img src='admin/images/{$plant['plant_img']}' class='cart-thumb'>";
-    }else if (isset($_GET['soilId'])) {
+    }else if (isset($_GET['soilId'])||isset($_GET['soilIdBlack'])) {
         echo "<img src='admin/images/{$plant['soil_img']}' class='cart-thumb'>";
-    }else if (isset($_GET['equipmentId'])) {
+    }else if (isset($_GET['equipmentId'])||isset($_GET['equipmentIdBlack'])) {
         echo "<img src='admin/images/{$plant['equipment_img']}' class='cart-thumb'>";
-    }else if (isset($_GET['medicalId'])) {
+    }else if (isset($_GET['medicalId'])||isset($_GET['medicalIdBlack'])) {
         echo "<img src='admin/images/{$plant['plant_img_two']}' class='cart-thumb'>";
-    }else if (isset($_GET['discountId'])) {
+    }else if (isset($_GET['discountId'])||isset($_GET['discountIdBlack'])) {
         echo "<img src='admin/images/{$plant['imgTwo']}' class='cart-thumb'>";
 
     }
@@ -148,15 +225,15 @@ if(isset($_GET['plantsId'])||isset($_GET['soilId'])||isset($_GET['equipmentId'])
                 <div class="single-cart-item">
                     <a href="#" class="product-image">
                     <?php
-if(isset($_GET['plantsId'])){
+if(isset($_GET['plantsId'])||isset($_GET['plantsIdBlack'])){
     echo "<img src='admin/images/{$plant['plant_img']}' class='cart-thumb'>";
-}else if (isset($_GET['soilId'])) {
+}else if (isset($_GET['soilId'])||isset($_GET['soilIdBlack'])) {
     echo "<img src='admin/images/{$plant['soil_img']}' class='cart-thumb'>";
-}else if (isset($_GET['equipmentId'])) {
+}else if (isset($_GET['equipmentId'])||isset($_GET['equipmentIdBlack'])) {
     echo "<img src='admin/images/{$plant['equipment_img']}' class='cart-thumb'>";
-}else if (isset($_GET['medicalId'])) {
+}else if (isset($_GET['medicalId'])||isset($_GET['medicalIdBlack'])) {
     echo "<img src='admin/images/{$plant['plant_img_two']}' class='cart-thumb'>";
-}else if (isset($_GET['discountId'])) {
+}else if (isset($_GET['discountId'])||isset($_GET['discountIdBlack'])) {
     echo "<img src='admin/images/{$plant['imgTwo']}' class='cart-thumb'>";
 
 }
@@ -198,19 +275,19 @@ if(isset($_GET['plantsId'])){
         <div class="single_product_thumb clearfix">
             <div class="product_thumbnail_slides owl-carousel">
             <?php
-if(isset($_GET['plantsId'])||isset($_GET['idAdd'])){
+if(isset($_GET['plantsId'])||isset($_GET['plantsIdBlack'])||isset($_GET['idAdd'])||isset($_GET['idAddBlack'])){
     echo "<img src='admin/images/{$plant['plant_img']}' class='cart-thumb'>";
     echo "<img src='admin/images/{$plant['img_two']}' class='cart-thumb'>";
-}else if (isset($_GET['soilId'])||isset($_GET['idAsoil'])) {
+}else if (isset($_GET['soilId'])||isset($_GET['soilIdBlack'])||isset($_GET['idAsoil'])||isset($_GET['idAsoilBlack'])) {
     echo "<img src='admin/images/{$plant['soil_img']}' class='cart-thumb'>";
     echo "<img src='admin/images/{$plant['img_two']}' class='cart-thumb'>";
-}else if (isset($_GET['equipmentId'])||isset($_GET['idAequipment'])) {
+}else if (isset($_GET['equipmentId'])||isset($_GET['equipmentIdBlack'])||isset($_GET['idAequipment'])||isset($_GET['idAequipmentBlack'])) {
     echo "<img src='admin/images/{$plant['equipment_img']}' class='cart-thumb'>";
     echo "<img src='admin/images/{$plant['img_two']}' class='cart-thumb'>";
-}else if (isset($_GET['medicalId'])||isset($_GET['idAMedical'])) {
+}else if (isset($_GET['medicalId'])||isset($_GET['medicalIdBlack'])||isset($_GET['idAMedical'])||isset($_GET['idAMedicalBlack'])) {
     echo "<img src='admin/images/{$plant['plant_img']}' class='cart-thumb'>";
     echo "<img src='admin/images/{$plant['plant_img_two']}' class='cart-thumb'>";
-}else if (isset($_GET['discountId'])||isset($_GET['idAdiscount'])) {
+}else if (isset($_GET['discountId'])||isset($_GET['discountIdBlack'])||isset($_GET['idAdiscount'])||isset($_GET['idAdiscountBlack'])) {
     echo "<img src='admin/images/{$plant['img']}' class='cart-thumb'>";
     echo "<img src='admin/images/{$plant['imgTwo']}' class='cart-thumb'>";
 
@@ -226,22 +303,22 @@ if(isset($_GET['plantsId'])||isset($_GET['idAdd'])){
             <!-- <span>mango</span> -->
             <a href="cart.php">
             <?php 
-             if(isset($_GET['plantsId'])||isset($_GET['idAdd'])){
-                echo "<h2>{$plant['plant_name']}</h2>"; 
-            }else if (isset($_GET['soilId'])||isset($_GET['idAsoil'])) {
-                echo "<h2>{$plant['soil_name']}</h2>"; 
-            }else if (isset($_GET['equipmentId'])||isset($_GET['idAequipment'])) {
-                echo "<h2>{$plant['equipment_name']}</h2>"; 
-            }else if (isset($_GET['medicalId'])||isset($_GET['idAMedical'])) {
-                echo "<h2>{$plant['plant_name']}</h2>"; 
-            }else if (isset($_GET['discountId'])||isset($_GET['idAdiscount'])) {
-                echo "<h2>{$plant['name']}</h2>"; 
+             if(isset($_GET['plantsId'])||isset($_GET['plantsIdBlack'])||isset($_GET['idAdd'])){
+                echo "<h2 id='cards'>{$plant['plant_name']}</h2>"; 
+            }else if (isset($_GET['soilId'])||isset($_GET['soilIdBlack'])||isset($_GET['idAsoil'])) {
+                echo "<h2 id='cards'>{$plant['soil_name']}</h2>"; 
+            }else if (isset($_GET['equipmentId'])||isset($_GET['equipmentIdBlack'])||isset($_GET['idAequipment'])) {
+                echo "<h2 id='cards'>{$plant['equipment_name']}</h2>"; 
+            }else if (isset($_GET['medicalId'])||isset($_GET['medicalIdBlack'])||isset($_GET['idAMedical'])) {
+                echo "<h2 id='cards'>{$plant['plant_name']}</h2>"; 
+            }else if (isset($_GET['discountId'])||isset($_GET['discountIdBlack'])||isset($_GET['idAdiscount'])) {
+                echo "<h2 id='cards'>{$plant['name']}</h2>"; 
             
             }
             ?>
             </a>
             <p class="product-price"><span class="old-price"></span><?php echo "{$plant['price']}";?> </p>
-            <?php echo "<p class='product-desc'>{$plant['description']}</p>";?>  
+            <?php echo "<p id='cards1' class='product-desc'>{$plant['description']}</p>";?>  
             
             <form>
 
@@ -259,7 +336,17 @@ if(isset($_GET['plantsId'])||isset($_GET['idAdd'])){
                             echo "<a href='single-product-details.php?idAMedical={$plant['plants_id']}' class='btn essence-btn'>Add To Cart</a>";
                         }else if (isset($_GET['discountId'])||isset($_GET['idAdiscount'])) {
                             echo "<a href='single-product-details.php?idAdiscount={$plant['id']}' class='btn essence-btn'>Add To Cart</a>";
-                        
+                        }else 
+                        if(isset($_GET['plantsIdBlack'])||isset($_GET['idAddBlack'])){
+                            echo "<a href='single-product-details.php?idAddBlack={$plant['plants_id']}' class='btn essence-btn'>Add To Cart</a>";
+                        }else if (isset($_GET['soilIdBlack'])||isset($_GET['idAsoilBlack'])) {
+                            echo "<a href='single-product-details.php?idAsoilBlack={$plant['soil_id']}' class='btn essence-btn'>Add To Cart</a>";
+                        }else if (isset($_GET['equipmentIdBlack'])||isset($_GET['idAequipmentBlack'])) {
+                            echo "<a href='single-product-details.php?idAequipmentBlack={$plant['equipment_id']}' class='btn essence-btn'>Add To Cart</a>";
+                        }else if (isset($_GET['medicalIdBlack'])||isset($_GET['idAMedicalBlack'])) {
+                            echo "<a href='single-product-details.php?idAMedicalBlack={$plant['plants_id']}' class='btn essence-btn'>Add To Cart</a>";
+                        }else if (isset($_GET['discountIdBlack'])||isset($_GET['idAdiscountBlack'])) {
+                            echo "<a href='single-product-details.php?idAdiscountBlack={$plant['id']}' class='btn essence-btn'>Add To Cart</a>";
                         }
 ?>
                     <!-- <button type="submit"  class="btn essence-btn">Add to cart</button> -->

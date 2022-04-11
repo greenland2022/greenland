@@ -1,7 +1,12 @@
 <?php
 ob_start();
-include('header/header.php');
-require('admin/include/conection.php');
+if(isset($_GET['black'])){
+    include('header/blackHeader.php');
+    echo '<br><br><br>';
+}
+    else{
+    include('header/header.php');}
+    require('admin/include/conection.php');
 ?>
 <style media="screen">
      
@@ -126,9 +131,9 @@ require('admin/include/conection.php');
            </svg>
        </div>
        <br />
-       <h2>Request Succeeded</h2>
-     <p>Ref Id: 9034333842</p>
-     <p> The order will be delivered in three days</p>
+       <h2 id="cards">Request Succeeded</h2>
+     <p id="cards1">Ref Id: 9034333842</p>
+     <p id="cards2"> The order will be delivered in three days</p>
    </div>
    <?php
 include('header/footer.php');

@@ -125,6 +125,9 @@ $user=$admin['admin_id'];
                         <li class="has-sub">
                             <a class="js-arrow" href="manageUser.php">
                                 <i class="fas fa-tachometer-alt"></i>Manage User</a>
+                        </li> <li class="has-sub">
+                            <a class="js-arrow" href="manageInquires.php">
+                                <i class="fas fa-tachometer-alt"></i>Manage Inquires</a>
                         </li>
                         <li class="has-sub">
                             <a class="js-arrow" href="manageOrder.php">

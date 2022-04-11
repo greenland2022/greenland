@@ -1,7 +1,13 @@
 <?php
 ob_start();
-include('header/header.php');
-require('admin/include/conection.php');
+if(isset($_GET['plantsBlack'])||isset($_GET['allBlack'])||isset($_GET['soilBlack'])||isset($_GET['equipmentBlack'])||isset($_GET['medicalBlack'])||isset($_GET['discountBlack'])){
+    include('header/blackHeader.php');
+echo '<br><br><br><br>';
+}
+    else{
+    include('header/header.php');
+}
+    require('admin/include/conection.php');
 if (!isset($_SESSION['id'])) {
 header("location:signUp.php");
 }
@@ -9,24 +15,24 @@ $userId=$_SESSION['id'];
 
 ?>
     <!-- ##### Breadcumb Area Start ##### -->
-    <div class="breadcumb_area bg-img" style="background-image: url(img/bg-img/breadcumb.jpg);">
+    <div  class="breadcumb_area bg-img" style="background-image: url(img/bg-img/breadcumb.jpg); ">
         <div class="container h-100">
             <div class="row h-100 align-items-center">
                 <div class="col-12">
                     <div class="page-title text-center">
                         <?php
-                        if (isset($_GET['soil'])) {
-                        echo "<h2>SOIL</h2>";
-                        }else  if (isset($_GET['plants'])) {
-                            echo "<h2>PLANTS</h2>";
-                            }else  if (isset($_GET['equipment'])) {
-                                echo "<h2>ACCESSORIES</h2>";
-                                }else  if (isset($_GET['medical'])) {
-                                    echo "<h2>MEDICAL</h2>";
-                                    }else  if (isset($_GET['all'])) {
-                                        echo "<h2>ALL PRODUCT</h2>";
-                                        }else  if (isset($_GET['discount'])) {
-                                            echo "<h2>GLOBAL SALE </h2>";
+                        if (isset($_GET['soil'])||isset($_GET['soilBlack'])) {
+                        echo "<h2 class='bord'>SOIL</h2>";
+                        }else  if (isset($_GET['plants'])||isset($_GET['plantsBlack'])) {
+                            echo "<h2 class='bord'>PLANTS</h2>";
+                            }else  if (isset($_GET['equipment'])||isset($_GET['equipmentBlack'])) {
+                                echo "<h2 class='bord'>ACCESSORIES</h2>";
+                                }else  if (isset($_GET['medical'])||isset($_GET['medicalBlack'])) {
+                                    echo "<h2 class='bord'>MEDICAL</h2>";
+                                    }else  if (isset($_GET['all']) ||isset($_GET['allBlack'])) {
+                                        echo "<h2 class='bord'>ALL PRODUCT</h2>";
+                                        }else  if (isset($_GET['discount'])||isset($_GET['discountBlack'])) {
+                                            echo "<h2 class='bord'>GLOBAL SALE </h2>";
                                             }
                         ?>
                     </div>
@@ -49,54 +55,61 @@ $userId=$_SESSION['id'];
                             <h6 class="widget-title mb-30">Catagories</h6>
 
                             <!--  Catagories  -->
-                            <div class="catagories-menu">
+                            <div id="color5"  class="catagories-menu">
                                 <ul id="menu-content2" class="menu-content collapse show">
                                     <!-- Single Item -->
-                                    <li data-toggle="collapse" data-target="#clothing">
-                                        <a href="#">Plants</a>
+                                    <?php
+if(isset($_GET['plantsBlack'])||isset($_GET['allBlack'])||isset($_GET['soilBlack'])||isset($_GET['equipmentBlack'])||isset($_GET['medicalBlack'])||isset($_GET['discountBlack'])){
+
+                             echo '  <li data-toggle="collapse" data-target="#clothing">
+                                        <a href="#" class="licolor">Plants</a>
                                         <ul class="sub-menu collapse show" id="clothing">
-                                            <li><a href="shop.php?plants">Plants</a></li>
-                                            <li><a href="shop.php?medical">Medical Plants</a></li>
+                                            <li  ><a id="licolor" href="shop.php?plantsBlack">Plants</a></li>
+                                            <li><a id="color4" href="shop.php?medicalBlack">Medical Plants</a></li>
                                         </ul>
                                     </li>
                                     <!-- Single Item -->
-                                    <li data-toggle="collapse" data-target="#shoes" class="collapsed">
-                                        <a href="shop.php?soil">Soils</a>
+                                    <li class="licolor"  data-toggle="collapse" data-target="#shoes" class="collapsed">
+                                        <a  class="licolor" href="shop.php?soilBlack">Soils</a>
                                     </li>
                                     <!-- Single Item -->
-                                    <li data-toggle="collapse" data-target="#accessories" class="collapsed">
-                                        <a href="shop.php?equipment">accessories</a>
+                                    <li  data-toggle="collapse" data-target="#accessories" class="collapsed">
+                                        <a class="licolor" href="shop.php?equipmentBlack">accessories</a>
                                     </li>
-                                    <li data-toggle="collapse" data-target="#accessories" class="collapsed">
-                                        <a href="shop.php?discount">Discount</a>
+                                    <li   data-toggle="collapse" data-target="#accessories" class="collapsed">
+                                        <a class="licolor" href="shop.php?discountBlack">Discount</a>
                                     </li> 
-                                    <li data-toggle="collapse" data-target="#accessories" class="collapsed">
-                                        <a href="shop.php?all">All Product</a>
-                                    </li>
+                                    <li   data-toggle="collapse" data-target="#accessories" class="collapsed">
+                                        <a class="licolor" href="shop.php?allBlack">All Product</a>
+                                    </li>';
+}else{
+    echo '  <li data-toggle="collapse" data-target="#clothing">
+    <a href="#" class="licolor">Plants</a>
+    <ul class="sub-menu collapse show" id="clothing">
+        <li  ><a id="licolor" href="shop.php?plants">Plants</a></li>
+        <li><a id="color4" href="shop.php?medical">Medical Plants</a></li>
+    </ul>
+</li>
+<!-- Single Item -->
+<li class="licolor"  data-toggle="collapse" data-target="#shoes" class="collapsed">
+    <a  class="licolor" href="shop.php?soil">Soils</a>
+</li>
+<!-- Single Item -->
+<li  data-toggle="collapse" data-target="#accessories" class="collapsed">
+    <a class="licolor" href="shop.php?equipment">accessories</a>
+</li>
+<li   data-toggle="collapse" data-target="#accessories" class="collapsed">
+    <a class="licolor" href="shop.php?discount">Discount</a>
+</li> 
+<li   data-toggle="collapse" data-target="#accessories" class="collapsed">
+    <a class="licolor" href="shop.php?all">All Product</a>
+</li>';
+}
+                                    ?>
                                 </ul>
                             </div>
                         </div>
 
-                        <!-- ##### Single Widget ##### -->
-                        <!-- <div class="widget price mb-50">
-                            <h6 class="widget-title mb-30">Filter by</h6>
-                            <p class="widget-title2 mb-30">Price</p>
-
-                            <div class="widget-desc">
-                                <div class="slider-range">
-                                    <div data-min="49" data-max="360" data-unit="$" class="slider-range-price ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all" data-value-min="49" data-value-max="360" data-label-result="Range:">
-                                        <div class="ui-slider-range ui-widget-header ui-corner-all"></div>
-                                        <span class="ui-slider-handle ui-state-default ui-corner-all" tabindex="0"></span>
-                                        <span class="ui-slider-handle ui-state-default ui-corner-all" tabindex="0"></span>
-                                    </div>
-                                    <div class="range-price">Range: $49.00 - $360.00</div>
-                                </div>
-                            </div>
-                        </div> -->
-
-                   
-
-                      
                     </div>
                 </div>
 
@@ -108,39 +121,27 @@ $userId=$_SESSION['id'];
                                     <!-- Total Products -->
                                     <div class="total-products">
 
-                                        <p><span> 
+                                        <p ><span> 
                             <?php
                                         $countpro=0;
-                                   if (isset($_GET['soil'])) {
+                                   if (isset($_GET['soil'])||isset($_GET['soilBlack'])) {
                                     $query2="SELECT * FROM soil";
-                                }else  if (isset($_GET['plants'])) {
+                                }else  if (isset($_GET['plants'])||isset($_GET['plantsBlack'])) {
                                     $query2="SELECT * FROM plants";
-                                        }else  if (isset($_GET['equipment'])) {
+                                        }else  if (isset($_GET['equipment'])||isset($_GET['equipmentBlack'])) {
                                             $query2="SELECT * FROM equipment";
-                                        }else  if (isset($_GET['medical'])) {
+                                        }else  if (isset($_GET['medical'])||isset($_GET['medicalBlack'])) {
                                             $query2="SELECT * FROM medical_plant";
-                                                }else  if (isset($_GET['discount'])) {
+                                                }else  if (isset($_GET['discount'])||isset($_GET['discountBlack'])) {
                                                     $query2="SELECT * FROM discount";
-                                                        }else  if (isset($_GET['all'])) {
+                                                        }else  if (isset($_GET['all']) ||isset($_GET['allBlack'])) {
                                                 }
                             $result2=mysqli_query($conn,$query2);
                                 while($plants=mysqli_fetch_assoc($result2)){$countpro++ ;}
                             echo $countpro;?>
-                            </span> products found</p>
+                            </span> <span id="productsfound">products found</span></p>
                                     </div>
-                                    <!-- Sorting -->
-                                    <div class="product-sorting d-flex">
-                                        <p>Sort by:</p>
-                                        <form action="#" method="get">
-                                            <select name="select" id="sortByselect">
-                                                <option value="value">Highest Rated</option>
-                                                <option value="value">Newest</option>
-                                                <option value="value">Price: $$ - $</option>
-                                                <option value="value">Price: $ - $$</option>
-                                            </select>
-                                            <input type="submit" class="d-none" value="">
-                                        </form>
-                                    </div>
+                                    
                                 </div>
                             </div>
                         </div>
@@ -151,7 +152,10 @@ $userId=$_SESSION['id'];
                         <!-- ----------------------------------plants Part -------------------------------------    -->
 
                         <?php
-if(isset($_GET['plants?id'])){
+if(isset($_GET['plants?id'])||isset($_GET['plantsBlack?idBlack'])){
+    if(isset($_GET['plantsBlack?idBlack']))
+    $query="SELECT * FROM plants WHERE plants_id={$_GET['plantsBlack?idBlack']}";
+else
     $query="SELECT * FROM plants WHERE plants_id={$_GET['plants?id']}";
   $result=  mysqli_query($conn,$query);
   $cart=mysqli_fetch_assoc($result);
@@ -162,12 +166,15 @@ if(isset($_GET['plants?id'])){
     $cartQuery="INSERT INTO cart (cart_name,description,price,cart_img,user_id)
      VALUES ('$cartName','$description','$price','$cartImg','$userId')";
      mysqli_query($conn,$cartQuery);
+    if(isset($_GET['plantsBlack?idBlack']))
+     header("location:shop.php?plantsBlack");
+     else
      header("location:shop.php?plants");
 }
 
 ?>
                             <?php
-                            if (isset($_GET['plants'])||isset($_GET['all'])) {
+                            if (isset($_GET['plants'])||isset($_GET['plantsBlack'])||isset($_GET['all']) ||isset($_GET['allBlack'])) {
                             $query2="SELECT * FROM plants";
                             $result2=mysqli_query($conn,$query2);
                             while($plants=mysqli_fetch_assoc($result2)){
@@ -180,15 +187,24 @@ if(isset($_GET['plants?id'])){
                                 echo "<a href='' class='favme fa fa-heart'></a>";
                                 echo "</div>";
                                 echo "</div>";
-                                echo "<div class='product-description'>";
-                                echo "<span><span>{$plants['description']}</span>";
-                                echo "<a href='single-product-details.php?plantsId={$plants['plants_id']}'>";
-                                echo "<h6>{$plants['plant_name']}</h6>";
+                                echo "<div id='cards' class='product-description'>";
+                                echo "<span><span id='color'>{$plants['description']}</span>";
+                                if (isset($_GET['plantsBlack'])||isset($_GET['allBlack'])) {
+                                    echo "<a href='single-product-details.php?plantsIdBlack={$plants['plants_id']}'>";
+                                }else{
+                                    echo "<a href='single-product-details.php?plantsId={$plants['plants_id']}'>";
+
+                                }
+                                echo "<h6 id='color3'>{$plants['plant_name']}</h6>";
                                 echo "</a>";
-                                echo "<p class='product-price'>$ {$plants['price']}</p>";
+                                echo "<p class='product-price' id='color2'>$ {$plants['price']}</p>";
                                 echo "<div class='hover-content'>";
                                 echo "<div class='add-to-cart-btn'>";
+                                if (isset($_GET['plantsBlack'])||isset($_GET['allBlack'])) {
+                                echo "<a href='shop.php?plantsBlack?idBlack={$plants['plants_id']}' type='submit' name='add' class='btn essence-btn'>Add to Cart</a>";
+                                }else{
                                 echo "<a href='shop.php?plants?id={$plants['plants_id']}' type='submit' name='add' class='btn essence-btn'>Add to Cart</a>";
+                                }
                                 echo "</div>";
                                 echo "</div>";
                                 echo "</div>";
@@ -202,7 +218,10 @@ if(isset($_GET['plants?id'])){
 
 
                         <?php
-if(isset($_GET['soil?id'])){
+if(isset($_GET['soil?id'])||isset($_GET['soilBlack?idBlack'])){
+    if (isset($_GET['soilBlack?idBlack'])) 
+    $query="SELECT * FROM soil WHERE soil_id={$_GET['soilBlack?idBlack']}";
+else
     $query="SELECT * FROM soil WHERE soil_id={$_GET['soil?id']}";
   $result=  mysqli_query($conn,$query);
   $cart=mysqli_fetch_assoc($result);
@@ -213,6 +232,9 @@ if(isset($_GET['soil?id'])){
     $cartQuery="INSERT INTO cart (cart_name,description,price,cart_img,user_id)
      VALUES ('$cartName','$description','$price','$cartImg','$userId')";
      mysqli_query($conn,$cartQuery);
+    if (isset($_GET['soilBlack?idBlack'])) 
+    header("location:shop.php?soilBlack");
+else
      header("location:shop.php?soil");
 
 }
@@ -220,7 +242,7 @@ if(isset($_GET['soil?id'])){
 ?>
 
                         <?php
-                            if (isset($_GET['soil'])||isset($_GET['all'])) {
+                            if (isset($_GET['soil'])||isset($_GET['soilBlack'])||isset($_GET['all']) ||isset($_GET['allBlack'])) {
                             $query2="SELECT * FROM soil";
                             $result2=mysqli_query($conn,$query2);
                             while($soil=mysqli_fetch_assoc($result2)){
@@ -233,15 +255,22 @@ if(isset($_GET['soil?id'])){
                                 echo "<a href='' class='favme fa fa-heart'></a>";
                                 echo "</div>";
                                 echo "</div>";
-                                echo "<div class='product-description'>";
-                                echo "<span><span>{$soil['description']}</span>";
-                                echo "<a href='single-product-details.php?soilId={$soil['soil_id']}'>";
-                                echo "<h6>{$soil['soil_name']}</h6>";
+                                echo "<div id='cards1' class='product-description'>";
+                                echo "<span><span id='color20'>{$soil['description']}</span>";
+                                if (isset($_GET['soilBlack'])||isset($_GET['allBlack'])) {
+                                    echo "<a href='single-product-details.php?soilIdBlack={$soil['soil_id']}'>";
+                                }else{
+                                echo "<a href='single-product-details.php?soilId={$soil['soil_id']}'>";}
+                                echo "<h6 id='color3'>{$soil['soil_name']}</h6>";
                                 echo "</a>";
-                                echo "<p class='product-price'>$ {$soil['price']}</p>";
+                                echo "<p id='color16'class='product-price'>$ {$soil['price']}</p>";
                                 echo "<div class='hover-content'>";
                                 echo "<div class='add-to-cart-btn'>";
-                                echo "<a href='shop.php?soil?id={$soil['soil_id']}' type='submit' name='add' class='btn essence-btn'>Add to Cart</a>";
+                                if (isset($_GET['soilBlack'])||isset($_GET['allBlack'])) {
+                                    echo "<a href='shop.php?soilBlack?idBlack={$soil['soil_id']}' type='submit' name='add' class='btn essence-btn'>Add to Cart</a>";
+                                }else{
+                                        echo "<a href='shop.php?soil?id={$soil['soil_id']}' type='submit' name='add' class='btn essence-btn'>Add to Cart</a>";
+                                    }
                                 echo "</div>";
                                 echo "</div>";
                                 echo "</div>";
@@ -255,7 +284,7 @@ if(isset($_GET['soil?id'])){
                         <!-- ----------------------------------Soil Part -------------------------------------    -->
                         <!-- ----------------------------------equipment Part -------------------------------------    -->
                         <?php
-                            if (isset($_GET['equipment'])||isset($_GET['all'])) {
+                            if (isset($_GET['equipment'])||isset($_GET['equipmentBlack'])||isset($_GET['all']) ||isset($_GET['allBlack'])) {
                             $query2="SELECT * FROM equipment";
                             $result2=mysqli_query($conn,$query2);
                             while($equipment=mysqli_fetch_assoc($result2)){
@@ -268,15 +297,22 @@ if(isset($_GET['soil?id'])){
                                 echo "<a href='' class='favme fa fa-heart'></a>";
                                 echo "</div>";
                                 echo "</div>";
-                                echo "<div class='product-description'>";
-                                echo "<span><span>{$equipment['description']}</span>";
-                                echo "<a href='single-product-details.php?equipmentId={$equipment['equipment_id']}'>";
-                                echo "<h6>{$equipment['equipment_name']}</h6>";
+                                echo "<div id='cards2' class='product-description'>";
+                                echo "<span><span id='color21'>{$equipment['description']}</span>";
+                                if (isset($_GET['equipmentBlack'])||isset($_GET['allBlack'])) {
+                                    echo "<a href='single-product-details.php?equipmentIdBlack={$equipment['equipment_id']}'>";
+                                }else{
+                                echo "<a href='single-product-details.php?equipmentId={$equipment['equipment_id']}'>";}
+                                echo "<h6 id='color13'>{$equipment['equipment_name']}</h6>";
                                 echo "</a>";
-                                echo "<p class='product-price'>$ {$equipment['price']}</p>";
+                                echo "<p id='color17' class='product-price'>$ {$equipment['price']}</p>";
                                 echo "<div class='hover-content'>";
                                 echo "<div class='add-to-cart-btn'>";
-                                echo "<a href='shop.php?equipment?id={$equipment['equipment_id']}' type='submit' name='add' class='btn essence-btn'>Add to Cart</a>";
+                                if (isset($_GET['equipmentBlack'])||isset($_GET['allBlack'])) {
+                                    echo "<a href='shop.php?equipmentBlack?idBlack={$equipment['equipment_id']}' type='submit' name='add' class='btn essence-btn'>Add to Cart</a>";
+                                }else{
+                                    echo "<a href='shop.php?equipment?id={$equipment['equipment_id']}' type='submit' name='add' class='btn essence-btn'>Add to Cart</a>";
+                                }
                                 echo "</div>";
                                 echo "</div>";
                                 echo "</div>";
@@ -287,7 +323,10 @@ if(isset($_GET['soil?id'])){
                             ?>
 
 <?php
-if(isset($_GET['equipment?id'])){
+if(isset($_GET['equipment?id'])||isset($_GET['equipmentBlack?idBlack'])){
+    if(isset($_GET['equipmentBlack?idBlack']))
+    $query="SELECT * FROM equipment WHERE equipment_id={$_GET['equipmentBlack?idBlack']}";
+else
     $query="SELECT * FROM equipment WHERE equipment_id={$_GET['equipment?id']}";
   $result=  mysqli_query($conn,$query);
   $cart=mysqli_fetch_assoc($result);
@@ -298,6 +337,9 @@ if(isset($_GET['equipment?id'])){
     $cartQuery="INSERT INTO cart (cart_name,description,price,cart_img,user_id)
      VALUES ('$cartName','$description','$price','$cartImg','$userId')";
      mysqli_query($conn,$cartQuery);
+    if(isset($_GET['equipmentBlack?idBlack']))
+    header("location:shop.php?equipmentBlack");
+else
      header("location:shop.php?equipment");
 
 }
@@ -308,7 +350,7 @@ if(isset($_GET['equipment?id'])){
 
                             
                             <?php
-                            if (isset($_GET['medical'])||isset($_GET['all'])) {
+                            if (isset($_GET['medical'])||isset($_GET['medicalBlack'])||isset($_GET['all']) ||isset($_GET['allBlack'])) {
                             $query3="SELECT * FROM medical_plant";
                             $result3=mysqli_query($conn,$query3);
                             while($plantsMed=mysqli_fetch_assoc($result3)){
@@ -321,15 +363,22 @@ if(isset($_GET['equipment?id'])){
                                 echo "<a href='' class='favme fa fa-heart'></a>";
                                 echo "</div>";
                                 echo "</div>";
-                                echo "<div class='product-description'>";
-                                echo "<span><span>{$plantsMed['description']}</span>";
-                                echo "<a href='single-product-details.php?medicalId={$plantsMed['plants_id']}'>";
-                                echo "<h6>{$plantsMed['plant_name']}</h6>";
+                                echo "<div id='cards3' class='product-description'>";
+                                echo "<span><span id='color22'>{$plantsMed['description']}</span>";
+                                if (isset($_GET['medicalBlack'])||isset($_GET['allBlack'])) {
+                                    echo "<a href='single-product-details.php?medicalIdBlack={$plantsMed['plants_id']}'>";
+                                }else{
+                                echo "<a href='single-product-details.php?medicalId={$plantsMed['plants_id']}'>";}
+                                echo "<h6 id='color14'>{$plantsMed['plant_name']}</h6>";
                                 echo "</a>";
-                                echo "<p class='product-price'>$ {$plantsMed['price']}</p>";
+                                echo "<p id='color18' class='product-price'>$ {$plantsMed['price']}</p>";
                                 echo "<div class='hover-content'>";
                                 echo "<div class='add-to-cart-btn'>";
-                                echo "<a href='shop.php?id={$plantsMed['plants_id']}' type='submit' name='add' class='btn essence-btn'>Add to Cart</a>";
+                                if (isset($_GET['medicalBlack'])||isset($_GET['allBlack'])) {
+                                    echo "<a href='shop.php?medicalBlack?idMedBlack={$plantsMed['plants_id']}' type='submit' name='add' class='btn essence-btn'>Add to Cart</a>";
+                                }else{
+                                    echo "<a href='shop.php?id={$plantsMed['plants_id']}' type='submit' name='add' class='btn essence-btn'>Add to Cart</a>";
+                                }
                                 echo "</div>";
                                 echo "</div>";
                                 echo "</div>";
@@ -337,7 +386,10 @@ if(isset($_GET['equipment?id'])){
                                 echo "</div>";
                             }
                         }
-                        if(isset($_GET['id'])){
+                        if(isset($_GET['id'])||isset($_GET['medicalBlack?idMedBlack'])){
+                            if (isset($_GET['medicalBlack?idMedBlack'])) 
+                            $query="SELECT * FROM medical_plant WHERE plants_id={$_GET['medicalBlack?idMedBlack']}";
+else
                             $query="SELECT * FROM medical_plant WHERE plants_id={$_GET['id']}";
                             $result=  mysqli_query($conn,$query);
                             $cart=mysqli_fetch_assoc($result);
@@ -349,6 +401,9 @@ if(isset($_GET['equipment?id'])){
                               $cartQuery="INSERT INTO cart (cart_name,description,price,cart_img,user_id)
                                VALUES ('$cartName','$description','$price','$cartImg','$userId')";
                                mysqli_query($conn,$cartQuery);
+                            if (isset($_GET['medicalBlack?idMedBlack'])) 
+                            header("location:shop.php?medicalBlack");
+else
                                header("location:shop.php?medical");
                         }
                             ?>
@@ -357,7 +412,10 @@ if(isset($_GET['equipment?id'])){
                         <!-- ----------------------------------medical Part -------------------------------------    -->
                         <!-- ----------------------------------discount Part -------------------------------------    -->
                         <?php
-if(isset($_GET['discount?id'])){
+if(isset($_GET['discount?id'])||isset($_GET['discountBlack?idBlack'])){
+    if(isset($_GET['discountBlack?idBlack']))
+    $query="SELECT * FROM discount WHERE id={$_GET['discountBlack?idBlack']}";
+else
     $query="SELECT * FROM discount WHERE id={$_GET['discount?id']}";
   $result=  mysqli_query($conn,$query);
   $cart=mysqli_fetch_assoc($result);
@@ -368,6 +426,9 @@ if(isset($_GET['discount?id'])){
     $cartQuery="INSERT INTO cart (cart_name,description,price,cart_img,user_id)
      VALUES ('$cartName','$description','$price','$cartImg','$userId')";
      mysqli_query($conn,$cartQuery);
+    if(isset($_GET['discountBlack?idBlack']))
+    header("location:shop.php?discountBlack");
+else
      header("location:shop.php?discount");
 
 }
@@ -377,7 +438,7 @@ if(isset($_GET['discount?id'])){
 
                             
                             <?php
-                            if (isset($_GET['discount'])) {
+                            if (isset($_GET['discount'])||isset($_GET['discountBlack'])) {
                             $query2="SELECT * FROM discount";
                             $result2=mysqli_query($conn,$query2);
                             $count=0;
@@ -392,17 +453,24 @@ if(isset($_GET['discount?id'])){
                                 echo "<a href='' class='favme fa fa-heart'></a>";
                                 echo "</div>";
                                 echo "</div>";
-                                echo "<div class='product-description'>";
-                                echo "<span><span>{$product['description']}</span>";
-                                echo "<a href='single-product-details.php?discountId={$product['id']}'>";
-                                echo "<h6>{$product['name']}</h6>";
+                                echo "<div id='cards4' class='product-description'>";
+                                echo "<span><span id='color23'>{$product['description']}</span>";
+                                if (isset($_GET['discountIdBlack'])||isset($_GET['allBlack'])) {
+                                    echo "<a href='single-product-details.php?discountIdBlack={$product['id']}'>";
+                                }else{
+                                echo "<a href='single-product-details.php?discountId={$product['id']}'>";}
+                                echo "<h6 id='color15'>{$product['name']}</h6>";
                                 echo "</a>";
                                  $num=(int)$product['price'];
                                   $dicount=$num*.4;
-                                echo "<p class='product-price'><span class='old-price'>$ {$product['price']}</span>$ $dicount</p>";
+                                echo "<p id='color19' class='product-price'><span class='old-price'>$ {$product['price']}</span>$ $dicount</p>";
                                 echo "<div class='hover-content'>";
                                 echo "<div class='add-to-cart-btn'>";
-                                echo "<a href='shop.php?discount?id={$product['id']}' type='submit'r class='btn essence-btn'>Add to Cart</a>";
+                                if (isset($_GET['discountBlack'])||isset($_GET['allBlack'])) {
+                                    echo "<a href='shop.php?discountBlack?idBlack={$product['id']}' type='submit' name='add' class='btn essence-btn'>Add to Cart</a>";
+                                }else{
+                                    echo "<a href='shop.php?discount?id={$product['id']}' type='submit'r class='btn essence-btn'>Add to Cart</a>";
+                                }
                                 echo "</div>";
                                 echo "</div>";
                                 echo "</div>";
@@ -420,17 +488,7 @@ if(isset($_GET['discount?id'])){
                         </div>
                     </div>
                     <!-- Pagination -->
-                    <nav aria-label="navigation">
-                        <ul class="pagination mt-50 mb-70">
-                            <li class="page-item"><a class="page-link" href="#"><i class="fa fa-angle-left"></i></a></li>
-                            <li class="page-item"><a class="page-link" href="#">1</a></li>
-                            <li class="page-item"><a class="page-link" href="#">2</a></li>
-                            <li class="page-item"><a class="page-link" href="#">3</a></li>
-                            <li class="page-item"><a class="page-link" href="#">...</a></li>
-                            <li class="page-item"><a class="page-link" href="#">21</a></li>
-                            <li class="page-item"><a class="page-link" href="#"><i class="fa fa-angle-right"></i></a></li>
-                        </ul>
-                    </nav>
+                  
                 </div>
             </div>
         </div>
