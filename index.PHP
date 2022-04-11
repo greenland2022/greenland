@@ -1,17 +1,22 @@
 <?php
-include('header/header.php');
+if(isset($_GET['id'])){
+include('header/blackHeader.php');}
+else{
+include('header/header.php');}
+
 require('admin/include/conection.php');
 ?>
   
 
-    <!-- ##### Welcome Area Start ##### -->
-    <section class="welcome_area bg-img background-overlay" style="background-image: url(img/bg-img/pexels-photo-2847147.jpeg);">
+     <!-- ##### Welcome Area Start ##### -->
+     <section class="welcome_area bg-img background-overlay" style="background-image: url(img/bg-img/pexels-photo-2847147.jpeg);">
         <div class="container h-100">
             <div class="row h-100 align-items-center">
                 <div class="col-12">
                     <div class="hero-content">
                         <h2>New Collection</h2>
-                        <a href="shop.php?all" class="btn essence-btn">view collection</a>
+                        <?php
+                        if(isset($_GET['id'])){echo "<a href='shop.php?allBlack' class='btn essence-btn'>view collection</a>";}else{echo "<a href='shop.php?all' class='btn essence-btn'>view collection</a>";}?>
                     </div>
                 </div>
             </div>
@@ -27,7 +32,8 @@ require('admin/include/conection.php');
                 <div class="col-12 col-sm-6 col-md-4">
                     <div class="single_catagory_area d-flex align-items-center justify-content-center bg-img" style="background-image: url(img/bg-img/pl8.jpg);">
                         <div class="catagory-content">
-                            <a href="shop.php?plants">PLANTS</a>
+                            <?php
+                        if(isset($_GET['id'])){echo "<a href='shop.php?plantsBlack'>PLANTS</a>";}else{echo "<a href='shop.php?plants'>PLANTS</a>";}?>
                         </div>
                     </div>
                 </div>
@@ -35,7 +41,9 @@ require('admin/include/conection.php');
                 <div class="col-12 col-sm-6 col-md-4">
                     <div class="single_catagory_area d-flex align-items-center justify-content-center bg-img" style="background-image: url(img/bg-img/soil-1.jpg);">
                         <div class="catagory-content">
-                            <a href="shop.php?soil">Soils</a>
+                            <?php
+                        if(isset($_GET['id'])){echo "<a href='shop.php?soilBlack'>Soils</a>";}else{echo "<a href='shop.php?soil'>Soils</a>";}?>
+                      
                         </div>
                     </div>
                 </div>
@@ -43,7 +51,9 @@ require('admin/include/conection.php');
                 <div class="col-12 col-sm-6 col-md-4">
                     <div class="single_catagory_area d-flex align-items-center justify-content-center bg-img" style="background-image: url(img/bg-img/acc-6.jpg);">
                         <div class="catagory-content">
-                            <a href="shop.php?equipment">Accessories</a>
+                            <?php
+                        if(isset($_GET['id'])){echo "<a href='shop.php?equipmentBlack'>Accessories</a>";}else{echo "<a href='shop.php?equipment'>Accessories</a>";}?>
+                      
                         </div>
                     </div>
                 </div>
@@ -62,7 +72,9 @@ require('admin/include/conection.php');
                             <div class="cta--text">
                                 <h6>-60%</h6>
                                 <h2 style="color:white;">Global Sale</h2>
-                                <a href="shop.php?discount" class="btn essence-btn">Buy Now</a>
+                                <?php
+                        if(isset($_GET['id'])){echo "<a href='shop.php?discountBlack' class='btn essence-btn' >Buy Now</a>";}else{echo "<a href='shop.php?discount' class='btn essence-btn'> Buy Now</a>";}?>
+                      
                             </div>
                         </div>
                     </div>
@@ -78,7 +90,7 @@ require('admin/include/conection.php');
             <div class="row">
                 <div class="col-12">
                     <div class="section-heading text-center">
-                        <h2>Popular Products</h2>
+                        <h2 id="PopularProducts">Popular Products</h2>
                     </div>
                 </div>
             </div>
@@ -97,20 +109,23 @@ while($plants=mysqli_fetch_assoc($result)){
 echo " <div class='single-product-wrapper'>";
 echo "<div class='product-img'>";
 echo "<img src='admin/images/{$plants['plant_img']}'>";
-echo "<img class='hover-img' src='admin/images/{$plants['plant_img']}'>";
+echo "<img class='hover-img' src='admin/images/{$plants['img_two']}'>";
 echo "<div class='product-favourite'>";
 echo "<a href='' class='favme fa fa-heart'></a>";
 echo " </div></div>";
-echo "<div class='product-description'>";
-echo "<span>outdoor</span>";
-echo "<a href='single-product-details.php?plantsId={$plants['plants_id']}'>";
-echo "<h6>{$plants['plant_name']}</h6>";
+echo '<div id="cards" class="product-description">';
+if(isset($_GET['id'])){echo "<a href='single-product-details.php?plantsIdBlack={$plants['plants_id']}'>";}else{echo "<a href='single-product-details.php?plantsId={$plants['plants_id']}'>";}
+
+echo "<h6 id='color'>{$plants['plant_name']}</h6>";
 echo "</a>";
 echo "<p class='product-price'>$ {$plants['price']}</p>";
 echo "<div class='hover-content'>";
 echo "<div class='add-to-cart-btn'>";
-echo "<a href='' class='btn essence-btn'>Add to Cart</a>";
-echo " </div>
+if (isset($_GET['id'])) {
+    echo "<a href='shop.php?plantsBlack?idBlack={$plants['plants_id']}' type='submit' name='add' class='btn essence-btn'>Add to Cart</a>";
+    }else{
+    echo "<a href='shop.php?plants?id={$plants['plants_id']}' type='submit' name='add' class='btn essence-btn'>Add to Cart</a>";
+    }echo " </div>
 </div>
 </div>
 </div>";

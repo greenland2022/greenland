@@ -1,6 +1,10 @@
 <?php
-include("header/header.php")
-?>
+if(isset($_GET['black'])){
+    include('header/blackHeader.php');
+    echo '<br><br><br>';
+  }
+    else{
+    include('header/header.php');}?>
 <br><br><br><br>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>

@@ -13,6 +13,48 @@ if ($isTouch = isset($_SESSION['id'])) {
 
 }
 ?>
+<style>
+    #bottom,#top,#color6{
+  background:green;
+  color:black;
+}
+.contactUs{
+    height: 430px;
+    width: 700px;
+    display: flex;
+    color: white;
+    background-color: black;
+    box-shadow: 0px 10px 20px black;
+    background-image: radial-gradient(rgb(77, 76, 76), black);
+}
+
+#color , #color2 ,#color3,#color13,#color14,#color15,#color16, #color20 ,#color21,#color22,#color23,#color24,#color17,#color18,#color19, #productsfound , .licolor ,h6 ,#licolor 
+,#color4 , #color5,.widget .widget-title ,
+.bord,#icon5,.classycloseIcon .cross-wrap span.top,#summary,#color9,#color10,#color11,#color12{
+    color:green;
+
+}
+.widget .catagories-menu .sub-menu li > a 
+,#headerSearch ,#classy-menu,.breakpoint-on .dd-trigger,
+#shop,#pages,#contact,#icon1,#icon2,#icon3,#icon4,#icon5,
+#icon6,#icon7,#icon8,#cards,#cards1,#cards2,#cards3,#cards4,.right-side-cart-area .cart-content .cart-list
+,.right-side-cart-area .cart-content .cart-amount-summary ,
+#megamenu,.classynav ul li .megamenu .single-mega.cn-col-4 ,
+.breakpoint-off .classynav ul li .megamenu,.right-side-cart-area .cart-content .cart-amount-summary .summary-table li,
+.checkout_details_area form .nice-select .list{
+    background:black;
+    color:green;
+
+}
+.single-product-wrapper .product-description h6,.checkout_details_area ,.order-details-confirmation{
+    color:green;
+}
+#borde{
+    background-color:none}
+    .header_area .favourite-area a, .header_area .user-login-info a ,.header_area .cart-area a{
+       background: dimgray;
+    }
+</style>
 <head>
     <meta charset="UTF-8">
     <meta name="description" content="">
@@ -46,28 +88,28 @@ if ($isTouch = isset($_SESSION['id'])) {
                     <span class="navbarToggler"><span></span><span></span><span></span></span>
                 </div>
                 <!-- Menu -->
-                <div class="classy-menu">
+                <div id="classy-menu" class="classy-menu">
                     <!-- close btn -->
                     <div class="classycloseIcon">
-                        <div class="cross-wrap"><span class="top"></span><span class="bottom"></span></div>
+                        <div class="cross-wrap"><span id="top" class="top"></span><span id="bottom"class="bottom"></span></div>
                     </div>
                     <!-- Nav Start -->
                     <div class="classynav">
-                        <ul>
-                            <li><a href="">Shop</a>
-                                <div class="megamenu">
+                        <ul id="headPar">
+                            <li><a id="shop" href="">Shop</a>
+                                <div id="megamenu" class="megamenu">
                                     <ul class="single-mega cn-col-4">
                                         <li class="title">Plants</li>
-                                        <li><a href="shop.php?plants">Aloe Vera</a></li>
-                                        <li><a href="shop.php?medical">Medical Plants</a></li>
+                                        <li><a id="icon8" href="shop.php?plantsBlack">plants</a></li>
+                                        <li><a id="icon7" href="shop.php?medicalBlack">Medical Plants</a></li>
                                     </ul>
                                     <ul class="single-mega cn-col-4">
                                         <li class="title">Soils</li>
-                                        <li><a href="shop.php?soil">Types</a></li>
+                                        <li><a id="icon5" href="shop.php?soilBlack">Types</a></li>
                                     </ul>
                                     <ul class="single-mega cn-col-4">
                                         <li class="title">Accessories</li>
-                                        <li><a href="shop.php?equipment">Bottels</a></li>
+                                        <li><a id="icon6" href="shop.php?equipmentBlack">Bottels</a></li>
                                     </ul>
                                     <div class="single-mega cn-col-4">
                                         <img src="img/bg-img/pexels-photo-1083822.webp" alt="">
@@ -76,14 +118,16 @@ if ($isTouch = isset($_SESSION['id'])) {
                             </li>
                             <li ><a href="#" id="pages">Pages</a>
                                 <ul class="dropdown">
-                                    <li><a href="index.php">Home</a></li>
-                                    <li><a href="shop.php?all">Shop</a></li>
-                                    <li><a href="checkout.php">Checkout</a></li>
-                                    <li><a href="cart.php">Cart Page</a></li>
-                                    <li><a href="contact.php">Contact</a></li>
+                                    <li><a id="icon1" href="index.php?id">Home</a></li>
+                                    <li><a id="icon2" href="shop.php?allBlack">Shop</a></li>
+                                    <li><a id="icon3" href="checkout.php?black">Checkout</a></li>
+                                    <li><a id="icon4" href="cart.php?black">Cart Page</a></li>
+                                    <li><a id="contact" href="contact.php?black">Contact</a></li>
+                                    <li><a id="icon5" href="aboutus.php?black">About Us</a></li>
+
                                 </ul>
                             </li>
-                            <li ><a href="contact.php" id="contact">Contact</a></li>
+                            <li ><a href="contact.php?black" id="contact">Contact</a></li>
                         </ul>
                     </div>
                     <!-- Nav End -->
@@ -95,13 +139,16 @@ if ($isTouch = isset($_SESSION['id'])) {
                 <!-- Search Area -->
                 <div class="search-area">
                 <form action="" metho="post">
-                        <input type="search" name="keyword" id="headerSearch" placeholder="Type for search">
+                        <input type="search" name="keyworde" id="headerSearch" placeholder="Type for search">
                         <button type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
                     </form>
                 </div>
                 <!-- Favourite Area -->
                 <div class="favourite-area">
                     <a href="logout.php"><img src="admin/images/icons8-logout-64.png" alt=""></a>
+                </div>
+                <div class="favourite-area">
+                    <a href="index.php"><img src="admin/images/brightness (1).png" alt=""></a>
                 </div>
                 <!-- User Login Info -->
                 <div class="user-login-info">
@@ -186,7 +233,7 @@ if ($isTouch = isset($_SESSION['id'])) {
         <!-- Cart Summary -->
         <div class="cart-amount-summary">
 
-            <h2>Summary</h2>
+            <h2 id="summary">Summary</h2>
             <ul class="summary-table">
             <?php
                     if ($userIdCart!='') {
@@ -198,10 +245,10 @@ if ($isTouch = isset($_SESSION['id'])) {
                 $count+=(int)$num;
             }
             $discount=$count*0.85;
-            echo "<li><span>subtotal:</span> <span>$ $count</span></li>";
-            echo "<li><span>delivery:</span> <span>Free</span></li>";
-            echo "<li><span>discount:</span> <span>-15%</span></li>";
-            echo "<li><span>total:</span> <span>";
+            echo "<li id='color9'><span>subtotal:</span> <span>$ $count</span></li>";
+            echo "<li id='color10'><span>delivery:</span> <span>Free</span></li>";
+            echo "<li id='color11'><span>discount:</span> <span>-15%</span></li>";
+            echo "<li id='color12'><span>total:</span> <span>";
             echo $discount;
             echo "</span></li>";
         }
@@ -211,7 +258,7 @@ if ($isTouch = isset($_SESSION['id'])) {
                 
             </ul>
             <div class="checkout-btn mt-100">
-                <a href="checkout.php" class="btn essence-btn">check out</a>
+                <a id="color6" href="checkout.php" class="btn essence-btn">check out</a>
             </div>
         </div>
     </div>
@@ -219,50 +266,46 @@ if ($isTouch = isset($_SESSION['id'])) {
 <!-- ##### Right Side Cart End ##### -->
 
 <?php
-if (isset($_GET['keyword'])) {
-    $keyword=$conn->escape_string($_GET['keyword']);
-    $query=$conn->query("SELECT plants_id FROM plants WHERE plant_name LIKE '%{$keyword}%'");
-    $querySoil=$conn->query("SELECT soil_id FROM soil WHERE soil_name LIKE '%{$keyword}%'");
-    $queryEquipment=$conn->query(" SELECT equipment_id FROM equipment WHERE equipment_name LIKE '%{$keyword}%'");
-    $queryMedical=$conn->query(" SELECT plants_id FROM medical_plant WHERE plant_name LIKE '%{$keyword}%'");
-    $queryDiscount=$conn->query(" SELECT id FROM discount WHERE name LIKE '%{$keyword}%'");
+if (isset($_GET['keyworde'])) {
+    $keyworde=$conn->escape_string($_GET['keyworde']);
+    $query=$conn->query("SELECT plants_id FROM plants WHERE plant_name LIKE '%{$keyworde}%'");
+    $querySoil=$conn->query("SELECT soil_id FROM soil WHERE soil_name LIKE '%{$keyworde}%'");
+    $queryEquipment=$conn->query(" SELECT equipment_id FROM equipment WHERE equipment_name LIKE '%{$keyworde}%'");
+    $queryMedical=$conn->query(" SELECT plants_id FROM medical_plant WHERE plant_name LIKE '%{$keyworde}%'");
+    $queryDiscount=$conn->query(" SELECT id FROM discount WHERE name LIKE '%{$keyworde}%'");
     if ($query->num_rows){
         while($row = $query->fetch_object() ){
-            header("location:single-product-details.php?plantsId='$row->plants_id'") ;
-    
+            header("location:single-product-details.php?plantsIdBlack='$row->plants_id'") ;
         }
         } 
         
         else if ($querySoil->num_rows) {
             while($result=$querySoil->fetch_object()){
-                header("location:single-product-details.php?soilId='$result->soil_id'");
+                header("location:single-product-details.php?soilIdBlack='$result->soil_id'");
             }
     }
     else if ($queryEquipment->num_rows) {
         while($equResult=$queryEquipment->fetch_object()){
-            header("location:single-product-details.php?equipmentId='$equResult->equipment_id'");
+            header("location:single-product-details.php?equipmentIdBlack='$equResult->equipment_id'");
         }
 }
 else if ($queryMedical->num_rows) {
     while($medResult=$queryMedical->fetch_object()){
-        header("location:single-product-details.php?medicalId='$medResult->plants_id'");
+        header("location:single-product-details.php?medicalIdBlack='$medResult->plants_id'");
     }
 }
 else if ($queryDiscount->num_rows) {
     while($discountResult=$queryDiscount->fetch_object()){
-        header("location:single-product-details.php?discountId='$discountResult->id'");
+        header("location:single-product-details.php?discountIdBlack='$discountResult->id'");
     }
 }
         else {
-            header("location:error.php");
+            header("location:error.php?black");
         }
 }
 
 ?>
 
-<br><br><br><br><br>
-<br><br><br><br><br><br><br><br><br><br>
-<br><br><br><br><br>
   <div class="settings">
     <div class="tooltip">Click Me!!!</div>
   </div>
@@ -305,10 +348,7 @@ else if ($queryDiscount->num_rows) {
 .tooltip--disable {
   opacity: 0;
 }
-#cards {
-  background:black;
-  color:green;
-}
+
 .tooltip:before {
   position: absolute;
   top: 50%;
@@ -328,10 +368,7 @@ else if ($queryDiscount->num_rows) {
   transition: .2s linear;
 }
 
-.change-color-block--active {
-  margin-left: 0;
-  opacity: 1;
-}
+
 .logo {
   font-family: 'Stalemate', cursive;
       font-size: xx-large;
@@ -349,7 +386,6 @@ else if ($queryDiscount->num_rows) {
 
 <script>
     window.onload = function () {
-
 const aColor = document.querySelector('.header_area .classynav ul li a');
 const pages = document.querySelector('#pages');
 const contact = document.querySelector('#contact');
@@ -359,6 +395,12 @@ const icons = document.querySelector('.header_area .favourite-area a');
 const icon2 = document.querySelector(' .header_area .user-login-info a');
 const icon3 = document.querySelector('.header_area .cart-area a');
 const carde = document.querySelector('#cards');
+const headPar = document.querySelector('.megamenu');
+const aselect= document.querySelector('.header_area .classynav ul li .megamenu li a');
+const pagesList= document.querySelector('.breakpoint-off .classynav ul li .dropdown');
+const pagesListcolor= document.querySelector(' .header_area .classynav ul li .dropdown li a');
+const pagesListcolor2= document.querySelector(' .header_area .classynav ul li .dropdown li a ');
+const productsfound = document.querySelector('.widget .catagories-menu .sub-menu li > a');
 
 const backgroundLayer = document.querySelector('body');
 const product = document.querySelector('#PopularProducts');
@@ -368,166 +410,32 @@ const changeColorBlock = document.querySelector('.change-color-block');
 const applyBtn = document.querySelector('.apply-btn');
 const tooltip = document.querySelector('.tooltip');
 
-var div = document.getElementById('product-description');
-settingsBtn.addEventListener('click', function () {
   backgroundLayer.style.background = 'black';
   backgroundheader.style.background = 'black';
   leftnav.style.background = 'black';
   product.style.background = 'black';
+  headPar.style.background = 'black';
+  aselect.style.background = 'black';
+  pagesList.style.background = 'black';
   searchbtn.style.background = 'black';
   icons.style.background = 'dimgray';
   icon3.style.background = 'dimgray';
   icon2.style.background = 'dimgray';
-  // cards.style.background = 'black';
-  // cards.style.color = 'green';
-  div.classList.remove('product-description');
-
-  carde.style.background='red';
   searchbtn.style.color = 'green';
   contact.style.color = 'green';
   pages.style.color = 'green';
+  headPar.style.color = 'green';
+  aselect.style.color = 'green';
   aColor.style.color = 'green';
+  pagesListcolor.style.color = 'green';
+  pagesListcolor2.style.color = 'green';
   PopularProducts.style.color = 'green';
-
-})
-
+  productsfound.style.color = 'green';
 
 
 }
 </script>
-<?php
-require('admin/include/conection.php');
-?>
-  
-
-    <!-- ##### Welcome Area Start ##### -->
-    <section class="welcome_area bg-img background-overlay" style="background-image: url(img/bg-img/pexels-photo-2847147.jpeg);">
-        <div class="container h-100">
-            <div class="row h-100 align-items-center">
-                <div class="col-12">
-                    <div class="hero-content">
-                        <h2>New Collection</h2>
-                        <a href="shop.php?all" class="btn essence-btn">view collection</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- ##### Welcome Area End ##### -->
-
-    <!-- ##### Top Catagory Area Start ##### -->
-    <div class="top_catagory_area section-padding-80 clearfix">
-        <div class="container">
-            <div class="row justify-content-center">
-                <!-- Single Catagory -->
-                <div class="col-12 col-sm-6 col-md-4">
-                    <div class="single_catagory_area d-flex align-items-center justify-content-center bg-img" style="background-image: url(img/bg-img/pl8.jpg);">
-                        <div class="catagory-content">
-                            <a href="shop.php?plants">PLANTS</a>
-                        </div>
-                    </div>
-                </div>
-                <!-- Single Catagory -->
-                <div class="col-12 col-sm-6 col-md-4">
-                    <div class="single_catagory_area d-flex align-items-center justify-content-center bg-img" style="background-image: url(img/bg-img/soil-1.jpg);">
-                        <div class="catagory-content">
-                            <a href="shop.php?soil">Soils</a>
-                        </div>
-                    </div>
-                </div>
-                <!-- Single Catagory -->
-                <div class="col-12 col-sm-6 col-md-4">
-                    <div class="single_catagory_area d-flex align-items-center justify-content-center bg-img" style="background-image: url(img/bg-img/acc-6.jpg);">
-                        <div class="catagory-content">
-                            <a href="shop.php?equipment">Accessories</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- ##### Top Catagory Area End ##### -->
-
-    <!-- ##### CTA Area Start ##### -->
-    <div class="cta-area">
-        <div class="container">
-            <div class="row">
-                <div class="col-12">
-                    <div class="cta-content bg-img background-overlay" style="background-image: url(https://images.pexels.com/photos/1408221/pexels-photo-1408221.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1);">
-                        <div class="h-100 d-flex align-items-center justify-content-end">
-                            <div class="cta--text">
-                                <h6>-60%</h6>
-                                <h2 style="color:white;">Global Sale</h2>
-                                <a href="shop.php?discount" class="btn essence-btn">Buy Now</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- ##### CTA Area End ##### -->
-
-    <!-- ##### New Arrivals Area Start ##### -->
-    <section class="new_arrivals_area section-padding-80 clearfix">
-        <div class="container">
-            <div class="row">
-                <div class="col-12">
-                    <div class="section-heading text-center">
-                        <h2 id="PopularProducts">Popular Products</h2>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-
-        <div class="container">
-            <div class="row">
-                <div class="col-12">
-                    <div class="popular-products-slides owl-carousel">
-                    <?php
-$query="SELECT * FROM plants";
-$result=mysqli_query($conn,$query);
-
-while($plants=mysqli_fetch_assoc($result)){
-echo " <div class='single-product-wrapper'>";
-echo "<div class='product-img'>";
-echo "<img src='admin/images/{$plants['plant_img']}'>";
-echo "<img class='hover-img' src='admin/images/{$plants['plant_img']}'>";
-echo "<div class='product-favourite'>";
-echo "<a href='' class='favme fa fa-heart'></a>";
-echo " </div></div>";
-echo '<div id="cards" class="product-description">';
-echo "<a href='single-product-details.php?plantsId={$plants['plants_id']}'>";
-echo "<h6>{$plants['plant_name']}</h6>";
-echo "</a>";
-echo "<p class='product-price'>$ {$plants['price']}</p>";
-echo "<div class='hover-content'>";
-echo "<div class='add-to-cart-btn'>";
-echo "<a href='' class='btn essence-btn'>Add to Cart</a>";
-echo " </div>
-</div>
-</div>
-</div>";
-}
-?>
-                                    
-                                        
-                                   
-                               
-                           
-                       
-
-
-                      
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- ##### New Arrivals Area End ##### -->
-
-    
-    <?php 
-    include('header/footer.php');
-    ?>
+<audio controls autoplay>
+  <source src="AR Piano _ Titanium - David Guetta ft. Sia _ Cover By Biano.mp3" type="audio/ogg">
+  <source src="AR Piano _ Titanium - David Guetta ft. Sia _ Cover By Biano.mp3" type="audio/mpeg">
+</audio>
