@@ -1,8 +1,8 @@
 <?php
 ob_start();
-if(isset($_GET['plantsBlack'])||isset($_GET['allBlack'])||isset($_GET['soilBlack'])||isset($_GET['equipmentBlack'])||isset($_GET['medicalBlack'])||isset($_GET['discountBlack'])){
+if(isset($_GET['plantsBlack'])||isset($_GET['allBlack'])||isset($_GET['soilBlack'])||isset($_GET['equipmentBlack'])||isset($_GET['medicalBlack'])||isset($_GET['discountBlack'])||isset($_GET['flowersBlack'])){
     include('header/blackHeader.php');
-echo '<br><br><br><br>';
+echo '<br><br><br>';
 }
     else{
     include('header/header.php');
@@ -28,12 +28,14 @@ $userId=$_SESSION['id'];
                             }else  if (isset($_GET['equipment'])||isset($_GET['equipmentBlack'])) {
                                 echo "<h2 class='bord'>ACCESSORIES</h2>";
                                 }else  if (isset($_GET['medical'])||isset($_GET['medicalBlack'])) {
-                                    echo "<h2 class='bord'>MEDICAL</h2>";
+                                    echo "<h2 class='bord'>MEDICAL PLANTS</h2>";
                                     }else  if (isset($_GET['all']) ||isset($_GET['allBlack'])) {
                                         echo "<h2 class='bord'>ALL PRODUCT</h2>";
                                         }else  if (isset($_GET['discount'])||isset($_GET['discountBlack'])) {
                                             echo "<h2 class='bord'>GLOBAL SALE </h2>";
-                                            }
+                                            }if (isset($_GET['flowers'])||isset($_GET['flowersBlack'])) {
+                                                echo "<h2 class='bord'>FLOWERS </h2>";
+                                                }
                         ?>
                     </div>
                 </div>
@@ -66,6 +68,8 @@ if(isset($_GET['plantsBlack'])||isset($_GET['allBlack'])||isset($_GET['soilBlack
                                         <ul class="sub-menu collapse show" id="clothing">
                                             <li  ><a id="licolor" href="shop.php?plantsBlack">Plants</a></li>
                                             <li><a id="color4" href="shop.php?medicalBlack">Medical Plants</a></li>
+                                            <li><a id="color4" href="shop.php?flowersBlack">Flowers</a></li>
+
                                         </ul>
                                     </li>
                                     <!-- Single Item -->
@@ -88,6 +92,7 @@ if(isset($_GET['plantsBlack'])||isset($_GET['allBlack'])||isset($_GET['soilBlack
     <ul class="sub-menu collapse show" id="clothing">
         <li  ><a id="licolor" href="shop.php?plants">Plants</a></li>
         <li><a id="color4" href="shop.php?medical">Medical Plants</a></li>
+        <li><a id="color4" href="shop.php?flowers">Flowers</a></li>
     </ul>
 </li>
 <!-- Single Item -->
@@ -134,7 +139,10 @@ if(isset($_GET['plantsBlack'])||isset($_GET['allBlack'])||isset($_GET['soilBlack
                                             $query2="SELECT * FROM medical_plant";
                                                 }else  if (isset($_GET['discount'])||isset($_GET['discountBlack'])) {
                                                     $query2="SELECT * FROM discount";
-                                                        }else  if (isset($_GET['all']) ||isset($_GET['allBlack'])) {
+                                                        }else  if (isset($_GET['flowers'])||isset($_GET['flowersBlack'])) {
+                                                            $query2="SELECT * FROM flowers";
+                                                                }else  if (isset($_GET['all']) ||isset($_GET['allBlack'])) {
+                                                            $countpro="ALL ";
                                                 }
                             $result2=mysqli_query($conn,$query2);
                                 while($plants=mysqli_fetch_assoc($result2)){$countpro++ ;}
@@ -188,7 +196,6 @@ else
                                 echo "</div>";
                                 echo "</div>";
                                 echo "<div id='cards' class='product-description'>";
-                                echo "<span><span id='color'>{$plants['description']}</span>";
                                 if (isset($_GET['plantsBlack'])||isset($_GET['allBlack'])) {
                                     echo "<a href='single-product-details.php?plantsIdBlack={$plants['plants_id']}'>";
                                 }else{
@@ -197,6 +204,8 @@ else
                                 }
                                 echo "<h6 id='color3'>{$plants['plant_name']}</h6>";
                                 echo "</a>";
+                                echo "<span><span id='color'>{$plants['description']}</span>";
+
                                 echo "<p class='product-price' id='color2'>$ {$plants['price']}</p>";
                                 echo "<div class='hover-content'>";
                                 echo "<div class='add-to-cart-btn'>";
@@ -256,13 +265,14 @@ else
                                 echo "</div>";
                                 echo "</div>";
                                 echo "<div id='cards1' class='product-description'>";
-                                echo "<span><span id='color20'>{$soil['description']}</span>";
                                 if (isset($_GET['soilBlack'])||isset($_GET['allBlack'])) {
                                     echo "<a href='single-product-details.php?soilIdBlack={$soil['soil_id']}'>";
                                 }else{
                                 echo "<a href='single-product-details.php?soilId={$soil['soil_id']}'>";}
                                 echo "<h6 id='color3'>{$soil['soil_name']}</h6>";
                                 echo "</a>";
+                                echo "<span><span id='color20'>{$soil['description']}</span>";
+
                                 echo "<p id='color16'class='product-price'>$ {$soil['price']}</p>";
                                 echo "<div class='hover-content'>";
                                 echo "<div class='add-to-cart-btn'>";
@@ -298,13 +308,14 @@ else
                                 echo "</div>";
                                 echo "</div>";
                                 echo "<div id='cards2' class='product-description'>";
-                                echo "<span><span id='color21'>{$equipment['description']}</span>";
                                 if (isset($_GET['equipmentBlack'])||isset($_GET['allBlack'])) {
                                     echo "<a href='single-product-details.php?equipmentIdBlack={$equipment['equipment_id']}'>";
                                 }else{
                                 echo "<a href='single-product-details.php?equipmentId={$equipment['equipment_id']}'>";}
                                 echo "<h6 id='color13'>{$equipment['equipment_name']}</h6>";
                                 echo "</a>";
+                                echo "<span><span id='color21'>{$equipment['description']}</span>";
+
                                 echo "<p id='color17' class='product-price'>$ {$equipment['price']}</p>";
                                 echo "<div class='hover-content'>";
                                 echo "<div class='add-to-cart-btn'>";
@@ -364,13 +375,14 @@ else
                                 echo "</div>";
                                 echo "</div>";
                                 echo "<div id='cards3' class='product-description'>";
-                                echo "<span><span id='color22'>{$plantsMed['description']}</span>";
                                 if (isset($_GET['medicalBlack'])||isset($_GET['allBlack'])) {
                                     echo "<a href='single-product-details.php?medicalIdBlack={$plantsMed['plants_id']}'>";
                                 }else{
                                 echo "<a href='single-product-details.php?medicalId={$plantsMed['plants_id']}'>";}
                                 echo "<h6 id='color14'>{$plantsMed['plant_name']}</h6>";
                                 echo "</a>";
+                                echo "<span><span id='color22'>{$plantsMed['description']}</span>";
+
                                 echo "<p id='color18' class='product-price'>$ {$plantsMed['price']}</p>";
                                 echo "<div class='hover-content'>";
                                 echo "<div class='add-to-cart-btn'>";
@@ -454,13 +466,14 @@ else
                                 echo "</div>";
                                 echo "</div>";
                                 echo "<div id='cards4' class='product-description'>";
-                                echo "<span><span id='color23'>{$product['description']}</span>";
                                 if (isset($_GET['discountIdBlack'])||isset($_GET['allBlack'])) {
                                     echo "<a href='single-product-details.php?discountIdBlack={$product['id']}'>";
                                 }else{
                                 echo "<a href='single-product-details.php?discountId={$product['id']}'>";}
                                 echo "<h6 id='color15'>{$product['name']}</h6>";
                                 echo "</a>";
+                                echo "<span><span id='color23'>{$product['description']}</span>";
+
                                  $num=(int)$product['price'];
                                   $dicount=$num*.4;
                                 echo "<p id='color19' class='product-price'><span class='old-price'>$ {$product['price']}</span>$ $dicount</p>";
@@ -476,15 +489,87 @@ else
                                 echo "</div>";
                                 echo "</div>";
                                 echo "</div>";
-                                if ($count>0) {
-                                    break;
-                                }
+                            
                             }
                         }
                             ?>
 
                         <!-- ----------------------------------discount Part -------------------------------------    -->
+                      
+                        
+                            <!-- ----------------------------------flowers Part -------------------------------------    -->
+                            <?php
+if(isset($_GET['flowers?id'])||isset($_GET['flowersBlack?idBlack'])){
+    if(isset($_GET['flowersBlack?idBlack']))
+    $query="SELECT * FROM flowers WHERE id={$_GET['flowersBlack?idBlack']}";
+else
+    $query="SELECT * FROM flowers WHERE id={$_GET['flowers?id']}";
+  $result=  mysqli_query($conn,$query);
+  $cart=mysqli_fetch_assoc($result);
+    $cartName=$cart['name'];
+    $description=$cart['description'];
+    $price=$cart['price'];
+    $cartImg=$cart['img'];
+    $cartQuery="INSERT INTO cart (cart_name,description,price,cart_img,user_id)
+     VALUES ('$cartName','$description','$price','$cartImg','$userId')";
+     mysqli_query($conn,$cartQuery);
+    if(isset($_GET['flowersBlack?idBlack']))
+    header("location:shop.php?flowersBlack");
+else
+     header("location:shop.php?flowers");
+
+}
+
+?>
+                           
+
                             
+                            <?php
+                            if (isset($_GET['flowers'])||isset($_GET['flowersBlack'])) {
+                            $query2="SELECT * FROM flowers";
+                            $result2=mysqli_query($conn,$query2);
+                            $count=0;
+                            while($product=mysqli_fetch_assoc($result2)){
+                                $count++;
+                                echo "<div class='col-12 col-sm-6 col-lg-4'>";
+                                echo "<div class='single-product-wrapper'>";
+                                echo "<div class='product-img'>";
+                                echo "<img src='admin/images/{$product['img']}'>";
+                                echo "<img class='hover-img' src='admin/images/{$product['imgTwo']}' alt=''>";
+                                echo "<div class='product-favourite'>";
+                                echo "<a href='' class='favme fa fa-heart'></a>";
+                                echo "</div>";
+                                echo "</div>";
+                                echo "<div id='cards4' class='product-description'>";
+                                if (isset($_GET['flowersIdBlack'])||isset($_GET['allBlack'])) {
+                                    echo "<a href='single-product-details.php?flowersIdBlack={$product['id']}'>";
+                                }else{
+                                echo "<a href='single-product-details.php?flowersId={$product['id']}'>";}
+                                echo "<h6 id='color15'>{$product['name']}</h6>";
+                                echo "</a>";
+                                echo "<span><span id='color23'>{$product['description']}</span>";
+
+                                echo "<p id='color19' class='product-price'>$ {$product['price']}</p>";
+                                echo "<div class='hover-content'>";
+                                echo "<div class='add-to-cart-btn'>";
+                                if (isset($_GET['flowersBlack'])||isset($_GET['allBlack'])) {
+                                    echo "<a href='shop.php?flowersBlack?idBlack={$product['id']}' type='submit' name='add' class='btn essence-btn'>Add to Cart</a>";
+                                }else{
+                                    echo "<a href='shop.php?flowers?id={$product['id']}' type='submit'r class='btn essence-btn'>Add to Cart</a>";
+                                }
+                                echo "</div>";
+                                echo "</div>";
+                                echo "</div>";
+                                echo "</div>";
+                                echo "</div>";
+                            
+                            }
+                        }
+                            ?>
+
+                        <!-- ----------------------------------flowers Part -------------------------------------    -->
+                      
+
                         </div>
                     </div>
                     <!-- Pagination -->

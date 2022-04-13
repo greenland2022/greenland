@@ -101,6 +101,41 @@ require('admin/include/conection.php');
             <div class="row">
                 <div class="col-12">
                     <div class="popular-products-slides owl-carousel">
+
+
+                                                            
+                    <?php
+$query="SELECT * FROM flowers";
+$result=mysqli_query($conn,$query);
+
+while($flowers=mysqli_fetch_assoc($result)){
+echo " <div class='single-product-wrapper'>";
+echo "<div class='product-img'>";
+echo "<img src='admin/images/{$flowers['img']}'>";
+echo "<img class='hover-img' src='admin/images/{$flowers['imgTwo']}'>";
+echo "<div class='product-favourite'>";
+echo "<a href='' class='favme fa fa-heart'></a>";
+echo " </div></div>";
+echo '<div id="cards" class="product-description">';
+if(isset($_GET['id'])){echo "<a href='single-product-details.php?flowersIdBlack={$flowers['id']}'>";}else{echo "<a href='single-product-details.php?flowersId={$flowers['id']}'>";}
+
+echo "<h6 id='color'>{$flowers['name']}</h6>";
+echo "</a>";
+echo "<p id='color20' class='product-price'>$ {$flowers['price']}</p>";
+echo "<div class='hover-content'>";
+echo "<div class='add-to-cart-btn'>";
+if (isset($_GET['id'])) {
+    echo "<a href='shop.php?flowersBlack?idBlack={$flowers['id']}' type='submit' name='add' class='btn essence-btn'>Add to Cart</a>";
+    }else{
+    echo "<a href='shop.php?flowers?id={$flowers['id']}' type='submit' name='add' class='btn essence-btn'>Add to Cart</a>";
+    }echo " </div>
+</div>
+</div>
+</div>";
+}
+?>     
+
+
                     <?php
 $query="SELECT * FROM plants";
 $result=mysqli_query($conn,$query);
@@ -118,7 +153,7 @@ if(isset($_GET['id'])){echo "<a href='single-product-details.php?plantsIdBlack={
 
 echo "<h6 id='color'>{$plants['plant_name']}</h6>";
 echo "</a>";
-echo "<p class='product-price'>$ {$plants['price']}</p>";
+echo "<p id='color20' class='product-price'>$ {$plants['price']}</p>";
 echo "<div class='hover-content'>";
 echo "<div class='add-to-cart-btn'>";
 if (isset($_GET['id'])) {
@@ -132,8 +167,7 @@ if (isset($_GET['id'])) {
 }
 ?>
                                     
-                                        
-                                   
+                            
                                
                            
                        

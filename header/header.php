@@ -68,6 +68,7 @@ if ($isTouch = isset($_SESSION['id'])) {
                                         <li class="title">Plants</li>
                                         <li><a href="shop.php?plants">Plants</a>
                                     </li>
+                                        <li><a href="shop.php?flowers">Flowers</a></li>
                                         <li><a href="shop.php?medical">Medical Plants</a></li>
                                     </ul>
                                     <ul class="single-mega cn-col-4">
@@ -166,8 +167,8 @@ if ($isTouch = isset($_SESSION['id'])) {
             echo "<form action='' method='get'>";
             echo "<div class='single-cart-item'>";
             echo "<div  class='product-image'>";
-            echo "<img src='admin/images/{$cart['cart_img']}' class='cart-thumb' height='300px' alt=''>";
-            echo " <div class='cart-item-desc'  height='300px'>";
+            echo "<img src='admin/images/{$cart['cart_img']}' class='cart-thumb' height='100%' alt=''>";
+            echo " <div class='cart-item-desc'  height='100%'>";
             echo " <input type='hidden' name='delete' value='{$cart['cart_id']}'>";
             echo " <span class='product-remove'><button style='	background: none;
             color: inherit;
