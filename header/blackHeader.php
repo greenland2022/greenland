@@ -14,46 +14,7 @@ if ($isTouch = isset($_SESSION['id'])) {
 }
 ?>
 <style>
-    #bottom,#top,#color6{
-  background:green;
-  color:black;
-}
-.contactUs{
-    height: 430px;
-    width: 700px;
-    display: flex;
-    color: white;
-    background-color: black;
-    box-shadow: 0px 10px 20px black;
-    background-image: radial-gradient(rgb(77, 76, 76), black);
-}
-
-#color , #color2 ,#color3,#color13,#color14,#color15,#color16, #color20 ,#color21,#color22,#color23,#color24,#color17,#color18,#color19, #productsfound , .licolor ,h6 ,#licolor 
-,#color4 , #color5,.widget .widget-title ,
-.bord,#icon5,.classycloseIcon .cross-wrap span.top,#summary,#color9,#color10,#color11,#color12{
-    color:green;
-
-}
-.widget .catagories-menu .sub-menu li > a 
-,#headerSearch ,#classy-menu,.breakpoint-on .dd-trigger,
-#shop,#pages,#contact,#icon1,#icon2,#icon3,#icon4,#icon5,
-#icon6,#icon7,#icon8,#cards,#cards1,#cards2,#cards3,#cards4,.right-side-cart-area .cart-content .cart-list
-,.right-side-cart-area .cart-content .cart-amount-summary ,
-#megamenu,.classynav ul li .megamenu .single-mega.cn-col-4 ,
-.breakpoint-off .classynav ul li .megamenu,.right-side-cart-area .cart-content .cart-amount-summary .summary-table li,
-.checkout_details_area form .nice-select .list{
-    background:black;
-    color:green;
-
-}
-.single-product-wrapper .product-description h6,.checkout_details_area ,.order-details-confirmation{
-    color:green;
-}
-#borde{
-    background-color:none}
-    .header_area .favourite-area a, .header_area .user-login-info a ,.header_area .cart-area a{
-       background: dimgray;
-    }
+ 
 </style>
 <head>
     <meta charset="UTF-8">
@@ -69,7 +30,7 @@ if ($isTouch = isset($_SESSION['id'])) {
 
     <link href="https://fonts.googleapis.com/css2?family=Arima+Madurai:wght@300&family=Stalemate&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"> 
-       <link rel="stylesheet" href="css/header.css">
+       <link rel="stylesheet" href="css/blackheader.css">
     <link rel="stylesheet" href="css/login.css">
 
 </head>
@@ -101,6 +62,7 @@ if ($isTouch = isset($_SESSION['id'])) {
                                     <ul class="single-mega cn-col-4">
                                         <li class="title">Plants</li>
                                         <li><a id="icon8" href="shop.php?plantsBlack">plants</a></li>
+                                        <li><a id="flowers"  href="shop.php?flowersBlack">Flowers</a></li>
                                         <li><a id="icon7" href="shop.php?medicalBlack">Medical Plants</a></li>
                                     </ul>
                                     <ul class="single-mega cn-col-4">
@@ -263,7 +225,6 @@ if ($isTouch = isset($_SESSION['id'])) {
         </div>
     </div>
 </div>
-<!-- ##### Right Side Cart End ##### -->
 
 <?php
 if (isset($_GET['keyworde'])) {
@@ -305,84 +266,6 @@ else if ($queryDiscount->num_rows) {
 }
 
 ?>
-
-  <div class="settings">
-    <div class="tooltip">Click Me!!!</div>
-  </div>
-
-
-
-<style>
-    body {
-  margin: 0;
-  padding: 0;
-}
-
-.settings {
-  position: absolute;
-  top: 50px;
-  right: 50px;
-  height: 40px;
-  width: 40px;
-  background: black;
-  box-shadow: 0 0 6px rgba(0, 0, 0, .1);
-  border-radius: 50%;
-  cursor: pointer;
-}
-.settings:hover .tooltip {
-  opacity: 0;
-}
-
-.tooltip {
-  position: absolute;
-  top: 50%;
-  left: -150px;
-  transform: translateY(-50%);
-  background: white;
-  padding: 10px 20px;
-  border-radius: 6px;
-  box-shadow: 0 0 6px rgba(0, 0, 0, .1);
-  transition: all .2s linear;
-}
-
-.tooltip--disable {
-  opacity: 0;
-}
-
-.tooltip:before {
-  position: absolute;
-  top: 50%;
-  right: -5px;
-  content: '';
-  height: 10px;
-  width: 10px;
-  background: white;
-  transform: translateY(-50%) rotate(45deg);
-}
-
-.change-color-block {
-  margin-left: -150px;
-  /* opacity: 0; */
-  border: 2px solid black;
-  background: white;
-  transition: .2s linear;
-}
-
-
-.logo {
-  font-family: 'Stalemate', cursive;
-      font-size: xx-large;
-    color: rgb(14, 177, 14);
-    margin-right: 27px;
-    margin-bottom: -5px;
-    line-height: 1.3;
-    font-weight: 700;
-}
-
-.logo>a {
-    color: rgb(14, 177, 14);
-}
-</style>
 
 <script>
     window.onload = function () {
@@ -435,7 +318,7 @@ const tooltip = document.querySelector('.tooltip');
 
 }
 </script>
-<audio controls autoplay>
+<!-- <audio controls autoplay>
   <source src="AR Piano _ Titanium - David Guetta ft. Sia _ Cover By Biano.mp3" type="audio/ogg">
   <source src="AR Piano _ Titanium - David Guetta ft. Sia _ Cover By Biano.mp3" type="audio/mpeg">
-</audio>
+</audio> -->

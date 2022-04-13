@@ -1,5 +1,8 @@
 <?php
+ob_start();
 include('include/header.php');
+require('include/conection.php');
+
 ?>
             <!-- MAIN CONTENT-->
             <div class="main-content">
@@ -9,8 +12,7 @@ include('include/header.php');
                             <div class="col-md-12">
                                 <div class="overview-wrap">
                                     <h2 class="title-1">overview</h2>
-                                    <button class="au-btn au-btn-icon au-btn--blue">
-                                        <i class="zmdi zmdi-plus"></i>add item</button>
+                                  
                                 </div>
                             </div>
                         </div>
@@ -23,8 +25,18 @@ include('include/header.php');
                                                 <i class="zmdi zmdi-account-o"></i>
                                             </div>
                                             <div class="text">
-                                                <h2>10368</h2>
-                                                <span>members online</span>
+                                                <?php
+                                                $query="SELECT * FROM users";
+                                                $result=mysqli_query($conn,$query);
+                                                $count=0;
+                                                while($user=mysqli_fetch_assoc($result)){
+                                                    $count++;
+                                                }
+                                                
+                                                echo "<h2>$count</h2>"
+                                                ?>
+                                             
+                                                <span>members</span>
                                             </div>
                                         </div>
                                         <div class="overview-chart">
@@ -41,7 +53,18 @@ include('include/header.php');
                                                 <i class="zmdi zmdi-shopping-cart"></i>
                                             </div>
                                             <div class="text">
-                                                <h2>388,688</h2>
+                                            <?php
+                                                $queryCart="SELECT * FROM checkout";
+                                                $resultCart=mysqli_query($conn,$queryCart);
+                                                $countTotal=0;
+                                                while($cart=mysqli_fetch_assoc($resultCart)){
+                                                    $array=explode(" ",$cart['cart_price']);
+                                                    $countCart=count($array);
+                                                    $countTotal+=$countCart;
+                                                }
+                                                
+                                                echo "<h2>$countTotal</h2>"
+                                                ?>
                                                 <span>items solid</span>
                                             </div>
                                         </div>
@@ -51,24 +74,7 @@ include('include/header.php');
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-sm-6 col-lg-3">
-                                <div class="overview-item overview-item--c3">
-                                    <div class="overview__inner">
-                                        <div class="overview-box clearfix">
-                                            <div class="icon">
-                                                <i class="zmdi zmdi-calendar-note"></i>
-                                            </div>
-                                            <div class="text">
-                                                <h2>1,086</h2>
-                                                <span>this week</span>
-                                            </div>
-                                        </div>
-                                        <div class="overview-chart">
-                                            <canvas id="widgetChart3"></canvas>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                         
                             <div class="col-sm-6 col-lg-3">
                                 <div class="overview-item overview-item--c4">
                                     <div class="overview__inner">
@@ -77,7 +83,19 @@ include('include/header.php');
                                                 <i class="zmdi zmdi-money"></i>
                                             </div>
                                             <div class="text">
-                                                <h2>$1,060,386</h2>
+                                            <?php
+                                                $queryCart="SELECT * FROM checkout";
+                                                $resultCart=mysqli_query($conn,$queryCart);
+                                                $countTotal=0;
+                                                while($cart=mysqli_fetch_assoc($resultCart)){
+                                                    $array=explode(" ",$cart['cart_price']);
+                                                    foreach($array As $price){
+                                                    $countTotal+=$price;
+                                                    }
+                                                }
+                                                
+                                                echo "<h2>$countTotal</h2>"
+                                                ?>
                                                 <span>total earnings</span>
                                             </div>
                                         </div>
