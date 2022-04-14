@@ -197,7 +197,6 @@ isset($_GET['idAMedical'])||isset($_GET['idAflowers'])||isset($_GET['idAdiscount
                         echo "<img src='admin/images/{$plant['plant_img']}' class='cart-thumb'>";
                     }else if (isset($_GET['discountId'])||isset($_GET['discountIdBlack'])) {
                         echo "<img src='admin/images/{$plant['img']}' class='cart-thumb'>";
-
                     }else if (isset($_GET['flowersId'])||isset($_GET['flowersIdBlack'])) {
                         echo "<img src='admin/images/{$plant['img']}' class='cart-thumb'>";
 
@@ -333,7 +332,7 @@ if(isset($_GET['plantsId'])||isset($_GET['plantsIdBlack'])||isset($_GET['idAdd']
         <!-- Single Product Description -->
         <div class="single_product_desc clearfix">
             <!-- <span>mango</span> -->
-            <a href="cart.php">
+            <a href="">
             <?php 
              if(isset($_GET['plantsId'])||isset($_GET['plantsIdBlack'])||isset($_GET['idAdd'])){
                 echo "<h2 id='cards'>{$plant['plant_name']}</h2>"; 

@@ -68,6 +68,10 @@ $user=$admin['admin_id'];
                                 <i class="fas fa-tachometer-alt"></i>Manage Admin</a>
                         </li>
                         <li class="has-sub">
+                            <a class="js-arrow" href="manageUser.php">
+                                <i class="fas fa-tachometer-alt"></i>Manage User</a>
+                        </li> 
+                        <li class="has-sub">
                             <a class="js-arrow" href="manageCategory.php">
                                 <i class="fas fa-tachometer-alt"></i>Manage Category</a>
                         </li>
@@ -76,13 +80,15 @@ $user=$admin['admin_id'];
                                 <i class="fas fa-tachometer-alt"></i>Manage Discount Product</a>
                         </li>
                         <li class="has-sub">
-                            <a class="js-arrow" href="manageMedicalPlants.php">
-                                <i class="fas fa-tachometer-alt"></i>Manage Medical Plants</a>
+                            <a class="js-arrow" href="manageDiscount.php">
+                                <i class="fas fa-tachometer-alt"></i>Manage Discount Product</a>
                         </li>
                         <li class="has-sub">
-                            <a class="js-arrow" href="manageUser.php">
-                                <i class="fas fa-tachometer-alt"></i>Manage User</a>
-                        </li> <li class="has-sub">
+                            <a class="js-arrow" href="manageFlowers.php">
+                                <i class="fas fa-tachometer-alt"></i>Manage Flowers</a>
+                        </li>
+                       
+                        <li class="has-sub">
                             <a class="js-arrow" href="manageInquires.php">
                                 <i class="fas fa-tachometer-alt"></i>Manage Inquires</a>
                         </li>

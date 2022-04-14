@@ -178,7 +178,6 @@ if ($isTouch = isset($_SESSION['id'])) {
             cursor: pointer;
             outline: inherit;'
             type='submit' name='submit'><i class='fa fa-close' aria-hidden='true'></i></button></span>";
-            echo "<span class='badge'>{$cart['description']}</span>";
             echo "<h6>{$cart['cart_name']}</h6>";
             echo "<p class='price'>$ {$cart['price']}</p>";
             echo "</div>";

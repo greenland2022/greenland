@@ -33,7 +33,6 @@ if(isset($_GET['black'])){
     .cover{
         height: 30rem;
         width: 150rem;
-        opacity: 0.6;
     }
     .about-us {
         justify-content: center;
