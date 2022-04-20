@@ -21,17 +21,12 @@ body {
   font-size: 62.5%;
   line-height: 1;
   color: #414141;
-  background: #caccf7 url(https://images.pexels.com/photos/1196312/pexels-photo-1196312.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260);
   padding: 25px 0;
-  background-size: cover;
-  background-origin: revert;
-  background-repeat: no-repeat;
-  background-size: 1539px;
 }
 
-::selection { background: #bdc0e8; }
-::-moz-selection { background: #bdc0e8; }
-::-webkit-selection { background: #bdc0e8; }
+::selection { background: #B6E84A; }
+::-moz-selection { background: #B6E84A; }
+::-webkit-selection { background: #B6E84A; }
 
 br { display: block; line-height: 1.6em; } 
 
@@ -78,7 +73,7 @@ h1 {
 #title {
   display: block;
   width: 100%;
-  background: #C0A0C2;
+  background: #B6E84A;
   padding: 10px 0;
   -webkit-border-top-right-radius: 6px;
   -webkit-border-top-left-radius: 6px;
@@ -92,8 +87,6 @@ h1 {
   display: block;
   background: #fff;
   padding: 15px 0;
-  -webkit-box-shadow: 0 2px 4px rgba(0,0,0,0.4);
-  -moz-box-shadow: 0 2px 4px rgba(0,0,0,0.4);
 }
 
 /** cart table **/
@@ -158,7 +151,7 @@ tr.totalprice, tr.extracosts {
   line-height: 35px;
 }
 tr.extracosts {
-  background: #D7C0CE;
+  background: #B6E84A;
 }
 
 .remove {
@@ -185,7 +178,7 @@ tr.extracosts {
 
 /** submit btn **/
 tr.checkoutrow {
-  background: #D7C0CE;
+  background: #B6E84A;
   border-top: 1px solid #abc0db;
   border-bottom: 1px solid #abc0db;
 }
@@ -212,13 +205,13 @@ td.checkout {
   text-shadow: 1px 1px 0 rgba(0,0,0,0.2);
   cursor: pointer;
   overflow: hidden;
-  border-bottom: 1px solid #D7C0CE;
+  border-bottom: 1px solid #B6E84A;
   background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, red), color-stop(100%, red));
   background-image: linear-gradient(#5C2F5A,#5C2F5A);
 }
 #submitbtn:hover {
   background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #4d9cff), color-stop(100%, #338eff));
-  background-image: linear-gradient(#D7C0CE, #D7C0CE);
+  background-image: linear-gradient(#B6E84A, #B6E84A);
 }
 #submitbtn:active {
   border-bottom: 0;
